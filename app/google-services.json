@@ -1,0 +1,77 @@
+{
+  "project_info": {
+    "project_number": "610756968086",
+    "firebase_url": "https://shoppyfood-c2281-default-rtdb.firebaseio.com",
+    "project_id": "shoppyfood-c2281",
+    "storage_bucket": "shoppyfood-c2281.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:610756968086:android:dded792a43a4d74c144cb7",
+        "android_client_info": {
+          "package_name": "android.BeeFood.master"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "610756968086-ahg26ltft7sel2qg1qaj9q41udlcs3bb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "android.BeeFood.master",
+            "certificate_hash": "33fc84ed14d92d677dcf20309218834236cd70d5"
+          }
+        },
+        {
+          "client_id": "610756968086-u5rtum6p3nq9r7siqv6pkec7sgav0kqk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBMgFRWSj1hOjAfMyckBIEH6hIBo025RHo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "610756968086-g9v77148esr98sctpcaqvhttprfaclrr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:610756968086:android:34d611b22f41086b144cb7",
+        "android_client_info": {
+          "package_name": "sondtph22824.fpoly.sondtph22824"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "610756968086-u5rtum6p3nq9r7siqv6pkec7sgav0kqk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBMgFRWSj1hOjAfMyckBIEH6hIBo025RHo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "610756968086-g9v77148esr98sctpcaqvhttprfaclrr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
