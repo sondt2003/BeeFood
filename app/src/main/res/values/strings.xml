@@ -30,4 +30,12 @@
     <string name="desc_three">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</string>
     <string name="desc_fourth">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</string>
 
+    //menu
+    <string name="sHome">Home</string>
+    <string name="sOrders">Orders</string>
+    <string name="sMessage">Message</string>
+    <string name="sE_Wallet">E-Wallet</string>
+    <string name="sProfile">Profile</string>
+
+
 </resources>
