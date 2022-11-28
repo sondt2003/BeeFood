@@ -1,6 +1,7 @@
 package android.BeeFood.master.View.AccountSetup;
 
 import android.BeeFood.master.R;
+import android.BeeFood.master.View.Home_Action_Menu.HomeActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -24,7 +25,7 @@ public class Screen_Pin_Code extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(Screen_Pin_Code.this, pinView.getText(), Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(Screen_Pin_Code.this,Screen_Fingerprint.class));
+                startActivity(new Intent(Screen_Pin_Code.this, HomeActivity.class));
             }
         });
     }

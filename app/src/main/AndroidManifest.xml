@@ -21,6 +21,33 @@
         android:theme="@style/Theme.BeeFood"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+
+        <activity android:name=".View.Home_Action_Menu.HomeActivity"
+            android:exported="false">
+        </activity>
+        
+        <activity android:name=".View.Home_Action_Menu.home.Craving.Activity_craving"
+            android:exported="false">
+        </activity>
+        //
+        <activity android:name=".View.Home_Action_Menu.home.Food.Activity_food"
+            android:exported="false">
+        </activity>
+        <activity android:name=".View.Home_Action_Menu.home.More_Category.Activity_MoreCategory"
+            android:exported="false">
+        </activity>
+        <activity android:name=".View.Home_Action_Menu.home.MyCart.Activity_MyCart"
+            android:exported="false">
+        </activity>
+
+        <activity android:name=".View.Home_Action_Menu.home.Recommended_for_you.Activity_Recommended"
+            android:exported="false">
+        </activity>
+
+        <activity android:name=".View.Home_Action_Menu.home.Special_Offers.Activity_Special_offers"
+            android:exported="false">
+        </activity>
+
         <activity
             android:name=".View.AccountSetup.Screen_Pin_Code"
             android:exported="false">
