@@ -2,7 +2,7 @@ package android.BeeFood.master.View.Home_Action_Menu.home.MyCart;
 
 import android.BeeFood.master.R;
 import android.BeeFood.master.View.Home_Action_Menu.HomeActivity;
-import android.BeeFood.master.View.Onboarding_Sign_up_Sign_in.Object.MyCart;
+import android.BeeFood.master.View.Object.MyCart;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;

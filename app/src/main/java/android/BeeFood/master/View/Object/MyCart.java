@@ -1,4 +1,4 @@
-package android.BeeFood.master.View.Onboarding_Sign_up_Sign_in.Object;
+package android.BeeFood.master.View.Object;
 
 public class MyCart {
     int id;

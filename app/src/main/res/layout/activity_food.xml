@@ -4,9 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".View.Home_Action_Menu.home.MyCart.Activity_MyCart"
-    android:layout_marginTop="15dp"
-    android:layout_marginRight="15dp"
-    android:layout_marginLeft="15dp">
+    android:layout_marginTop="16dp"
+    android:layout_marginRight="16dp"
+    android:layout_marginLeft="16dp">
 
     <ImageView
         android:id="@+id/home_ActionMenu_foodType_Back"

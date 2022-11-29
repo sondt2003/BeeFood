@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Introduce.Introduce_Screen"
+    tools:context=".View.Onboarding_Sign_up_Sign_in.Introduce_Screen"
     android:background="@drawable/you_1"
     android:orientation="vertical"
     android:gravity="center">

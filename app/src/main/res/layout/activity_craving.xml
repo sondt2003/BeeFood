@@ -4,16 +4,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".View.Home_Action_Menu.home.Craving.Activity_craving"
-    android:layout_marginTop="15dp"
-    android:layout_marginRight="15dp"
-    android:layout_marginLeft="15dp">
+    android:layout_marginTop="16dp"
+    android:layout_marginRight="16dp"
+    android:layout_marginLeft="16dp">
 
     <ImageView
         android:id="@+id/home_ActionMenu_Craving_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_backspace_24"
-        android:layout_margin="15dp"/>
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="15dp"
+        android:src="@drawable/ic_backspace_24" />
 
     <EditText
         android:id="@+id/home_ActionMenu_Craving_Search"

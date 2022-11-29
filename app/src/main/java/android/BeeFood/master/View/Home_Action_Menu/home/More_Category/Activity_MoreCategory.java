@@ -4,7 +4,7 @@ import android.BeeFood.master.R;
 import android.BeeFood.master.View.Home_Action_Menu.HomeActivity;
 import android.BeeFood.master.View.Home_Action_Menu.home.Adapter_Foodtype;
 import android.BeeFood.master.View.Home_Action_Menu.home.Food.Activity_food;
-import android.BeeFood.master.View.Onboarding_Sign_up_Sign_in.Object.Loai_food;
+import android.BeeFood.master.View.Object.Loai_food;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;

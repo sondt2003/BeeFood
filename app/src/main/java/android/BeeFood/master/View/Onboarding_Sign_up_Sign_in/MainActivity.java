@@ -3,8 +3,10 @@ package android.BeeFood.master.View.Onboarding_Sign_up_Sign_in;
 import android.BeeFood.master.R;
 import android.BeeFood.master.View.AccountSetup.Screen_Profile;
 import android.Manifest;
+import android.app.AlertDialog;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -14,6 +16,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -52,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
     EditText edtEmail;
     EditText edtPassWord;
     TextView textViewSignUp;
+    ImageView img_login_exit;
 
     GoogleSignInOptions gso;
     GoogleSignInClient gsc;
@@ -122,6 +126,26 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void EventClick() {
+
+        img_login_exit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                builder.setTitle("Exit");
+                builder.setMessage("Do you want to Exit ?");
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        System.exit(0);
+                    }
+                });
+
+                builder.setNegativeButton("No" , null);
+
+                builder.show();
+            }
+        });
+
         textViewSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -174,6 +198,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void AnhXa() {
+
+        img_login_exit = findViewById(R.id.login_exit);
+
         btnLoginFb = findViewById(R.id.btnFacebook);
         btnLoginGoogle = findViewById(R.id.btnGoogle);
         btnEmail = findViewById(R.id.btnLoginEmail);
