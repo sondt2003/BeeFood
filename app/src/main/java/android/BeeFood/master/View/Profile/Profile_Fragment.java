@@ -19,6 +19,8 @@ import android.BeeFood.master.R;
 import android.widget.LinearLayout;
 
 public class Profile_Fragment extends Fragment {
+
+//    hi
     private LinearLayout btnProfile,btnAddress,
             btnNotification,btnSecurity,btnLanguage,btnLogout;
 
