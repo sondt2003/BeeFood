@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -142,4 +143,5 @@ public class Onboarding_Screen extends AppCompatActivity {
 
         return mSLideViewPager.getCurrentItem() + i;
     }
+
 }
