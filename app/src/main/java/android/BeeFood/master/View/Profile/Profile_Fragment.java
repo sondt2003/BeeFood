@@ -26,6 +26,7 @@ public class Profile_Fragment extends Fragment {
 
     public Profile_Fragment() {
         // Required empty public constructor
+//        qwetuiihn
     }
 
     public static Profile_Fragment newInstance() {
