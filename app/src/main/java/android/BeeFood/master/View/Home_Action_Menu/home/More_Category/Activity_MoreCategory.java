@@ -65,9 +65,10 @@ public class Activity_MoreCategory extends AppCompatActivity {
         img_home_ActionMenu_MoreCategory_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Activity_MoreCategory.this, HomeActivity.class);
-                startActivity(intent);
-                finish();
+//                Intent intent = new Intent(Activity_MoreCategory.this, HomeActivity.class);
+//                startActivity(intent);
+//                finish();
+                onBackPressed();
             }
         });
     }

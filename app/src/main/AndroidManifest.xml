@@ -92,6 +92,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <!--ac_Profile-->
+        <activity android:name=".View.Profile.address.Address_Activity"
+            android:exported="false"/>
+
+        <activity android:name=".View.Profile.security.Security_Activity"
+            android:exported="false"/>
+
+        <activity android:name=".View.Profile.language.Language_Activity"
+            android:exported="false"/>
+
+        <activity android:name=".View.Profile.notification.Notification_Activity"
+            android:exported="false"/>
+
+        <activity android:name=".View.Profile.profile_update.Profile_Update_Activity"
+            android:exported="false"/>
+        <!--        -->
 
         <service
             android:name=".Controller.MyFirebaseMessagingService"
@@ -132,5 +148,4 @@
             </intent-filter>
         </activity>
     </application>
-
 </manifest>

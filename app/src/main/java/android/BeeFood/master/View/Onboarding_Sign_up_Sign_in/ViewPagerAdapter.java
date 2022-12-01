@@ -22,7 +22,6 @@ public class ViewPagerAdapter extends PagerAdapter {
             R.drawable.easypayment_logo,
             R.drawable.fastdelivery_logo,
 
-
     };
 
     int headings[] = {

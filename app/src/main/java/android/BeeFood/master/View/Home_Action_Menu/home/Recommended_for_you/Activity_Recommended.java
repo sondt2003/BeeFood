@@ -67,9 +67,10 @@ public class Activity_Recommended extends AppCompatActivity {
         img_home_ActionMenu_Recommended_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Activity_Recommended.this, HomeActivity.class);
-                startActivity(intent);
-                finish();
+//                Intent intent = new Intent(Activity_Recommended.this, HomeActivity.class);
+//                startActivity(intent);
+//                finish();
+                onBackPressed();
             }
         });
 

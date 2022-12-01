@@ -84,15 +84,16 @@ public class Activity_food extends AppCompatActivity {
         img_home_ActionMenu_foodType_Back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (chkSpecialMore){
-                    Intent intent = new Intent(Activity_food.this, Activity_MoreCategory.class);
-                    startActivity(intent);
-                    finish();
-                    return;
-                }
-                Intent intent = new Intent(Activity_food.this, HomeActivity.class);
-                startActivity(intent);
-                finish();
+//                if (chkSpecialMore){
+//                    Intent intent = new Intent(Activity_food.this, Activity_MoreCategory.class);
+//                    startActivity(intent);
+//                    finish();
+//                    return;
+//                }
+//                Intent intent = new Intent(Activity_food.this, HomeActivity.class);
+//                startActivity(intent);
+//                finish();
+                onBackPressed();
             }
         });
 

@@ -34,8 +34,31 @@
     <string name="sHome">Home</string>
     <string name="sOrders">Orders</string>
     <string name="sMessage">Message</string>
-    <string name="sE_Wallet">E-Wallet</string>
+    <string name="sHistory">History</string>
     <string name="sProfile">Profile</string>
+
+    //Profile
+    <string name="sNotification">Notification</string>
+    <string name="sGerenal_Notification">Gerenal Notification</string>
+    <string name="sSpecial_Offers">Special Offers</string>
+    <string name="sApp_update">App update</string>
+
+
+    <string name="sSecurity">Security</string>
+    <string name="sRemember_me">Remember me</string>
+    <string name="sCode_pin">Code pin</string>
+    <string name="sChange_pin">CHANGE PIN</string>
+    <string name="sChange_Password">CHANGE PASSWORD</string>
+
+
+    <string name="sLanguage">Language</string>
+    <string name="sEnglish">English</string>
+    <string name="sVietnam">Vietnamese</string>
+
+    <string name="sUpdate">UPDATE</string>
+
+    <string name="sAddress">Address</string>
+    <string name="sAdd_to_address">Add to address</string>
 
 
 </resources>

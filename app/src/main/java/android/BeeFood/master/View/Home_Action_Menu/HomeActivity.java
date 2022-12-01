@@ -1,11 +1,12 @@
 package android.BeeFood.master.View.Home_Action_Menu;
 
 import android.BeeFood.master.R;
-import android.BeeFood.master.View.EWallet.EWallet_Fragment;
+import android.BeeFood.master.View.history.History_Fragment;
 import android.BeeFood.master.View.Home_Action_Menu.home.Fragment_home;
 import android.BeeFood.master.View.Orders.OrdersFragment;
 import android.BeeFood.master.View.Profile.Profile_Fragment;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AlertDialog;
@@ -27,7 +28,26 @@ public class HomeActivity extends AppCompatActivity {
 
         AnhXa();
 
-        loadFragment(Fragment_home.newInstance());
+        Intent intent = getIntent();
+
+        int activity_back = 0;
+        activity_back = intent.getIntExtra("key_back",0);
+        switch (activity_back){
+            case 0:
+                loadFragment(Fragment_home.newInstance());
+                break;
+            case 1:
+                loadFragment(OrdersFragment.newInstance());
+                break;
+            case 2:
+                loadFragment(History_Fragment.newInstance());
+                break;
+            case 3:
+                loadFragment(Profile_Fragment.newInstance());
+                break;
+        }
+
+
 
         btnNavigation_home_ActionMenu_Main_layout.setOnItemSelectedListener(item -> {
             switch (item.getItemId()){
@@ -38,7 +58,7 @@ public class HomeActivity extends AppCompatActivity {
                     loadFragment(OrdersFragment.newInstance());
                     break;
                 case R.id.home_menu_Wallet:
-                    loadFragment(EWallet_Fragment.newInstance());
+                    loadFragment(History_Fragment.newInstance());
                     break;
                 case R.id.home_menu_Profile:
                     loadFragment(Profile_Fragment.newInstance());

@@ -1,4 +1,4 @@
-package android.BeeFood.master.View.EWallet;
+package android.BeeFood.master.View.history;
 
 import android.os.Bundle;
 
@@ -9,14 +9,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.BeeFood.master.R;
 
-public class EWallet_Fragment extends Fragment {
+public class History_Fragment extends Fragment {
 
 
-    public EWallet_Fragment() {
+    public History_Fragment() {
         // Required empty public constructor
     }
-    public static EWallet_Fragment newInstance() {
-        EWallet_Fragment fragment = new EWallet_Fragment();
+    public static History_Fragment newInstance() {
+        History_Fragment fragment = new History_Fragment();
         return fragment;
     }
 

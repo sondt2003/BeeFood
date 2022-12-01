@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".View.Profile.address.Address_Activity">
+
+
+    <ImageView
+        android:id="@+id/profile_ActionMenu_Back"
+        android:layout_width="40dp"
+        android:layout_height="30dp"
+        android:src="@drawable/ic_backspace_24" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_toRightOf="@+id/profile_ActionMenu_Back"
+        android:text="@string/sAddress"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/profile_Address_listAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/profile_ActionMenu_Back"
+        android:layout_marginTop="16dp" />
+
+    <Button
+        android:id="@+id/profile_Address_btnAddToAddress"
+        android:layout_width="380dp"
+        android:layout_height="52dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/bg_btn_gree"
+        android:text="@string/sAdd_to_address"
+        android:textStyle="bold" />
+
+</RelativeLayout>

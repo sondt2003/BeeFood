@@ -56,9 +56,11 @@ public class Activity_MyCart extends AppCompatActivity {
         img_home_ActionMenu_MyCart_Back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Activity_MyCart.this, HomeActivity.class);
-                startActivity(intent);
-                finish();
+//                Intent intent = new Intent(Activity_MyCart.this, HomeActivity.class);
+//                startActivity(intent);
+//                finish();
+
+                onBackPressed();
             }
         });
     }
