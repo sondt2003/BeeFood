@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:padding="16dp"
     android:orientation="vertical"
-    tools:context=".View.Profile.language.Language_Activity">
+    tools:context=".view.profile.language.Language_Activity">
 
     <LinearLayout
         android:layout_width="match_parent"

@@ -5,7 +5,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
 xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
-tools:context=".View.Onboarding_Sign_up_Sign_in.MainActivity">
+tools:context=".view.onboarding_sign_up_sign_in.MainActivity">
     <LinearLayout
         android:layout_margin="10dp"
         android:orientation="horizontal"
@@ -40,7 +40,7 @@ tools:context=".View.Onboarding_Sign_up_Sign_in.MainActivity">
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:context=".View.AccountSetup.MapsActivity" />
+        tools:context=".view.accountSetup.MapsActivity" />
 
     <LinearLayout
         android:id="@+id/linearLayout2"

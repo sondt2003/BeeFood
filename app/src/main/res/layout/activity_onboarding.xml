@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".View.Onboarding_Sign_up_Sign_in.MainActivity"
+    tools:context=".view.onboarding_sign_up_sign_in.MainActivity"
     android:background="@color/cBg">
 
     <Button

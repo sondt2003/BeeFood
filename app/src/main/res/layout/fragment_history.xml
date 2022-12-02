@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".View.history.History_Fragment"
+    tools:context=".view.history.History_Fragment"
     android:padding="16dp">
 
 

@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:padding="16dp"
     android:orientation="vertical"
-    tools:context=".View.Profile.notification.Notification_Activity">
+    tools:context=".view.profile.notification.Notification_Activity">
 
     <LinearLayout
         android:layout_width="match_parent"

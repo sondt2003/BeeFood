@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".View.Home_Action_Menu.home.Craving.Activity_craving"
+    tools:context=".view.home_action_menu.home.craving.Activity_craving"
     android:layout_marginTop="16dp"
     android:layout_marginRight="16dp"
     android:layout_marginLeft="16dp">

@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".View.Home_Action_Menu.home.MyCart.Activity_MyCart"
+    tools:context=".view.home_action_menu.home.mycart.Activity_MyCart"
     android:layout_marginTop="16dp"
     android:layout_marginRight="16dp"
     android:layout_marginLeft="16dp">
