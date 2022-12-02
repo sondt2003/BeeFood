@@ -39,7 +39,7 @@
             android:layout_width="match_parent"
             android:layout_height="52dp"
             android:hint="Username"
-            android:background="@drawable/bg_edt_lonin"
+            android:background="@drawable/bg_edt_login_noselect"
             android:inputType="textPersonName"/>
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -58,7 +58,7 @@
             android:id="@+id/edtDangKyEmail"
             android:layout_width="match_parent"
             android:layout_height="52dp"
-            android:background="@drawable/bg_edt_lonin"
+            android:background="@drawable/bg_edt_login_noselect"
             android:hint="Email"
             android:inputType="textEmailAddress"/>
 
@@ -78,7 +78,7 @@
             android:id="@+id/inputPasswordDangKy"
             android:layout_width="match_parent"
             android:layout_height="52dp"
-            android:background="@drawable/bg_edt_lonin"
+            android:background="@drawable/bg_edt_login_noselect"
             android:hint="Password"
             android:inputType="textPassword"/>
 
@@ -98,7 +98,7 @@
             android:id="@+id/inputConformPassword"
             android:layout_width="match_parent"
             android:layout_height="52dp"
-            android:background="@drawable/bg_edt_lonin"
+            android:background="@drawable/bg_edt_login_noselect"
             android:hint="Retype Password"
             android:inputType="textPassword"/>
 

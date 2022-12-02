@@ -1,11 +1,16 @@
 package android.BeeFood.master.View.Profile;
 
 import android.BeeFood.master.R;
+import android.BeeFood.master.View.AccountSetup.Screen_Profile;
+import android.BeeFood.master.View.Home_Action_Menu.HomeActivity;
+import android.BeeFood.master.View.Onboarding_Sign_up_Sign_in.MainActivity;
 import android.BeeFood.master.View.Profile.address.Address_Activity;
 import android.BeeFood.master.View.Profile.language.Language_Activity;
 import android.BeeFood.master.View.Profile.notification.Notification_Activity;
 import android.BeeFood.master.View.Profile.profile_update.Profile_Update_Activity;
 import android.BeeFood.master.View.Profile.security.Security_Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -98,6 +103,19 @@ public class Profile_Fragment extends Fragment {
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                builder.setTitle("Loguou");
+                builder.setMessage("Do you want logout ?");
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Intent intent = new Intent(getActivity(), MainActivity.class);
+                        startActivity(intent);
+                    }
+                });
+                builder.setNegativeButton("No",null);
+
+                builder.show();
 
             }
         });

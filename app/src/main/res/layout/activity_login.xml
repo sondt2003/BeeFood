@@ -47,7 +47,7 @@
             android:id="@+id/edt_Login_Email"
             android:layout_width="match_parent"
             android:layout_height="52dp"
-            android:background="@drawable/bg_edt_lonin"
+            android:background="@drawable/bg_edt_login_noselect"
             android:inputType="textEmailAddress"
             android:hint="Email"
             android:textSize="16sp"/>
@@ -67,7 +67,7 @@
             android:id="@+id/inputPassword"
             android:layout_width="match_parent"
             android:layout_height="52dp"
-            android:background="@drawable/bg_edt_lonin"
+            android:background="@drawable/bg_edt_login_noselect"
             android:hint="Passwork"
             android:inputType="textPassword"
             android:textSize="16sp" />

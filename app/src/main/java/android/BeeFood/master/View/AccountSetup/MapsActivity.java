@@ -1,7 +1,6 @@
 package android.BeeFood.master.View.AccountSetup;
 
 import static java.lang.Thread.*;
-
 import android.BeeFood.master.R;
 import android.BeeFood.master.databinding.ActivityMapsBinding;
 import android.Manifest;

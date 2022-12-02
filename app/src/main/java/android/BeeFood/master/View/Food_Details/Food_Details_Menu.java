@@ -40,9 +40,9 @@ public class Food_Details_Menu extends AppCompatActivity {
         setContentView(R.layout.activity_food_details_menu);
         
         anhXa();
-//        setSupportActionBar(toolbar_Food_Detail_Menu_toolbar);
-//        getSupportActionBar().setTitle("");
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setSupportActionBar(toolbar_Food_Detail_Menu_toolbar);
+        getSupportActionBar().setTitle("");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         adapter_recyclerView_foodDetail_forYou = new Adapter_RecyclerView_FoodDetail_ForYou(Food_Details_Menu.this);
         adapter_recyclerView_foodDetail_forYou.setData(mArrayList);

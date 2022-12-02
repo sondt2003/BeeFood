@@ -18,7 +18,7 @@ public class Onboarding_Screen extends AppCompatActivity {
 
     ViewPager mSLideViewPager;
     LinearLayout mDotLayout;
-    Button backbtn, nextbtn, skipbtn;
+    Button nextbtn, skipbtn;
 
     TextView[] dots;
     ViewPagerAdapter viewPagerAdapter;
@@ -28,35 +28,20 @@ public class Onboarding_Screen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_onboarding);
 
-        backbtn = findViewById(R.id.backbtn);
         nextbtn = findViewById(R.id.nextbtn);
         skipbtn = findViewById(R.id.skipButton);
 
-        backbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                if (getitem(0) > 0) {
-
-                    mSLideViewPager.setCurrentItem(getitem(-1), true);
-
-                }
-
-            }
-        });
 
         nextbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                if (getitem(0) < 3)
+                if (getitem(0) < 2) {
                     mSLideViewPager.setCurrentItem(getitem(1), true);
-                else if(getitem(0) > 3){
+                }else{
                     Intent i = new Intent(Onboarding_Screen.this, MainActivity.class);
                     startActivity(i);
                     finish();
-                }else{
-
                 }
 
 
@@ -83,7 +68,7 @@ public class Onboarding_Screen extends AppCompatActivity {
         mSLideViewPager.setAdapter(viewPagerAdapter);
 
         setUpindicator(0);
-        mSLideViewPager.addOnPageChangeListener(viewListener);
+//        mSLideViewPager.addOnPageChangeListener(viewListener);
 
     }
 
@@ -110,34 +95,34 @@ public class Onboarding_Screen extends AppCompatActivity {
 
     }
 
-    ViewPager.OnPageChangeListener viewListener = new ViewPager.OnPageChangeListener() {
-        @Override
-        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-        }
-
-        @Override
-        public void onPageSelected(int position) {
-
-            setUpindicator(position);
-
-            if (position > 0) {
-
-                backbtn.setVisibility(View.VISIBLE);
-
-            } else {
-
-                backbtn.setVisibility(View.INVISIBLE);
-
-            }
-
-        }
-
-        @Override
-        public void onPageScrollStateChanged(int state) {
-
-        }
-    };
+//    ViewPager.OnPageChangeListener viewListener = new ViewPager.OnPageChangeListener() {
+//        @Override
+//        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+//
+//        }
+//
+//        @Override
+//        public void onPageSelected(int position) {
+//
+//            setUpindicator(position);
+//
+//            if (position > 0) {
+//
+//                backbtn.setVisibility(View.VISIBLE);
+//
+//            } else {
+//
+//                backbtn.setVisibility(View.INVISIBLE);
+//
+//            }
+//
+//        }
+//
+//        @Override
+//        public void onPageScrollStateChanged(int state) {
+//
+//        }
+//    };
 
     private int getitem(int i) {
 

@@ -30,9 +30,9 @@ public class Checkout_Oders extends AppCompatActivity {
 
         anhXa();
 //
-//        setSupportActionBar(toolbar_checkout_Oders_Toolbar);
-//        getSupportActionBar().setTitle("Checkout Orders");
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setSupportActionBar(toolbar_checkout_Oders_Toolbar);
+        getSupportActionBar().setTitle("Checkout Orders");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
         adapter_recyclerView_checkOut_orderSummary = new Adapter_RecyclerView_CheckOut_OrderSummary(Checkout_Oders.this);

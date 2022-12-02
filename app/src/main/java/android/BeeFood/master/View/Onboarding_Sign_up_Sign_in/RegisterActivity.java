@@ -1,11 +1,11 @@
 package android.BeeFood.master.View.Onboarding_Sign_up_Sign_in;
 
 import android.BeeFood.master.R;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,7 +19,8 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class RegisterActivity extends AppCompatActivity {
     Button btnEmailTaoTK;
-    EditText edtEmail,edtPassword,edtPasswordNhaplai;
+    ImageView img_register_back;
+    EditText edtEmail,edtPassword,edtPasswordNhaplai,edt_inputUsername;
     FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,22 +31,77 @@ public class RegisterActivity extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(RegisterActivity.this, MainActivity.class));
+                onBackPressed();
             }
         });
         AnhXa();
         evenClick();
+
+
+        //set onfocus edt
+        edt_inputUsername.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if (b){
+                    edt_inputUsername.setBackgroundResource(R.drawable.bg_edt_login_select);
+                }else{
+                    edt_inputUsername.setBackgroundResource(R.drawable.bg_edt_login_noselect);
+                }
+            }
+        });
+
+        edtEmail.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if (b){
+                    edtEmail.setBackgroundResource(R.drawable.bg_edt_login_select);
+                }else{
+                    edtEmail.setBackgroundResource(R.drawable.bg_edt_login_noselect);
+                }
+            }
+        });
+        edtPassword.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if (b){
+                    edtPassword.setBackgroundResource(R.drawable.bg_edt_login_select);
+                }else{
+                    edtPassword.setBackgroundResource(R.drawable.bg_edt_login_noselect);
+                }
+            }
+        });
+        edtPasswordNhaplai.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if (b){
+                    edtPasswordNhaplai.setBackgroundResource(R.drawable.bg_edt_login_select);
+                }else{
+                    edtPasswordNhaplai.setBackgroundResource(R.drawable.bg_edt_login_noselect);
+                }
+            }
+        });
+        //
     }
 
     private void AnhXa() {
-                btnEmailTaoTK = findViewById(R.id.btnRegister);
-                edtEmail=findViewById(R.id.edtDangKyEmail);
-                edtPassword=findViewById(R.id.inputPasswordDangKy);
-                edtPasswordNhaplai=findViewById(R.id.inputConformPassword);
-         mAuth=FirebaseAuth.getInstance();
+        edt_inputUsername = findViewById(R.id.inputUsername);
+        btnEmailTaoTK = findViewById(R.id.btnRegister);
+        img_register_back = findViewById(R.id.register_back);
+        edtEmail=findViewById(R.id.edtDangKyEmail);
+        edtPassword=findViewById(R.id.inputPasswordDangKy);
+        edtPasswordNhaplai=findViewById(R.id.inputConformPassword);
+        mAuth=FirebaseAuth.getInstance();
     }
 
     private void evenClick() {
+
+        img_register_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+
         btnEmailTaoTK.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

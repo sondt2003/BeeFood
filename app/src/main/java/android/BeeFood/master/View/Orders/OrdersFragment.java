@@ -54,10 +54,11 @@ public class OrdersFragment extends Fragment {
         anhXa(view);
 
         AppCompatActivity activity = (AppCompatActivity) getActivity();
-//
-//        activity.getSupportActionBar().setDisplayShowHomeEnabled(true);
-//        activity.getSupportActionBar().setIcon(R.drawable.logo_app);
-//        activity.getSupportActionBar().setTitle("Orders");
+        activity.setSupportActionBar(oders_toolbar);
+        activity.getSupportActionBar().setTitle("  Oreders");
+//        activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        activity.getSupportActionBar().setDisplayShowHomeEnabled(true);
+        activity.getSupportActionBar().setIcon(R.drawable.mini_logo_app);
 
         viewPagerAdapter =new OderViewPagerAdapter(getActivity());
         oders_ViewPager2.setAdapter(viewPagerAdapter);
@@ -84,6 +85,7 @@ public class OrdersFragment extends Fragment {
     }
 
     public void anhXa(View view){
+        oders_toolbar =  view.findViewById(R.id.oders_toolbar);
         oders_TabLayout = view.findViewById(R.id.oders_TabLayout);
         oders_ViewPager2 = view.findViewById(R.id.oders_ViewPager2);
     }

@@ -18,6 +18,7 @@ public class Splash_Screen extends AppCompatActivity {
             @Override
             public void run() {
                 startActivity(new Intent(Splash_Screen.this, Onboarding_Screen.class));
+                finish();
             }
         },2000);
     }

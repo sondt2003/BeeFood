@@ -71,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         PhanQuyen();
         AnhXa();
+        setSelect_edt();
         SetupsLogin();
         EventClick();
         createChannelNotification();
@@ -130,19 +131,7 @@ public class MainActivity extends AppCompatActivity {
         img_login_exit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-                builder.setTitle("Exit");
-                builder.setMessage("Do you want to Exit ?");
-                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        System.exit(0);
-                    }
-                });
-
-                builder.setNegativeButton("No" , null);
-
-                builder.show();
+                onBack_app();
             }
         });
 
@@ -264,5 +253,52 @@ public class MainActivity extends AppCompatActivity {
         } catch (Exception e) {
             Toast.makeText(this, "Chưa Đăng Nhập", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    //thoát app
+    public void onBack_app(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+        builder.setTitle("Exit");
+        builder.setMessage("Do you want to Exit ?");
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                finish();
+                System.exit(0);
+            }
+        });
+        builder.setNegativeButton("No" , null);
+        builder.show();
+    }
+
+    @Override
+    public void onBackPressed() {
+        onBack_app();
+    }
+    //
+
+    //set select edt
+    public void setSelect_edt(){
+        edtEmail.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if (b){
+                    edtEmail.setBackgroundResource(R.drawable.bg_edt_login_select);
+                }else{
+                    edtEmail.setBackgroundResource(R.drawable.bg_edt_login_noselect);
+                }
+            }
+        });
+
+        edtPassWord.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if (b){
+                    edtPassWord.setBackgroundResource(R.drawable.bg_edt_login_select);
+                }else{
+                    edtPassWord.setBackgroundResource(R.drawable.bg_edt_login_noselect);
+                }
+            }
+        });
     }
 }

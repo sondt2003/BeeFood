@@ -25,7 +25,7 @@ tools:context=".View.Onboarding_Sign_up_Sign_in.MainActivity">
             android:layout_marginTop="15dp"
             android:layout_marginLeft="20dp"
             android:text="Set Your Location"
-            android:textStyle="bold"></TextView>
+            android:textStyle="bold"/>
     </LinearLayout>
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"

@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -19,6 +20,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -34,22 +36,26 @@ public class Screen_Profile extends AppCompatActivity {
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     EditText profile_edt_fullname, profile_edt_nickname, profile_edt_date_of_birth, profile_edt_email;
     Spinner profile_spinner_gender;
+    ImageView img_profile_update_MyLaction ,img_accountsetup_profile_previous;
+
+    TextInputLayout layout_profile_update_location;
     int count;
     boolean kiemtra=true;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_screen_profile);
+        setContentView(R.layout.activity_profile_update);
         List<String> spinnerArray = new ArrayList<>();
         spinnerArray.add("Gender");
         spinnerArray.add("Nữ");
         spinnerArray.add("Nam");
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, spinnerArray);
-        profile_edt_fullname = findViewById(R.id.profile_edt_fullname);
-        profile_edt_nickname = findViewById(R.id.profile_edt_nickname);
-        profile_edt_date_of_birth = findViewById(R.id.profile_edt_date_of_birth);
-        profile_edt_email = findViewById(R.id.profile_edt_email);
-        profile_spinner_gender = findViewById(R.id.profile_spinner_gender);
+
+        AnhXa();
+
+        layout_profile_update_location.setVisibility(View.INVISIBLE);
+        img_profile_update_MyLaction.setVisibility(View.INVISIBLE);
+
 
         adapter.setDropDownViewResource(
                 android.R.layout.simple_spinner_dropdown_item);
@@ -108,7 +114,7 @@ public class Screen_Profile extends AppCompatActivity {
                                 @Override
                                 public void onSuccess(DocumentReference documentReference) {
                                     Toast.makeText(Screen_Profile.this, "Cập Nhật Thông Tin Thành Công", Toast.LENGTH_SHORT).show();
-                                    startActivity(new Intent(Screen_Profile.this, MapsActivity.class));
+                                    startActivity(new Intent(Screen_Profile.this, Screen_Pin_Code.class));
                                 }
                             })
                             .addOnFailureListener(new OnFailureListener() {
@@ -123,5 +129,24 @@ public class Screen_Profile extends AppCompatActivity {
             }
         });
 
+
+        img_accountsetup_profile_previous.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+
+    }
+
+    public void AnhXa(){
+        profile_edt_fullname = findViewById(R.id.profile_update_FullName);
+        profile_edt_nickname = findViewById(R.id.profile_Update_NickName);
+        profile_edt_date_of_birth = findViewById(R.id.profile_update_DateOfBirth);
+        profile_edt_email = findViewById(R.id.profile_update_Email);
+        profile_spinner_gender = findViewById(R.id.profile_spinner_gender);
+        img_accountsetup_profile_previous = findViewById(R.id.img_accountsetup_profile_previous);
+        img_profile_update_MyLaction = findViewById(R.id.profile_update_MyLaction);
+        layout_profile_update_location = findViewById(R.id.layout_profile_update_location);
     }
 }
