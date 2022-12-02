@@ -25,7 +25,6 @@ public class Screen_Pin_Code extends AppCompatActivity {
             @Override
             public boolean onKey(View view, int i, KeyEvent keyEvent) {
                 if(pinView.getText().length() >= 5){
-                    Toast.makeText(Screen_Pin_Code.this, pinView.getText(), Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(Screen_Pin_Code.this, HomeActivity.class));
                     finishAffinity();
                 }
