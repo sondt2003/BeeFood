@@ -5,12 +5,12 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".view.add_san_pham.Fragment_add_san_pham"
-    android:padding="16dp"
     android:background="@color/cBg">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_margin="16dp">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/layout_addSanPham_avtFood"
