@@ -37,6 +37,5 @@ public class Profile_Fragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        //Tiến Ăn đầu buồi ăn cứt đmm
     }
 }

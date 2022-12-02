@@ -75,23 +75,22 @@
             android:name=".View.AccountSetup.MapsActivity"
             android:exported="false"
             android:label="" />
+        <activity android:name=".View.Onboarding_Sign_up_Sign_in.Introduce_Screen" android:exported="false"/>
         <activity android:name=".View.Onboarding_Sign_up_Sign_in.Onboarding_Screen" android:exported="false"/>
         <activity android:name=".View.Onboarding_Sign_up_Sign_in.RegisterActivity" android:exported="false"/>
-
-        <activity android:name=".View.Onboarding_Sign_up_Sign_in.Splash_Screen"
+        <activity android:name=".View.Onboarding_Sign_up_Sign_in.Splash_Screen" android:exported="false">
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+        </activity>
+        <activity
+            android:name=".View.Onboarding_Sign_up_Sign_in.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity
-            android:name=".View.Onboarding_Sign_up_Sign_in.MainActivity"
-            android:exported="true">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
         </activity>
 
         <service
