@@ -24,12 +24,15 @@
 
         <activity android:name=".view.home_action_menu.HomeActivity"
             android:exported="false">
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
         </activity>
         
         <activity android:name=".view.home_action_menu.home.craving.Activity_craving"
             android:exported="false">
         </activity>
-        //
         <activity android:name=".view.home_action_menu.home.food.Activity_food"
             android:exported="false">
         </activity>
@@ -86,10 +89,10 @@
         <activity
             android:name=".view.onboarding_sign_up_sign_in.MainActivity"
             android:exported="true">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <!--ac_Profile-->
         <activity android:name=".view.profile.address.Address_Activity"

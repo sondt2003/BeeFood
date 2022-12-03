@@ -93,6 +93,7 @@ public class MainActivity extends AppCompatActivity {
                         // App code
                     }
                 });
+        LayThongTinFb();
     }
 
     private void LayThongTinFb() {
@@ -107,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
                         try {
                             Set<String> a = AccessToken.getCurrentAccessToken().getPermissions();
                             Log.i("SONDTPH", "KẾT QUẢ:" + a + object.getString("name"));
-                            Log.i("SONDTPH", "email:" + object.getString("id").length());
+                            Log.i("SONDTPH", "email:" + object.getString("email"));
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -127,14 +128,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void EventClick() {
-
         img_login_exit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 onBack_app();
             }
         });
-
         textViewSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -183,7 +182,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-        account = GoogleSignIn.getLastSignedInAccount(this);
+//        account = GoogleSignIn.getLastSignedInAccount(this);
     }
 
     private void AnhXa() {

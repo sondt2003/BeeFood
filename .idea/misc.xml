@@ -3,6 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Du_An_1/BeeFood/app/src/main/res/layout/activity_home.xml" value="0.21296296296296297" />
+        <entry key="..\:/Du_An_1/BeeFood/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Du_An_1/BeeFood/app/src/main/res/layout/activity_profile_update.xml" value="0.234375" />
+        <entry key="..\:/Du_An_1/BeeFood/app/src/main/res/layout/fragment_add_san_pham.xml" value="0.21296296296296297" />
+        <entry key="..\:/Du_An_1/BeeFood/app/src/main/res/layout/fragment_history.xml" value="0.25" />
+        <entry key="..\:/Du_An_1/BeeFood/app/src/main/res/layout/fragment_home.xml" value="0.25" />
+        <entry key="..\:/Du_An_1/BeeFood/app/src/main/res/layout/fragment_orders.xml" value="0.25" />
+        <entry key="..\:/Du_An_1/BeeFood/app/src/main/res/layout/fragment_profile_.xml" value="0.25" />
+        <entry key="..\:/Du_An_1/BeeFood/app/src/main/res/layout/home_item_discount.xml" value="0.25" />
+        <entry key="..\:/Du_An_1/BeeFood/app/src/main/res/menu/menu.xml" value="0.25" />
         <entry key="..\:/Users/Acer Aspire 7/Music/BeeFood/app/src/main/res/drawable-v24/bgredt.xml" value="0.1515" />
         <entry key="..\:/Users/Acer Aspire 7/Music/BeeFood/app/src/main/res/drawable-v24/bgrtop.xml" value="0.1515" />
         <entry key="..\:/Users/Acer Aspire 7/Music/BeeFood/app/src/main/res/drawable-v24/btn.xml" value="0.1515" />

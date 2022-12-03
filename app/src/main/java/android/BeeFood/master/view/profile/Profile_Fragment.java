@@ -1,8 +1,10 @@
 package android.BeeFood.master.view.profile;
 
 import android.BeeFood.master.R;
+import android.BeeFood.master.view.accountSetup.MapsActivity;
+import android.BeeFood.master.view.accountSetup.Screen_Pin_Code;
+import android.BeeFood.master.view.accountSetup.Screen_Profile;
 import android.BeeFood.master.view.onboarding_sign_up_sign_in.MainActivity;
-import android.BeeFood.master.view.profile.address.Address_Activity;
 import android.BeeFood.master.view.profile.language.Language_Activity;
 import android.BeeFood.master.view.profile.notification.Notification_Activity;
 import android.BeeFood.master.view.profile.profile_update.Profile_Update_Activity;
@@ -10,21 +12,40 @@ import android.BeeFood.master.view.profile.security.Security_Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+
 public class Profile_Fragment extends Fragment {
 
-//    hi
-    private LinearLayout btnProfile,btnAddress,
-            btnNotification,btnSecurity,btnLanguage,btnLogout;
+    ImageView avartar;
+    Uri uri;
+    String url_profile;
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+    FirebaseStorage storage = FirebaseStorage.getInstance();
+    StorageReference reference = storage.getReference();
+
+    private LinearLayout btnProfile, btnAddress,
+            btnNotification, btnSecurity, btnLanguage, btnLogout;
 
     public Profile_Fragment() {
         // Required empty public constructor
@@ -60,12 +81,12 @@ public class Profile_Fragment extends Fragment {
                 startActivity(intent);
             }
         });
-
+        avartar = view.findViewById(R.id.profile_avartar);
         btnAddress = view.findViewById(R.id.profile_address_OnClick);
         btnAddress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), Address_Activity.class);
+                Intent intent = new Intent(getActivity(), MapsActivity.class);
                 startActivity(intent);
             }
         });
@@ -111,12 +132,40 @@ public class Profile_Fragment extends Fragment {
                         startActivity(intent);
                     }
                 });
-                builder.setNegativeButton("No",null);
-
+                builder.setNegativeButton("No", null);
                 builder.show();
-
             }
         });
+        db.collection("users")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                SharedPreferences sharedPref = getActivity().getSharedPreferences("USER", getActivity().MODE_PRIVATE);
+                                String email = sharedPref.getString("email", "");
+                                try {
+                                    if (email.equalsIgnoreCase(document.getData().get("email").toString())) {
+                                        url_profile = document.getData().get("ImageUrl").toString();
+                                        Glide.with(getActivity()).load(url_profile).into(avartar);
+                                    }
+                                } catch (Exception e) {
+                                }
+                            }
+                        }
+                    }
+                });
+    }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 174) {
+            uri = data.getData();
+            if (uri != null) {
+                Glide.with(getActivity()).load(uri).into(avartar);
+            }
+        }
     }
 }
