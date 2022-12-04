@@ -1,6 +1,7 @@
 package android.BeeFood.master.view.home_action_menu;
 
 import android.BeeFood.master.R;
+import android.BeeFood.master.view.add_san_pham.Fragment_QuanLy;
 import android.BeeFood.master.view.add_san_pham.Fragment_add_san_pham;
 import android.BeeFood.master.view.history.History_Fragment;
 import android.BeeFood.master.view.home_action_menu.home.Fragment_home;
@@ -65,7 +66,7 @@ public class HomeActivity extends AppCompatActivity {
                     loadFragment(Profile_Fragment.newInstance());
                     break;
                 case R.id.home_menu_addSanPham:
-                    loadFragment(Fragment_add_san_pham.newInstance());
+                    loadFragment(Fragment_QuanLy.newInstance());
                     break;
             }
             return true;

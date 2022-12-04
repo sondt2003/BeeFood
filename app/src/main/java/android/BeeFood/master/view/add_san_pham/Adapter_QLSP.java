@@ -1,9 +1,8 @@
 package android.BeeFood.master.view.add_san_pham;
 
 import android.BeeFood.master.R;
-import android.BeeFood.master.view.object.Food;
+import android.BeeFood.master.model.Food;
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.view.LayoutInflater;
@@ -41,10 +40,10 @@ public class Adapter_QLSP extends RecyclerView.Adapter<Adapter_QLSP.UserViewHold
         }
 
 
-        holder.img_qlsp_Item_avatar.setImageResource(object.getAvt());
-        holder.tv_qlsp_Item_name.setText(object.getName());
-        holder.tv_qlsp_Item_loai.setText("Loại: "+object.getId_loai());
-        holder.tv_qlsp_Item_gia.setText("$"+object.getGia());
+//        holder.img_qlsp_Item_avatar.setImageResource(object.getAvt());
+//        holder.tv_qlsp_Item_name.setText(object.getName());
+//        holder.tv_qlsp_Item_loai.setText("Loại: "+object.getId_loai());
+//        holder.tv_qlsp_Item_gia.setText("$"+object.getGia());
 
 
         holder.btn_qlsp_Item_btn_Delete.setOnClickListener(new View.OnClickListener() {

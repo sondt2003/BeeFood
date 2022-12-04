@@ -6,9 +6,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.BeeFood.master.R;
+import android.BeeFood.master.model.Food;
 import android.BeeFood.master.view.object.adapter.Adapter_RecyclerView_FoodDetail_ForYou;
 import android.BeeFood.master.view.object.adapter.Adapter_RecyclerView_FoodDetail_menu_and_drink;
-import android.BeeFood.master.view.object.Food;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageView;

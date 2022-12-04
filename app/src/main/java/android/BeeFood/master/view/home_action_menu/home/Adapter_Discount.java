@@ -1,7 +1,7 @@
 package android.BeeFood.master.view.home_action_menu.home;
 
 import android.BeeFood.master.R;
-import android.BeeFood.master.view.object.Food;
+import android.BeeFood.master.model.Food;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -43,12 +43,12 @@ public class Adapter_Discount extends RecyclerView.Adapter<Adapter_Discount.User
         Food discount = lis_Discount.get(position);
         if (discount == null) return;
 
-        holder.img_item_home_ActionMenu_discount_avt.setImageResource(discount.getAvt());
+        holder.img_item_home_ActionMenu_discount_avt.setImageResource(R.drawable.avt_test);
         holder.tv_item_home_ActionMenu_discount_name.setText(discount.getName());
-        holder.tv_item_home_ActionMenu_discount_khoangCach.setText(discount.getKhoangCach() + " km");
-        holder.tv_item_home_ActionMenu_discount_danhGia.setText(discount.getDanhGia() + " (" + discount.getSoNguoiDanhGia() + "k)");
-        holder.tv_item_home_ActionMenu_discount_gia.setText("$" + discount.getGia());
-        holder.tv_item_home_ActionMenu_discount_phiShip.setText("$" + discount.getPhiShip());
+        holder.tv_item_home_ActionMenu_discount_khoangCach.setText(discount.getAddress() + " km");
+        holder.tv_item_home_ActionMenu_discount_danhGia.setText(discount.getIdloai() + " (" + discount.getEmail() + "k)");
+        holder.tv_item_home_ActionMenu_discount_gia.setText("$" + discount.getPrice());
+        holder.tv_item_home_ActionMenu_discount_phiShip.setText("$" + discount.getTenloai());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

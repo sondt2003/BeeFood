@@ -1,7 +1,7 @@
 package android.BeeFood.master.view.home_action_menu.home;
 
 import android.BeeFood.master.R;
-import android.BeeFood.master.view.object.Food;
+import android.BeeFood.master.model.Food;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -44,11 +44,11 @@ public class Adapter_Recommended extends RecyclerView.Adapter<Adapter_Recommende
 
         if (recommended == null) return;
 
-        holder.img_item_home_ActionMenu_recommended_avt.setImageResource(recommended.getAvt());
+        holder.img_item_home_ActionMenu_recommended_avt.setImageResource(R.drawable.avt_test);
         holder.tv_item_home_ActionMenu_recommended_name.setText(recommended.getName());
-        holder.tv_item_home_ActionMenu_recommended_khoangCach.setText(recommended.getKhoangCach() + " km");
-        holder.tv_item_home_ActionMenu_recommended_danhGia.setText(recommended.getDanhGia() + " (" + recommended.getSoNguoiDanhGia() + "k)");
-        holder.tv_item_home_ActionMenu_recommended_phiShip.setText("$" + recommended.getPhiShip());
+        holder.tv_item_home_ActionMenu_recommended_khoangCach.setText(recommended.getAddress() + " km");
+        holder.tv_item_home_ActionMenu_recommended_danhGia.setText(recommended.getDescrible() + " (" + recommended.getName() + "k)");
+        holder.tv_item_home_ActionMenu_recommended_phiShip.setText("$" + recommended.getEmail());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

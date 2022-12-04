@@ -1,7 +1,7 @@
 package android.BeeFood.master.view.object.adapter;
 
 import android.BeeFood.master.R;
-import android.BeeFood.master.view.object.Food;
+import android.BeeFood.master.model.Food;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,9 +37,9 @@ public class Adapter_RecyclerView_CheckOut_OrderSummary extends RecyclerView.Ada
             return;
         }
 
-        holder.img_checkout_Orders_Item_avatar.setImageResource(object.getAvt());
+//        holder.img_checkout_Orders_Item_avatar.setImageResource(object.getAvt());
         holder.tv_checkout_Orders_Item_name.setText(object.getName());
-        holder.tv_checkout_Orders_Item_gia.setText("$"+object.getGia());
+//        holder.tv_checkout_Orders_Item_gia.setText("$"+object.getGia());
         holder.tv_checkout_Orders_Item_SoLuong.setText("");
 
 

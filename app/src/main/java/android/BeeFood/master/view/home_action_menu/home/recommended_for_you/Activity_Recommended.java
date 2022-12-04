@@ -1,8 +1,8 @@
 package android.BeeFood.master.view.home_action_menu.home.recommended_for_you;
 
 import android.BeeFood.master.R;
+import android.BeeFood.master.model.Food;
 import android.BeeFood.master.view.home_action_menu.home.Adapter_Recommended;
-import android.BeeFood.master.view.object.Food;
 import android.BeeFood.master.view.object.Loai_food;
 import android.os.Bundle;
 import android.view.View;
@@ -39,13 +39,13 @@ public class Activity_Recommended extends AppCompatActivity {
         lis_FoodType.add(new Loai_food(R.drawable.avt_test,"banh mie"));
         lis_FoodType.add(new Loai_food(R.drawable.avt_test,"banh mi"));
         lis_FoodType.add(new Loai_food(R.drawable.avt_test,"banh m"));
-
-        lis_Food.add(new Food(R.drawable.avt_test,"Name",1.8,4.8,1,6.00,2.00));
-        lis_Food.add(new Food(R.drawable.avt_test,"Name",1.8,4.8,1,6.00,2.00));
-        lis_Food.add(new Food(R.drawable.avt_test,"Name",1.8,4.8,1,6.00,2.00));
-        lis_Food.add(new Food(R.drawable.avt_test,"Name",1.8,4.8,1,6.00,2.00));
-        lis_Food.add(new Food(R.drawable.avt_test,"Name",1.8,4.8,1,6.00,2.00));
-        lis_Food.add(new Food(R.drawable.avt_test,"Name",1.8,4.8,1,6.00,2.00));
+//
+//        lis_Food.add(new Food(R.drawable.avt_test,"Name",1.8,4.8,1,6.00,2.00));
+//        lis_Food.add(new Food(R.drawable.avt_test,"Name",1.8,4.8,1,6.00,2.00));
+//        lis_Food.add(new Food(R.drawable.avt_test,"Name",1.8,4.8,1,6.00,2.00));
+//        lis_Food.add(new Food(R.drawable.avt_test,"Name",1.8,4.8,1,6.00,2.00));
+//        lis_Food.add(new Food(R.drawable.avt_test,"Name",1.8,4.8,1,6.00,2.00));
+//        lis_Food.add(new Food(R.drawable.avt_test,"Name",1.8,4.8,1,6.00,2.00));
 
         mAdapter_recommended_foodSort = new Adapter_recommended_foodSort(Activity_Recommended.this);
         mAdapter_recommended_foodSort.setData(lis_FoodType);

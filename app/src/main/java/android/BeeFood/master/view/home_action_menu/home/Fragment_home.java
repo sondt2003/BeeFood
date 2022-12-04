@@ -2,7 +2,7 @@ package android.BeeFood.master.view.home_action_menu.home;
 
 import android.BeeFood.master.R;
 import android.BeeFood.master.controller.Dao.FoodDao;
-import android.BeeFood.master.view.home_action_menu.HomeActivity;
+import android.BeeFood.master.model.Food;
 import android.BeeFood.master.view.home_action_menu.home.craving.Activity_craving;
 import android.BeeFood.master.view.home_action_menu.home.food.Activity_food;
 import android.BeeFood.master.view.home_action_menu.home.more_category.Activity_MoreCategory;
@@ -10,10 +10,10 @@ import android.BeeFood.master.view.home_action_menu.home.mycart.Activity_MyCart;
 import android.BeeFood.master.view.home_action_menu.home.recommended_for_you.Activity_Recommended;
 import android.BeeFood.master.view.home_action_menu.home.special_offers.Activity_Special_offers;
 import android.BeeFood.master.view.home_action_menu.home.special_offers.Adapter_Special_offers;
-import android.BeeFood.master.view.object.Food;
 import android.BeeFood.master.view.object.Loai_food;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,7 +43,7 @@ public class Fragment_home extends Fragment implements View.OnClickListener {
     private Adapter_Foodtype adapter_FoodType;
     private GridView gridView_home_ActionMenu_home_FoodType;
 
-    private ArrayList<Food> lis_food = new ArrayList<>();
+    private ArrayList<Food> lis_food;
     private Adapter_Discount adapter_discount;
     private RecyclerView recyclerView_home_ActionMenu_home_Discout;
 
@@ -81,7 +81,8 @@ public class Fragment_home extends Fragment implements View.OnClickListener {
         AnhXa(view);
 
         FoodDao foodDao = new FoodDao();
-//        lis_food = (ArrayList<Food>) foodDao.getFood(getContext());
+        lis_food =  foodDao.getFood();
+        Log.i("SONDT",lis_food.size()+"");
 
         // bắt buộc 8 item - chuyền vào 7 item - không sửa item cuối
         list_FoodType.add(new Loai_food(R.drawable.avt_test,"banh mi"));
@@ -126,12 +127,7 @@ public class Fragment_home extends Fragment implements View.OnClickListener {
         });
 
 
-        lis_food.add(new Food(R.drawable.avt_test,"Name",1.8,4.8,1,6.00,2.00));
-        lis_food.add(new Food(R.drawable.avt_test,"Name",1.8,4.8,1,6.00,2.00));
-        lis_food.add(new Food(R.drawable.avt_test,"Name",1.8,4.8,1,6.00,2.00));
-        lis_food.add(new Food(R.drawable.avt_test,"Name",1.8,4.8,1,6.00,2.00));
-        lis_food.add(new Food(R.drawable.avt_test,"Name",1.8,4.8,1,6.00,2.00));
-        lis_food.add(new Food(R.drawable.avt_test,"Name",1.8,4.8,1,6.00,2.00));
+//
 
 
         adapter_discount = new Adapter_Discount(getContext());

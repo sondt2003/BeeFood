@@ -1,7 +1,6 @@
 package android.BeeFood.master.view.add_san_pham;
 
-import android.BeeFood.master.view.food_details.Checkout_Oders;
-import android.BeeFood.master.view.object.Food;
+import android.BeeFood.master.model.Food;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;

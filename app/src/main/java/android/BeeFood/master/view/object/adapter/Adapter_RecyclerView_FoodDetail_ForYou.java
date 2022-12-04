@@ -1,7 +1,7 @@
 package android.BeeFood.master.view.object.adapter;
 
 import android.BeeFood.master.R;
-import android.BeeFood.master.view.object.Food;
+import android.BeeFood.master.model.Food;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,9 +37,9 @@ public class Adapter_RecyclerView_FoodDetail_ForYou extends RecyclerView.Adapter
             return;
         }
 
-        holder.img_item_restaurantDetail_forYou_avatar.setImageResource(object.getAvt());
-        holder.tv_item_restaurantDetail_forYou_name.setText(object.getName());
-        holder.tv_item_restaurantDetail_forYou_gia.setText("$"+object.getGia());
+//        holder.img_item_restaurantDetail_forYou_avatar.setImageResource(object.getAvt());
+//        holder.tv_item_restaurantDetail_forYou_name.setText(object.getName());
+//        holder.tv_item_restaurantDetail_forYou_gia.setText("$"+object.getGia());
     }
 
     public void setData(ArrayList<Food> mArrayList){

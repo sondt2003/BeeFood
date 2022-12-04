@@ -3,6 +3,7 @@ package android.BeeFood.master.controller.Dao;
 import android.BeeFood.master.model.Food;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -22,6 +23,7 @@ import java.util.Map;
 
 public class FoodDao {
     FirebaseFirestore db = FirebaseFirestore.getInstance();
+    ArrayList<Food> listgetfood = new ArrayList<>();
 
     public String getEmail(Context context) {
         SharedPreferences sharedPref = context.getSharedPreferences("USER", Context.MODE_PRIVATE);
@@ -99,8 +101,7 @@ public class FoodDao {
         return true;
     }
 
-    public ArrayList<Food> getFood(Context context) {
-        ArrayList<Food> list = new ArrayList<>();
+    public ArrayList<Food> getFood() {
         db.collection("food")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -108,23 +109,22 @@ public class FoodDao {
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                UserDao userDao = new UserDao();
-                                try {
-                                    list.add(new Food(document.getData().get("namefood").toString(),
-                                            document.getData().get("price").toString(),
-                                            document.getData().get("address").toString(),
-                                            document.getData().get("phonenumber").toString(),
-                                            document.getData().get("email").toString(),
-                                            document.getData().get("idloai").toString(),
-                                            document.getData().get("tenloai").toString(),
-                                            document.getData().get("ImageUrl").toString(),
-                                            document.getData().get("describle").toString()));
-                                } catch (Exception e) {
-                                }
+                                listgetfood.add(new Food(document.getData().get("namefood").toString(),
+                                        document.getData().get("price").toString(),
+                                        document.getData().get("address").toString(),
+                                        document.getData().get("phonenumber").toString(),
+                                        document.getData().get("email").toString(),
+                                        "",
+                                        document.getData().get("tenloai").toString(),
+                                        document.getData().get("ImageUrl").toString(),
+                                        document.getData().get("describle").toString()));
                             }
+
                         }
+
                     }
                 });
-        return list;
+        Log.d("SONDT", listgetfood.size()+"get");
+        return listgetfood;
     }
 }
