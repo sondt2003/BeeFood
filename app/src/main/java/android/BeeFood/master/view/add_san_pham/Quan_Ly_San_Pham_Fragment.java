@@ -32,7 +32,7 @@ public class Quan_Ly_San_Pham_Fragment extends Fragment {
         // Required empty public constructor
     }
 
-    public static Quan_Ly_San_Pham_Fragment newInstance(String param1, String param2) {
+    public static Quan_Ly_San_Pham_Fragment newInstance() {
         Quan_Ly_San_Pham_Fragment fragment = new Quan_Ly_San_Pham_Fragment();
         return fragment;
     }

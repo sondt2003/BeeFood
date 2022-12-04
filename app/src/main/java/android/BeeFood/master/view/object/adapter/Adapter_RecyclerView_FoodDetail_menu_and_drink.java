@@ -1,4 +1,4 @@
-package android.BeeFood.master.view.food_details.adapter;
+package android.BeeFood.master.view.object.adapter;
 
 import android.BeeFood.master.R;
 import android.BeeFood.master.view.object.Food;
