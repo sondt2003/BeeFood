@@ -24,6 +24,7 @@ public class Adapter_QuanLy extends FragmentStateAdapter {
         return null;
     }
 
+
     @Override
     public int getItemCount() {
         return 2;

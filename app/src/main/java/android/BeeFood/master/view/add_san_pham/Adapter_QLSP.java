@@ -40,6 +40,7 @@ public class Adapter_QLSP extends RecyclerView.Adapter<Adapter_QLSP.UserViewHold
             return;
         }
 
+
         holder.img_qlsp_Item_avatar.setImageResource(object.getAvt());
         holder.tv_qlsp_Item_name.setText(object.getName());
         holder.tv_qlsp_Item_loai.setText("Loại: "+object.getId_loai());

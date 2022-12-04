@@ -49,6 +49,7 @@ public class Fragment_add_san_pham extends Fragment {
         // Required empty public constructor
     }
 
+
     public static Fragment_add_san_pham newInstance() {
         Fragment_add_san_pham fragment = new Fragment_add_san_pham();
         return fragment;

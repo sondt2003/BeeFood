@@ -67,7 +67,6 @@ public class Quan_Ly_San_Pham_Fragment extends Fragment {
         recyclerView_Quan_Ly_San_Pham_RecyclerView.setLayoutManager(layoutManager);
         recyclerView_Quan_Ly_San_Pham_RecyclerView.setAdapter(mAdapter_qlsp);
 
-
     }
 
     public void anhXa(View view) {

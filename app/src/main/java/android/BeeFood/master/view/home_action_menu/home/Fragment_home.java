@@ -1,6 +1,8 @@
 package android.BeeFood.master.view.home_action_menu.home;
 
 import android.BeeFood.master.R;
+import android.BeeFood.master.controller.Dao.FoodDao;
+import android.BeeFood.master.view.home_action_menu.HomeActivity;
 import android.BeeFood.master.view.home_action_menu.home.craving.Activity_craving;
 import android.BeeFood.master.view.home_action_menu.home.food.Activity_food;
 import android.BeeFood.master.view.home_action_menu.home.more_category.Activity_MoreCategory;
@@ -77,6 +79,9 @@ public class Fragment_home extends Fragment implements View.OnClickListener {
         super.onViewCreated(view, savedInstanceState);
 
         AnhXa(view);
+
+        FoodDao foodDao = new FoodDao();
+//        lis_food = (ArrayList<Food>) foodDao.getFood(getContext());
 
         // bắt buộc 8 item - chuyền vào 7 item - không sửa item cuối
         list_FoodType.add(new Loai_food(R.drawable.avt_test,"banh mi"));
