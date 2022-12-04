@@ -1,15 +1,10 @@
 package android.BeeFood.master.view.add_san_pham;
 
 import android.BeeFood.master.R;
-import android.BeeFood.master.controller.Dao.DataFirestore;
+import android.BeeFood.master.controller.Dao.FoodDao;
 import android.BeeFood.master.model.Food;
-import android.BeeFood.master.model.User;
-import android.BeeFood.master.model.UserChiTiet;
-import android.BeeFood.master.view.accountSetup.Screen_Pin_Code;
-import android.BeeFood.master.view.accountSetup.Screen_Profile;
 import android.BeeFood.master.view.home_action_menu.HomeActivity;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -28,17 +23,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.bumptech.glide.Glide;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -156,9 +142,9 @@ public class Fragment_add_san_pham extends Fragment {
                     Toast.makeText(getActivity(), "Chưa Chọn Thể Loại", Toast.LENGTH_SHORT).show();
                 } else {
                     if (uri != null) {
-                        DataFirestore dataFirestore=new DataFirestore();
+                        FoodDao foodDao=new FoodDao();
 
-                        StorageReference demoRef = reference.child(dataFirestore.getEmail(getActivity())+"food.png");
+                        StorageReference demoRef = reference.child(foodDao.getEmail(getActivity())+"food.png");
                         demoRef.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                             @Override
                             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
@@ -173,12 +159,12 @@ public class Fragment_add_san_pham extends Fragment {
                                                 edt_addSanPham_Price.getText().toString(),
                                                 edt_addSanPham_Address.getText().toString(),
                                                 edt_addSanPham_PhoneNumber.getText().toString(),
-                                                dataFirestore.getEmail(getActivity()),
+                                                foodDao.getEmail(getActivity()),
                                                 spn_addSanPham_IDLoai.getSelectedItem().toString(),
                                                 url_profile,
                                                 edt_addSanPham_moTa.getText().toString()
                                                 );
-                                        boolean check =dataFirestore.AddDataFood(food,getActivity());
+                                        boolean check =foodDao.AddDataFood(food,getActivity());
                                         Toast.makeText(getActivity(), check+"", Toast.LENGTH_SHORT).show();
                                         if(check){
                                             startActivity(new Intent(getActivity(), HomeActivity.class));

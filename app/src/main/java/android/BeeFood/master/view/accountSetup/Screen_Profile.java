@@ -1,10 +1,9 @@
 package android.BeeFood.master.view.accountSetup;
 
 import android.BeeFood.master.R;
-import android.BeeFood.master.controller.Dao.DataFirestore;
+import android.BeeFood.master.controller.Dao.UserDao;
 import android.BeeFood.master.model.User;
 import android.BeeFood.master.model.UserChiTiet;
-import android.BeeFood.master.view.onboarding_sign_up_sign_in.MainActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -23,13 +22,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -38,9 +33,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class Screen_Profile extends AppCompatActivity {
     Button btn_continue;
@@ -101,8 +94,8 @@ public class Screen_Profile extends AppCompatActivity {
                                                 profile_edt_date_of_birth.getText().toString(),
                                                 url_profile, null, null);
                                         User user=new User(email, profile_edt_nickname.getText().toString(), "admin",userChiTiet);
-                                        DataFirestore dataFirestore=new DataFirestore();
-                                        boolean check =dataFirestore.AddDataUser(user,Screen_Profile.this);
+                                        UserDao userDao =new UserDao();
+                                        boolean check = userDao.AddDataUser(user,Screen_Profile.this);
                                         Toast.makeText(Screen_Profile.this, check+"", Toast.LENGTH_SHORT).show();
                                         if(check){
                                             startActivity(new Intent(Screen_Profile.this,Screen_Pin_Code.class));

@@ -1,7 +1,7 @@
 package android.BeeFood.master.model;
 
 public class Food {
-    private String Name,price,address,phoneNumber,email,tenloai,url,describle;
+    private String Name,price,address,phoneNumber,email,idloai,tenloai,url,describle;
 
     public Food(String name, String price, String address, String phoneNumber, String email, String tenloai, String url, String describle) {
         Name = name;
@@ -12,6 +12,26 @@ public class Food {
         this.tenloai = tenloai;
         this.url = url;
         this.describle = describle;
+    }
+
+    public Food(String name, String price, String address, String phoneNumber, String email, String idloai, String tenloai, String url, String describle) {
+        Name = name;
+        this.price = price;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+        this.idloai = idloai;
+        this.tenloai = tenloai;
+        this.url = url;
+        this.describle = describle;
+    }
+
+    public String getIdloai() {
+        return idloai;
+    }
+
+    public void setIdloai(String idloai) {
+        this.idloai = idloai;
     }
 
     public String getEmail() {

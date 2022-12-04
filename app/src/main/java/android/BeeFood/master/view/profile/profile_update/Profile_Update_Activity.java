@@ -1,15 +1,20 @@
 package android.BeeFood.master.view.profile.profile_update;
 
+import static java.lang.Thread.sleep;
+
 import android.BeeFood.master.R;
-import android.BeeFood.master.controller.Dao.DataFirestore;
+import android.BeeFood.master.controller.Dao.UserDao;
 import android.BeeFood.master.model.User;
 import android.BeeFood.master.model.UserChiTiet;
-import android.BeeFood.master.view.accountSetup.Screen_Pin_Code;
-import android.BeeFood.master.view.accountSetup.Screen_Profile;
-import android.BeeFood.master.view.home_action_menu.HomeActivity;
-import android.BeeFood.master.view.onboarding_sign_up_sign_in.MainActivity;
+import android.Manifest;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -23,6 +28,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -35,10 +41,12 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
-public class Profile_Update_Activity extends AppCompatActivity {
+public class Profile_Update_Activity extends AppCompatActivity implements LocationListener{
     private ImageView img_back,img_accountsetup_profile;
     private ImageView img_profile_update_MyLaction;
     private EditText edt_profile_update_FullName,edt_profile_Update_NickName,edt_profile_update_DateOfBirth,edt_profile_update_Email,edt_profile_update_location;
@@ -48,7 +56,8 @@ public class Profile_Update_Activity extends AppCompatActivity {
 
     FirebaseStorage storage = FirebaseStorage.getInstance();
     StorageReference reference = storage.getReference();
-
+    LocationManager locationManager;
+    double latitude = 0, longitude = 0;
     Uri uri;
     String url_profile;
     @Override
@@ -58,7 +67,7 @@ public class Profile_Update_Activity extends AppCompatActivity {
 
         AnhXa();
         setSelect_edt();
-
+getLocation();
         img_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -82,13 +91,42 @@ public class Profile_Update_Activity extends AppCompatActivity {
         img_profile_update_MyLaction.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                edt_profile_update_location.setText("địa chỉ");
+                getLocation();
+                Toast.makeText(Profile_Update_Activity.this, "Lấy vị trí GPS Thành Công", Toast.LENGTH_SHORT).show();
             }
         });
         evenCLick();
         upLoadURL();
 
     }
+
+    private void getLocation() {
+        Toast.makeText(this, "Thông báo 1", Toast.LENGTH_SHORT).show();
+        locationManager = (LocationManager) this.getSystemService(LOCATION_SERVICE);
+        //goi ham update
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            return;
+        }
+        locationManager.requestSingleUpdate(LocationManager.NETWORK_PROVIDER, this, null);
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (true) {
+                    Toast.makeText(getApplication(), "Đang lấy vị trí", Toast.LENGTH_SHORT).show();
+                    if (longitude == 0 && latitude == 0) {
+                        try {
+                            Toast.makeText(getApplication(), "lấy vị trí thành công", Toast.LENGTH_SHORT).show();
+                            sleep(200);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        break;
+                    }
+                }
+            }
+        });
+    }
+
     private void evenCLick() {
         btn_continue.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -131,9 +169,9 @@ public class Profile_Update_Activity extends AppCompatActivity {
                                                                           url_profile, edt_profile_update_location.getText().toString(),
                                                                           document.getData().get("pin").toString());
                                                                   User user=new User(email, edt_profile_Update_NickName.getText().toString(), "admin",userChiTiet);
-                                                                  DataFirestore dataFirestore=new DataFirestore();
-                                                                  boolean check =dataFirestore.updateUser(user,getApplication(),
-                                                                          dataFirestore.getEmail(getApplication()),
+                                                                  UserDao userDao =new UserDao();
+                                                                  boolean check = userDao.updateUser(user,getApplication(),
+                                                                          userDao.getEmail(getApplication()),
                                                                           document.getData().get("pin").toString());
                                                               }
                                                             }
@@ -271,6 +309,19 @@ public class Profile_Update_Activity extends AppCompatActivity {
             if (uri != null) {
                 Glide.with(getApplication()).load(uri).into(img_accountsetup_profile);
             }
+        }
+    }
+
+    @Override
+    public void onLocationChanged(@NonNull Location location) {
+        latitude = location.getLatitude();
+        longitude = location.getLongitude();
+        Geocoder geocoder = new Geocoder(this, Locale.getDefault());
+        try {
+            List<Address> addresses = geocoder.getFromLocation(latitude, longitude, 1);
+            edt_profile_update_location.setText(addresses.get(0).getAddressLine(0));
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }
