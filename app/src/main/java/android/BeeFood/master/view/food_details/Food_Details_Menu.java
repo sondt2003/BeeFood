@@ -100,10 +100,7 @@ public class Food_Details_Menu extends AppCompatActivity implements View.OnClick
                 return true;
             default: break;
         }
-
         return super.onOptionsItemSelected(item);
-
-
     }
 
 

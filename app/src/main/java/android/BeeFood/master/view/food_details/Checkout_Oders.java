@@ -1,5 +1,6 @@
 package android.BeeFood.master.view.food_details;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -9,6 +10,7 @@ import android.BeeFood.master.R;
 import android.BeeFood.master.model.Food;
 import android.BeeFood.master.view.food_details.adapter.Adapter_RecyclerView_CheckOut_OrderSummary;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -42,6 +44,17 @@ public class Checkout_Oders extends AppCompatActivity {
         recyclerView_checkout_Oders_RecyclerView.setLayoutManager(layoutManager);
         recyclerView_checkout_Oders_RecyclerView.setAdapter(adapter_recyclerView_checkOut_orderSummary);
 
+    }
+
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        switch (item.getItemId()){
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+            default: break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     public void anhXa() {
