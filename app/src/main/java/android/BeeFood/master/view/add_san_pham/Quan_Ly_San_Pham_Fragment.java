@@ -61,7 +61,7 @@ public class Quan_Ly_San_Pham_Fragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         anhXa(view);
-
+mArrayList.add(new Food("NAM","","","","","","","",""));
         SharedPreferences sharedPref = getActivity().getSharedPreferences("USER", Context.MODE_PRIVATE);
         String email = sharedPref.getString("email", "");
 

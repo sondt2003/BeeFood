@@ -23,7 +23,6 @@ import java.util.Map;
 
 public class FoodDao {
     FirebaseFirestore db = FirebaseFirestore.getInstance();
-    ArrayList<Food> listgetfood = new ArrayList<>();
 
     public String getEmail(Context context) {
         SharedPreferences sharedPref = context.getSharedPreferences("USER", Context.MODE_PRIVATE);
@@ -102,6 +101,7 @@ public class FoodDao {
     }
 
     public ArrayList<Food> getFood() {
+        ArrayList<Food> listgetfood = new ArrayList<>();
         db.collection("food")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -124,7 +124,6 @@ public class FoodDao {
                         }
                     }
                 });
-        Log.d("SONDT", listgetfood.size()+"get");
         return listgetfood;
     }
 }

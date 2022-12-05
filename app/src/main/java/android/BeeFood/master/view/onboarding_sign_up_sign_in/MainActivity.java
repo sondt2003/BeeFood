@@ -1,7 +1,11 @@
 package android.BeeFood.master.view.onboarding_sign_up_sign_in;
 
 import android.BeeFood.master.R;
+import android.BeeFood.master.controller.Dao.LoaiDao;
+import android.BeeFood.master.model.Food;
+import android.BeeFood.master.model.loaiFood;
 import android.BeeFood.master.view.accountSetup.Screen_Profile;
+import android.BeeFood.master.view.home_action_menu.HomeActivity;
 import android.Manifest;
 import android.app.AlertDialog;
 import android.app.NotificationChannel;
@@ -43,14 +47,19 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
     public static final String CHANNEL_ID = "push notification";
     Button btnLoginFb, btnEmail, btnEmailTaoTK, btnLoginGoogle;
     EditText edtEmail;
@@ -184,9 +193,26 @@ public class MainActivity extends AppCompatActivity {
                                 editor.putString("email", email);
                                 editor.putString("passWord", password);
                                 editor.commit();
-
                                 Toast.makeText(MainActivity.this, "Login Thành công", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(MainActivity.this, Screen_Profile.class));
+                                db.collection("users")
+                                        .get()
+                                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                                if (task.isSuccessful()) {
+                                                  boolean check=true;
+                                                    for (QueryDocumentSnapshot document : task.getResult()) {
+                                                        if(email.equalsIgnoreCase(document.getData().get("email").toString())){
+                                                            startActivity(new Intent(MainActivity.this, HomeActivity.class));
+                                                            check=false;
+                                                        }
+                                                    }
+                                                    if(check){
+                                                        startActivity(new Intent(MainActivity.this, Screen_Profile.class));
+                                                    }
+                                                }
+                                            }
+                                        });
                             } else {
                                 Toast.makeText(MainActivity.this, "Login thất bại", Toast.LENGTH_SHORT).show();
                             }
@@ -196,12 +222,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 //        account = GoogleSignIn.getLastSignedInAccount(this);
+        LoaiDao loaiDao=new LoaiDao();
+        loaiFood loaiFood=new loaiFood("https://firebasestorage.googleapis.com/v0/b/shoppyfood-c2281.appspot.com/o/profile.png?alt=media&token=8cdba2f9-1af0-4447-a581-ac236c6125f0","Name");
+
     }
 
     private void AnhXa() {
-
         img_login_exit = findViewById(R.id.login_exit);
-
         btnLoginFb = findViewById(R.id.btnFacebook);
         btnLoginGoogle = findViewById(R.id.btnGoogle);
         btnEmail = findViewById(R.id.btnLoginEmail);
@@ -221,8 +248,25 @@ public class MainActivity extends AppCompatActivity {
                 task.getResult(ApiException.class);
                 account = GoogleSignIn.getLastSignedInAccount(this);
                 if (account != null) {
-                    Toast.makeText(this, account.getDisplayName() + ":" + account.getEmail(), Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(MainActivity.this, Screen_Profile.class));
+                    db.collection("users")
+                            .get()
+                            .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                @Override
+                                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                    if (task.isSuccessful()) {
+                                        boolean check=true;
+                                        for (QueryDocumentSnapshot document : task.getResult()) {
+                                            if(account.getEmail().equalsIgnoreCase(document.getData().get("email").toString())){
+                                                startActivity(new Intent(MainActivity.this, HomeActivity.class));
+                                                check=false;
+                                            }
+                                        }
+                                        if(check){
+                                            Toast.makeText(MainActivity.this, "Chua co User", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                }
+                            });
                 }
             } catch (ApiException e) {
                 Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show();
@@ -260,7 +304,6 @@ public class MainActivity extends AppCompatActivity {
                 editor.putString("email", account.getEmail());
                 editor.commit();
                 finish();
-                startActivity(new Intent(MainActivity.this,Screen_Profile.class));
             }
         } catch (Exception e) {
             Toast.makeText(this, "Chưa Đăng Nhập", Toast.LENGTH_SHORT).show();

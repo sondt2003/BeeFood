@@ -40,7 +40,6 @@ import java.util.ArrayList;
 
 public class Fragment_home extends Fragment implements View.OnClickListener {
     FirebaseFirestore db = FirebaseFirestore.getInstance();
-
     private EditText edt_home_ActionMenu_home_Craving;
     private ImageView img_home_ActionMenu_home_MyCart;
     private TextView tv_home_ActionMenu_homeSpecial_seeAll;
@@ -89,7 +88,7 @@ public class Fragment_home extends Fragment implements View.OnClickListener {
 
         FoodDao foodDao = new FoodDao();
         lis_food =  foodDao.getFood();
-        Log.i("SONDT",lis_food.size()+"");
+
 
         // bắt buộc 8 item - chuyền vào 7 item - không sửa item cuối
         list_FoodType.add(new Loai_food(R.drawable.avt_test,"banh mi"));
