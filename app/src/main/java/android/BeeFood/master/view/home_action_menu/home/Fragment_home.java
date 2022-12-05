@@ -30,9 +30,16 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
 import java.util.ArrayList;
 
 public class Fragment_home extends Fragment implements View.OnClickListener {
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     private EditText edt_home_ActionMenu_home_Craving;
     private ImageView img_home_ActionMenu_home_MyCart;
@@ -126,12 +133,32 @@ public class Fragment_home extends Fragment implements View.OnClickListener {
             }
         });
 
-
 //
 
-
         adapter_discount = new Adapter_Discount(getContext());
-        adapter_discount.setData(lis_food);
+        db.collection("food")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            ArrayList<Food> list = new ArrayList<>();
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                list.add(new Food(document.getData().get("namefood").toString(),
+                                        document.getData().get("price").toString(),
+                                        document.getData().get("address").toString(),
+                                        document.getData().get("phonenumber").toString(),
+                                        document.getData().get("email").toString(),
+                                        "Chưa có id",
+                                        document.getData().get("tenloai").toString(),
+                                        document.getData().get("ImageUrl").toString(),
+                                        document.getData().get("describle").toString()));
+                                Log.i("SONDT",list.size()+"");
+                            }
+                            adapter_discount.setData(list);
+                        }
+                    }
+                });
 
         LinearLayoutManager manager = new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false);
         recyclerView_home_ActionMenu_home_Discout.setLayoutManager(manager);
@@ -139,7 +166,30 @@ public class Fragment_home extends Fragment implements View.OnClickListener {
 
 
         adapter_recommended = new Adapter_Recommended(getContext());
-        adapter_recommended.setData(lis_food);
+        db.collection("food")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            ArrayList<Food> list = new ArrayList<>();
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                list.add(new Food(document.getData().get("namefood").toString(),
+                                        document.getData().get("price").toString(),
+                                        document.getData().get("address").toString(),
+                                        document.getData().get("phonenumber").toString(),
+                                        document.getData().get("email").toString(),
+                                        "Chưa có id",
+                                        document.getData().get("tenloai").toString(),
+                                        document.getData().get("ImageUrl").toString(),
+                                        document.getData().get("describle").toString()));
+                                Log.i("SONDT",list.size()+"");
+                            }
+                            adapter_recommended.setData(list);
+                        }
+                    }
+                });
+
 
         LinearLayoutManager manager1 = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
         recyclerView_home_ActionMenu_home_Recommended.setLayoutManager(manager1);

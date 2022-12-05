@@ -6,6 +6,7 @@ import android.Manifest;
 import android.app.AlertDialog;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -94,6 +95,13 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
         LayThongTinFb();
+
+        SharedPreferences sharedPref = this.getSharedPreferences("USER", Context.MODE_PRIVATE);
+        String email = sharedPref.getString("email", "");
+        String pass = sharedPref.getString("passWord","");
+
+        edtEmail.setText(email);
+        edtPassWord.setText(pass);
     }
 
     private void LayThongTinFb() {
@@ -172,6 +180,11 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
+                                SharedPreferences.Editor editor = sharedPreferences.edit();
+                                editor.putString("email", email);
+                                editor.putString("passWord", password);
+                                editor.commit();
+
                                 Toast.makeText(MainActivity.this, "Login Thành công", Toast.LENGTH_SHORT).show();
                                 startActivity(new Intent(MainActivity.this, Screen_Profile.class));
                             } else {
