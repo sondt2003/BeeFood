@@ -52,17 +52,6 @@ public class Checkout_Oders extends AppCompatActivity implements View.OnClickLis
 
     }
 
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                onBackPressed();
-                return true;
-            default:
-                break;
-        }
-        return super.onOptionsItemSelected(item);
-    }
 
     public void anhXa() {
 
