@@ -8,14 +8,22 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 
 
 public class Activity_Recommended extends AppCompatActivity {
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     private ArrayList<Loai_food> lis_FoodType = new ArrayList<>();
     private ArrayList<Food> lis_Food = new ArrayList<>();
@@ -32,20 +40,16 @@ public class Activity_Recommended extends AppCompatActivity {
 
         AnhXa();
 
-        lis_FoodType.add(new Loai_food(R.drawable.avt_test,"banh mi"));
-        lis_FoodType.add(new Loai_food(R.drawable.avt_test,"banh mi"));
-        lis_FoodType.add(new Loai_food(R.drawable.avt_test,"banh miw"));
-        lis_FoodType.add(new Loai_food(R.drawable.avt_test,"banh mi"));
-        lis_FoodType.add(new Loai_food(R.drawable.avt_test,"banh mie"));
-        lis_FoodType.add(new Loai_food(R.drawable.avt_test,"banh mi"));
-        lis_FoodType.add(new Loai_food(R.drawable.avt_test,"banh m"));
-//
-//        lis_Food.add(new Food(R.drawable.avt_test,"Name",1.8,4.8,1,6.00,2.00));
-//        lis_Food.add(new Food(R.drawable.avt_test,"Name",1.8,4.8,1,6.00,2.00));
-//        lis_Food.add(new Food(R.drawable.avt_test,"Name",1.8,4.8,1,6.00,2.00));
-//        lis_Food.add(new Food(R.drawable.avt_test,"Name",1.8,4.8,1,6.00,2.00));
-//        lis_Food.add(new Food(R.drawable.avt_test,"Name",1.8,4.8,1,6.00,2.00));
-//        lis_Food.add(new Food(R.drawable.avt_test,"Name",1.8,4.8,1,6.00,2.00));
+        lis_FoodType.add(new Loai_food(R.drawable.avt_test,"Thêm +"));
+        lis_FoodType.add(new Loai_food(R.drawable.avt_test,"All"));
+
+        lis_FoodType.add(new Loai_food(R.drawable.avt_test,"banh mi1"));
+        lis_FoodType.add(new Loai_food(R.drawable.avt_test,"banh mi2"));
+        lis_FoodType.add(new Loai_food(R.drawable.avt_test,"banh miw3"));
+        lis_FoodType.add(new Loai_food(R.drawable.avt_test,"banh mi4"));
+        lis_FoodType.add(new Loai_food(R.drawable.avt_test,"banh mie5"));
+
+
 
         mAdapter_recommended_foodSort = new Adapter_recommended_foodSort(Activity_Recommended.this);
         mAdapter_recommended_foodSort.setData(lis_FoodType);
@@ -55,7 +59,29 @@ public class Activity_Recommended extends AppCompatActivity {
         recyclerView_home_ActionMenu_Recommended_sortList.setAdapter(mAdapter_recommended_foodSort);
 
         adapter_recommended = new Adapter_Recommended(Activity_Recommended.this);
-        adapter_recommended.setData(lis_Food);
+        db.collection("food")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            ArrayList<Food> list = new ArrayList<>();
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                list.add(new Food(document.getData().get("namefood").toString(),
+                                        document.getData().get("price").toString(),
+                                        document.getData().get("address").toString(),
+                                        document.getData().get("phonenumber").toString(),
+                                        document.getData().get("email").toString(),
+                                        "Chưa có id",
+                                        document.getData().get("tenloai").toString(),
+                                        document.getData().get("ImageUrl").toString(),
+                                        document.getData().get("describle").toString()));
+                            }
+                            adapter_recommended.setData(list);
+                        }
+                    }
+                });
+
 
         LinearLayoutManager manager1 = new LinearLayoutManager(Activity_Recommended.this,LinearLayoutManager.VERTICAL,false);
         recyclerView_home_ActionMenu_Recommended_list.setLayoutManager(manager1);

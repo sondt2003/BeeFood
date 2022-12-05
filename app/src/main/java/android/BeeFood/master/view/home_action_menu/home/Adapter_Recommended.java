@@ -17,6 +17,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 
 public class Adapter_Recommended extends RecyclerView.Adapter<Adapter_Recommended.UserViewHolder>{
@@ -45,11 +47,10 @@ public class Adapter_Recommended extends RecyclerView.Adapter<Adapter_Recommende
     public void onBindViewHolder(@NonNull UserViewHolder holder, int position) {
         Food recommended = lis_recommended.get(position);
 
-        if (position >= 4) return;
-
         if (recommended == null) return;
 
-        holder.img_item_home_ActionMenu_recommended_avt.setImageResource(R.drawable.avt_test);
+//        holder.img_item_home_ActionMenu_recommended_avt.setImageResource(R.drawable.avt_test);
+        Glide.with(mContext).load(recommended.getUrl()).into(holder.img_item_home_ActionMenu_recommended_avt);
         holder.tv_item_home_ActionMenu_recommended_name.setText(recommended.getName());
         holder.tv_item_home_ActionMenu_recommended_khoangCach.setText(recommended.getAddress() + " km");
         holder.tv_item_home_ActionMenu_recommended_danhGia.setText(recommended.getDescrible() + " (" + recommended.getName() + "k)");

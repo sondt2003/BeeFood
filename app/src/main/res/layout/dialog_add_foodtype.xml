@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/cBg">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:text="Thêm loại"
+        android:textSize="24sp"
+        android:background="@color/active"
+        android:gravity="center"/>
+    <androidx.cardview.widget.CardView
+        android:id="@+id/layout_dialog_addFoodType_avt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:layout_centerHorizontal="true"
+        app:cardCornerRadius="10dp">
+        <ImageView
+            android:id="@+id/dialog_addFoodType_avt"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:src="@drawable/avt_test"
+             />
+    </androidx.cardview.widget.CardView>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layout_dialog_addFoodType_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:startIconDrawable="@drawable/ic_baseline_drive_file_rename_outline_24"
+        app:endIconMode="clear_text"
+        android:layout_marginTop="24dp"
+        app:hintEnabled="false"
+        android:layout_below="@+id/layout_dialog_addFoodType_avt">
+
+        <EditText
+            android:id="@+id/dialog_addFoodType_name"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:background="@drawable/bg_edt_login_noselect"
+            android:inputType="textEmailAddress"
+            android:hint="Tên loại"
+            android:textSize="16sp"/>
+    </com.google.android.material.textfield.TextInputLayout>
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layout_dialog_addFoodType_name"
+        android:weightSum="2"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp">
+
+        <Button
+            android:id="@+id/dialog_addFoodType_cancel"
+            android:layout_width="0dp"
+            android:layout_height="52dp"
+            android:layout_weight="1"
+            android:layout_margin="8dp"
+            android:text="cancel"/>
+        
+        <Button
+            android:id="@+id/dialog_addFoodType_Add"
+            android:layout_width="0dp"
+            android:layout_height="52dp"
+            android:layout_weight="1"
+            android:layout_margin="8dp"
+            android:text="Add"/>
+
+    </LinearLayout>
+
+</RelativeLayout>
