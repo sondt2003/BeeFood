@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"/>
             <LinearLayout
+                android:layout_below="@id/Food_Detail_Menu_Toolbar"
                 android:id="@+id/Food_Detail_Menu_detail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

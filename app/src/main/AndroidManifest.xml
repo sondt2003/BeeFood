@@ -113,19 +113,21 @@
 
 <!--        Food Detail-->
 
-        <activity android:name=".view.food_details.Food_Details_Menu"
+        <activity android:name=".view.food_details.Add_To_Basket"
             android:exported="false">
+        </activity>
+
+        <activity android:name=".view.food_details.Food_Details_Menu"
+            android:exported="false"
+            android:parentActivityName=".view.food_details.Checkout_Oders">
         </activity>
 
         <activity android:name=".view.food_details.Checkout_Oders"
             android:exported="false"
-            android:parentActivityName=".view.food_details.Food_Details_Menu">
+            android:parentActivityName=".view.food_details.Add_To_Basket">
         </activity>
 
-        <activity android:name=".view.food_details.Add_To_Basket"
-            android:exported="false"
-            android:parentActivityName=".view.food_details.Food_Details_Menu">
-        </activity>
+
 
 <!--        -->
 

@@ -106,6 +106,7 @@
                 android:textStyle="bold" />
 
             <Button
+                android:id="@+id/checkout_Oders_AddItem"
                 android:textColor="@color/cChinh"
                 android:textAllCaps="false"
                 android:text="Add item"

@@ -2,6 +2,7 @@ package android.BeeFood.master.view.home_action_menu.home;
 
 import android.BeeFood.master.R;
 import android.BeeFood.master.model.Food;
+import android.BeeFood.master.view.food_details.Add_To_Basket;
 import android.BeeFood.master.view.food_details.Food_Details_Menu;
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -55,7 +56,7 @@ public class Adapter_Discount extends RecyclerView.Adapter<Adapter_Discount.User
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(mContext, Food_Details_Menu.class);
+                Intent intent = new Intent(mContext, Add_To_Basket.class);
                 mContext.startActivity(intent);
             }
         });

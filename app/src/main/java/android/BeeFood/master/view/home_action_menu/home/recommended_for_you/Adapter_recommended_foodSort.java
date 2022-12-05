@@ -1,6 +1,7 @@
 package android.BeeFood.master.view.home_action_menu.home.recommended_for_you;
 
 import android.BeeFood.master.R;
+import android.BeeFood.master.view.food_details.Add_To_Basket;
 import android.BeeFood.master.view.food_details.Food_Details_Menu;
 import android.BeeFood.master.view.object.Loai_food;
 import android.content.Context;
@@ -49,7 +50,7 @@ public class Adapter_recommended_foodSort extends RecyclerView.Adapter<Adapter_r
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(mContext, Food_Details_Menu.class);
+                Intent intent = new Intent(mContext, Add_To_Basket.class);
                 mContext.startActivity(intent);
             }
         });
