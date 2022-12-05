@@ -66,6 +66,7 @@ public class Fragment_QuanLy extends Fragment {
                 }
             }
         });
+        mediator.attach();
 
     }
 

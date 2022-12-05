@@ -23,7 +23,6 @@ public class Quan_Ly_San_Pham_Fragment extends Fragment {
     private RecyclerView recyclerView_Quan_Ly_San_Pham_RecyclerView;
     private ArrayList<Food> mArrayList = new ArrayList<>();
     private Adapter_QLSP mAdapter_qlsp;
-    private Toolbar toolbar_Quan_Ly_San_Pham_Toolbar;
 
 
 
@@ -54,11 +53,6 @@ public class Quan_Ly_San_Pham_Fragment extends Fragment {
 
         anhXa(view);
 
-        AppCompatActivity activity = (AppCompatActivity) getActivity();
-        activity.setSupportActionBar(toolbar_Quan_Ly_San_Pham_Toolbar);
-        activity.getSupportActionBar().setTitle("Quản lý sản phẩm");
-        activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
         mAdapter_qlsp = new Adapter_QLSP(getActivity());
         mAdapter_qlsp.setData(mArrayList);
 
@@ -69,7 +63,6 @@ public class Quan_Ly_San_Pham_Fragment extends Fragment {
     }
 
     public void anhXa(View view) {
-        toolbar_Quan_Ly_San_Pham_Toolbar = view.findViewById(R.id.Quan_Ly_San_Pham_Toolbar);
         recyclerView_Quan_Ly_San_Pham_RecyclerView = view.findViewById(R.id.Quan_Ly_San_Pham_RecyclerView);
 
     }

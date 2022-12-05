@@ -15,13 +15,16 @@ public class Adapter_QuanLy extends FragmentStateAdapter {
     @NonNull
     @Override
     public Fragment createFragment(int position) {
+        Fragment fragment = null;
         switch (position){
             case 0:
-                return Fragment_add_san_pham.newInstance();
+                fragment = Fragment_add_san_pham.newInstance();
+                break;
             case 1:
-                return Quan_Ly_San_Pham_Fragment.newInstance();
+                fragment =  Quan_Ly_San_Pham_Fragment.newInstance();
+                break;
         }
-        return null;
+        return fragment;
     }
 
 
