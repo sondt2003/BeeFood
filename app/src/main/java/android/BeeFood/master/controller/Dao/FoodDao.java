@@ -36,7 +36,7 @@ public class FoodDao {
         foods.put("price", food.getPrice());
         foods.put("address", food.getAddress());
         foods.put("phonenumber", food.getPhoneNumber());
-        foods.put("email", food.getTenloai());
+        foods.put("email", food.getEmail());
         foods.put("ImageUrl", food.getUrl());
         foods.put("tenloai", food.getTenloai());
         foods.put("idloaifood", food.getIdloai());
