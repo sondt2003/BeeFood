@@ -53,7 +53,6 @@ public class Activity_craving extends AppCompatActivity {
         edt_home_ActionMenu_Craving_Search.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
             }
 
             @Override
@@ -76,7 +75,6 @@ public class Activity_craving extends AppCompatActivity {
                 onBackPressed();
             }
         });
-
     }
 
     public void AnhXa(){

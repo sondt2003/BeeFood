@@ -35,7 +35,6 @@ public class Activity_food extends AppCompatActivity {
     private Adapter_Recommended adapter_recommended;
     private RecyclerView recyclerView_home_ActionMenu_foodType_list;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,7 +47,6 @@ public class Activity_food extends AppCompatActivity {
         boolean chkSpecialMore = intent.getBooleanExtra("key_chkSpecialMore",false);
 
         tv_home_ActionMenu_foodType_title.setText(sTitle);
-
 
         adapter_recommended = new Adapter_Recommended(Activity_food.this);
         ArrayList<Food> listgetfood = new ArrayList<>();
@@ -72,7 +70,6 @@ public class Activity_food extends AppCompatActivity {
                                             document.getData().get("ImageUrl").toString(),
                                             document.getData().get("describle").toString()));
                                 }
-
                             }
                         }
 
@@ -89,7 +86,6 @@ public class Activity_food extends AppCompatActivity {
 
                     }
                 });
-
 
 
 

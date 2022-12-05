@@ -42,7 +42,6 @@ public class Screen_Profile extends AppCompatActivity {
     FirebaseStorage storage = FirebaseStorage.getInstance();
     StorageReference reference = storage.getReference();
 
-
     EditText profile_edt_fullname, profile_edt_nickname, profile_edt_date_of_birth, profile_edt_email;
     TextInputLayout layout_profile_update_location;
     Spinner profile_spinner_gender;

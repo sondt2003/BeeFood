@@ -176,9 +176,6 @@ public class Fragment_home extends Fragment implements View.OnClickListener {
         lis_bannerSale.add(R.drawable.avt_test);
 
 
-
-
-
 //
 
         adapter_discount = new Adapter_Discount(getContext());
