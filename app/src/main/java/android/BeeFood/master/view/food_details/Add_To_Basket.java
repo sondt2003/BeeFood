@@ -49,6 +49,7 @@ public class Add_To_Basket extends AppCompatActivity implements View.OnClickList
         tv_add_To_Basket_description = findViewById(R.id.add_To_Basket_description);
         tv_add_To_Basket_number = findViewById(R.id.add_To_Basket_number);
 
+
         btn_add_To_Basket_number_giam = findViewById(R.id.add_To_Basket_number_giam);
         btn_add_To_Basket_number_tang = findViewById(R.id.add_To_Basket_number_tang);
 

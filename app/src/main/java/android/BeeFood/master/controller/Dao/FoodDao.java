@@ -108,20 +108,20 @@ public class FoodDao {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
+                            ArrayList<Food> list = new ArrayList<>();
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                listgetfood.add(new Food(document.getData().get("namefood").toString(),
+                                list.add(new Food(document.getData().get("namefood").toString(),
                                         document.getData().get("price").toString(),
                                         document.getData().get("address").toString(),
                                         document.getData().get("phonenumber").toString(),
                                         document.getData().get("email").toString(),
-                                        "",
+                                        "Chưa có id",
                                         document.getData().get("tenloai").toString(),
                                         document.getData().get("ImageUrl").toString(),
                                         document.getData().get("describle").toString()));
+                                Log.i("SONDT",list.size()+"");
                             }
-
                         }
-
                     }
                 });
         Log.d("SONDT", listgetfood.size()+"get");

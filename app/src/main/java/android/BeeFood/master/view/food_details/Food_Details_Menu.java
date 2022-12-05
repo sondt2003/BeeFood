@@ -70,23 +70,12 @@ public class Food_Details_Menu extends AppCompatActivity implements View.OnClick
     }
 
     public void anhXa() {
-        toolbar_Food_Detail_Menu_toolbar = findViewById(R.id.Food_Detail_Menu_toolbar);
-
-        img_Food_Detail_Menu_banner = findViewById(R.id.Food_Detail_Menu_banner);
-
-        tv_Food_Detail_Menu_name = findViewById(R.id.Food_Detail_Menu_name);
-        tv_Food_Detail_Menu_vote = findViewById(R.id.Food_Detail_Menu_vote);
-        tv_Food_Detail_Menu_vote_reviews = findViewById(R.id.Food_Detail_Menu_vote_reviews);
-        tv_Food_Detail_Menu_khoangCach = findViewById(R.id.Food_Detail_Menu_khoangCach);
-        tv_Food_Detail_Menu_khoangCach_soTien = findViewById(R.id.Food_Detail_Menu_khoangCach_soTien);
+        toolbar_Food_Detail_Menu_toolbar = findViewById(R.id.Food_Detail_Menu_Toolbar);
 
         recyclerView_Food_Detail_Menu_forYou = findViewById(R.id.recyclerView_Food_Detail_Menu_forYou);
         recyclerView_Food_Detail_Menu_menu = findViewById(R.id.recyclerView_Food_Detail_Menu_menu);
         recyclerView_Food_Detail_Menu_drink = findViewById(R.id.recyclerView_Food_Detail_Menu_drink);
 
-        linearLayout_Food_Detail_Menu_vote_show = findViewById(R.id.linearLayout_Food_Detail_Menu_vote_show);
-        linearLayout_Food_Detail_Menu_deliveryNow_show = findViewById(R.id.linearLayout_Food_Detail_Menu_deliveryNow_show);
-        linearLayout_Food_Detail_Menu_offers_show = findViewById(R.id.linearLayout_Food_Detail_Menu_offers_show);
 
         btn_Food_Detail_Menu_basket = findViewById(R.id.Food_Detail_Menu_basket);
     }

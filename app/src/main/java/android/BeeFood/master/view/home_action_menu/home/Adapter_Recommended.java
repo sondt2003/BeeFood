@@ -44,6 +44,8 @@ public class Adapter_Recommended extends RecyclerView.Adapter<Adapter_Recommende
     public void onBindViewHolder(@NonNull UserViewHolder holder, int position) {
         Food recommended = lis_recommended.get(position);
 
+        if (position >= 4) return;
+
         if (recommended == null) return;
 
         holder.img_item_home_ActionMenu_recommended_avt.setImageResource(R.drawable.avt_test);
