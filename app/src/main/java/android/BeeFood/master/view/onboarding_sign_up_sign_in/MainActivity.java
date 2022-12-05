@@ -2,7 +2,7 @@ package android.BeeFood.master.view.onboarding_sign_up_sign_in;
 
 import android.BeeFood.master.R;
 import android.BeeFood.master.controller.Dao.LoaiDao;
-import android.BeeFood.master.model.Food;
+import android.BeeFood.master.controller.InternetCheckService;
 import android.BeeFood.master.model.loaiFood;
 import android.BeeFood.master.view.accountSetup.Screen_Profile;
 import android.BeeFood.master.view.home_action_menu.HomeActivity;
@@ -10,11 +10,14 @@ import android.Manifest;
 import android.app.AlertDialog;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.net.ConnectivityManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -54,13 +57,12 @@ import com.google.firebase.firestore.QuerySnapshot;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
-    FirebaseFirestore db = FirebaseFirestore.getInstance();
     public static final String CHANNEL_ID = "push notification";
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
     Button btnLoginFb, btnEmail, btnEmailTaoTK, btnLoginGoogle;
     EditText edtEmail;
     EditText edtPassWord;
@@ -74,12 +76,14 @@ public class MainActivity extends AppCompatActivity {
     GoogleSignInAccount account;
     CallbackManager callbackManager;
     SharedPreferences sharedPreferences;
+    BroadcastReceiver  broadcastReceiver = new InternetCheckService(getApplication(),"MainActivity");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         PhanQuyen();
+        checkInternet();
         AnhXa();
         setSelect_edt();
         SetupsLogin();
@@ -91,6 +95,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(LoginResult loginResult) {
                         // App code
+
                     }
 
                     @Override
@@ -107,10 +112,20 @@ public class MainActivity extends AppCompatActivity {
 
         SharedPreferences sharedPref = this.getSharedPreferences("USER", Context.MODE_PRIVATE);
         String email = sharedPref.getString("email", "");
-        String pass = sharedPref.getString("passWord","");
+        String pass = sharedPref.getString("passWord", "");
 
         edtEmail.setText(email);
         edtPassWord.setText(pass);
+    }
+
+    private void checkInternet() {
+        registerReceiver(broadcastReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        unregisterReceiver(broadcastReceiver);
     }
 
     private void LayThongTinFb() {
@@ -200,14 +215,14 @@ public class MainActivity extends AppCompatActivity {
                                             @Override
                                             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                                                 if (task.isSuccessful()) {
-                                                  boolean check=true;
+                                                    boolean check = true;
                                                     for (QueryDocumentSnapshot document : task.getResult()) {
-                                                        if(email.equalsIgnoreCase(document.getData().get("email").toString())){
+                                                        if (email.equalsIgnoreCase(document.getData().get("email").toString())) {
                                                             startActivity(new Intent(MainActivity.this, HomeActivity.class));
-                                                            check=false;
+                                                            check = false;
                                                         }
                                                     }
-                                                    if(check){
+                                                    if (check) {
                                                         startActivity(new Intent(MainActivity.this, Screen_Profile.class));
                                                     }
                                                 }
@@ -222,8 +237,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 //        account = GoogleSignIn.getLastSignedInAccount(this);
-        LoaiDao loaiDao=new LoaiDao();
-        loaiFood loaiFood=new loaiFood("https://firebasestorage.googleapis.com/v0/b/shoppyfood-c2281.appspot.com/o/profile.png?alt=media&token=8cdba2f9-1af0-4447-a581-ac236c6125f0","Name");
+        LoaiDao loaiDao = new LoaiDao();
+        loaiFood loaiFood = new loaiFood("https://firebasestorage.googleapis.com/v0/b/shoppyfood-c2281.appspot.com/o/profile.png?alt=media&token=8cdba2f9-1af0-4447-a581-ac236c6125f0", "Name");
 
     }
 
@@ -254,14 +269,14 @@ public class MainActivity extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<QuerySnapshot> task) {
                                     if (task.isSuccessful()) {
-                                        boolean check=true;
+                                        boolean check = true;
                                         for (QueryDocumentSnapshot document : task.getResult()) {
-                                            if(account.getEmail().equalsIgnoreCase(document.getData().get("email").toString())){
+                                            if (account.getEmail().equalsIgnoreCase(document.getData().get("email").toString())) {
                                                 startActivity(new Intent(MainActivity.this, HomeActivity.class));
-                                                check=false;
+                                                check = false;
                                             }
                                         }
-                                        if(check){
+                                        if (check) {
                                             Toast.makeText(MainActivity.this, "Chua co User", Toast.LENGTH_SHORT).show();
                                         }
                                     }
@@ -299,7 +314,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         try {
-            if(!account.getEmail().equalsIgnoreCase("")){
+            if (!account.getEmail().equalsIgnoreCase("")) {
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putString("email", account.getEmail());
                 editor.commit();
@@ -311,7 +326,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //thoát app
-    public void onBack_app(){
+    public void onBack_app() {
         AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
         builder.setTitle("Exit");
         builder.setMessage("Do you want to Exit ?");
@@ -322,7 +337,7 @@ public class MainActivity extends AppCompatActivity {
                 System.exit(0);
             }
         });
-        builder.setNegativeButton("No" , null);
+        builder.setNegativeButton("No", null);
         builder.show();
     }
 
@@ -333,13 +348,13 @@ public class MainActivity extends AppCompatActivity {
     //
 
     //set select edt
-    public void setSelect_edt(){
+    public void setSelect_edt() {
         edtEmail.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean b) {
-                if (b){
+                if (b) {
                     edtEmail.setBackgroundResource(R.drawable.bg_edt_login_select);
-                }else{
+                } else {
                     edtEmail.setBackgroundResource(R.drawable.bg_edt_login_noselect);
                 }
             }
@@ -348,9 +363,9 @@ public class MainActivity extends AppCompatActivity {
         edtPassWord.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean b) {
-                if (b){
+                if (b) {
                     edtPassWord.setBackgroundResource(R.drawable.bg_edt_login_select);
-                }else{
+                } else {
                     edtPassWord.setBackgroundResource(R.drawable.bg_edt_login_noselect);
                 }
             }

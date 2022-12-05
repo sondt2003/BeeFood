@@ -36,7 +36,7 @@ public class LoaiDao {
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(context, "Cập Nhật Thông Tin Thất Bại", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, "Thêm Loại Thất Bại", Toast.LENGTH_SHORT).show();
                     }
                 });
         return true;
