@@ -23,12 +23,8 @@ import java.util.ArrayList;
 
 public class Food_Details_Menu extends AppCompatActivity implements View.OnClickListener {
 
-    private ImageView img_Food_Detail_Menu_banner;
-    private TextView tv_Food_Detail_Menu_name,tv_Food_Detail_Menu_vote,tv_Food_Detail_Menu_vote_reviews
-            ,tv_Food_Detail_Menu_khoangCach,tv_Food_Detail_Menu_khoangCach_soTien;
     private RecyclerView recyclerView_Food_Detail_Menu_forYou,recyclerView_Food_Detail_Menu_menu,recyclerView_Food_Detail_Menu_drink;
-    private LinearLayout linearLayout_Food_Detail_Menu_vote_show,linearLayout_Food_Detail_Menu_deliveryNow_show,linearLayout_Food_Detail_Menu_offers_show;
-    
+
     private Toolbar toolbar_Food_Detail_Menu_toolbar;
 
     private Button btn_Food_Detail_Menu_basket;
@@ -80,17 +76,6 @@ public class Food_Details_Menu extends AppCompatActivity implements View.OnClick
         btn_Food_Detail_Menu_basket = findViewById(R.id.Food_Detail_Menu_basket);
     }
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-
-        switch (item.getItemId()){
-            case android.R.id.home:
-                onBackPressed();
-                return true;
-            default: break;
-        }
-        return super.onOptionsItemSelected(item);
-    }
 
 
     @Override
