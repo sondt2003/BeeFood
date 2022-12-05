@@ -1,10 +1,21 @@
 package android.BeeFood.master.view.add_san_pham;
 
+import static java.lang.Thread.sleep;
+
 import android.BeeFood.master.R;
 import android.BeeFood.master.controller.Dao.FoodDao;
 import android.BeeFood.master.model.Food;
 import android.BeeFood.master.view.home_action_menu.HomeActivity;
+import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.drawable.Drawable;
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -20,19 +31,23 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
-public class Fragment_add_san_pham extends Fragment {
+public class Fragment_add_san_pham extends Fragment implements LocationListener {
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     FirebaseStorage storage = FirebaseStorage.getInstance();
@@ -43,8 +58,11 @@ public class Fragment_add_san_pham extends Fragment {
     Spinner spn_addSanPham_IDLoai;
     Button btn_addSanPham_add;
     ImageView addSanPham_avtFood;
+    double latitude = 0, longitude = 0;
+    LocationManager locationManager;
     Uri uri;
     String url_profile;
+    String address;
     public Fragment_add_san_pham() {
         // Required empty public constructor
     }
@@ -95,6 +113,11 @@ public class Fragment_add_san_pham extends Fragment {
             }
         });
         evenCLick();
+
+        TextInputLayout textInputLayout  = view.findViewById(R.id.layout_addSanPham_Address);
+        textInputLayout.getStartIconDrawable();
+
+        getLocation();
     }
 
 //    private void upLoadURL(View view) {
@@ -215,6 +238,47 @@ public class Fragment_add_san_pham extends Fragment {
             if (uri != null) {
                 Glide.with(getActivity()).load(uri).into(img_addSanPham_avtFood);
             }
+        }
+    }
+
+    private void getLocation() {
+//        locationManager = (LocationManager) this.getSystemService(LOCATION_SERVICE);
+        locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
+        //goi ham update
+        if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            return;
+        }
+        locationManager.requestSingleUpdate(LocationManager.NETWORK_PROVIDER, this, null);
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (true) {
+                    Toast.makeText(getActivity(), "Đang lấy vị trí", Toast.LENGTH_SHORT).show();
+                    if (longitude == 0 && latitude == 0) {
+                        try {
+                            edt_addSanPham_Address.setText(address);
+                            Toast.makeText(getActivity(), "lấy vị trí thành công", Toast.LENGTH_SHORT).show();
+                            sleep(200);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        break;
+                    }
+                }
+            }
+        });
+    }
+
+    @Override
+    public void onLocationChanged(@NonNull Location location) {
+        latitude = location.getLatitude();
+        longitude = location.getLongitude();
+        Geocoder geocoder = new Geocoder(getActivity(), Locale.getDefault());
+        try {
+            List<Address> addresses = geocoder.getFromLocation(latitude, longitude, 1);
+            address = addresses.get(0).getAddressLine(0);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }
