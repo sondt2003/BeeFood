@@ -1,5 +1,6 @@
 package android.BeeFood.master.view.food_details;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -7,9 +8,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.BeeFood.master.R;
 import android.BeeFood.master.model.Food;
-import android.BeeFood.master.view.object.adapter.Adapter_RecyclerView_FoodDetail_ForYou;
-import android.BeeFood.master.view.object.adapter.Adapter_RecyclerView_FoodDetail_menu_and_drink;
+import android.BeeFood.master.view.food_details.adapter.Adapter_RecyclerView_FoodDetail_ForYou;
+import android.BeeFood.master.view.food_details.adapter.Adapter_RecyclerView_FoodDetail_menu_and_drink;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -17,7 +21,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class Food_Details_Menu extends AppCompatActivity {
+public class Food_Details_Menu extends AppCompatActivity implements View.OnClickListener {
 
     private ImageView img_Food_Detail_Menu_banner;
     private TextView tv_Food_Detail_Menu_name,tv_Food_Detail_Menu_vote,tv_Food_Detail_Menu_vote_reviews
@@ -43,6 +47,7 @@ public class Food_Details_Menu extends AppCompatActivity {
         getSupportActionBar().setTitle("");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+
         adapter_recyclerView_foodDetail_forYou = new Adapter_RecyclerView_FoodDetail_ForYou(Food_Details_Menu.this);
         adapter_recyclerView_foodDetail_forYou.setData(mArrayList);
         LinearLayoutManager layoutManagerForYou = new LinearLayoutManager(Food_Details_Menu.this,LinearLayoutManager.HORIZONTAL,false);
@@ -59,7 +64,7 @@ public class Food_Details_Menu extends AppCompatActivity {
         recyclerView_Food_Detail_Menu_drink.setLayoutManager(layoutManagerMenuDrink);
         recyclerView_Food_Detail_Menu_drink .setAdapter(adapter_recyclerView_foodDetail_menu_and_drink);
 
-
+        btn_Food_Detail_Menu_basket.setOnClickListener(this);
 
     }
 
@@ -83,5 +88,31 @@ public class Food_Details_Menu extends AppCompatActivity {
         linearLayout_Food_Detail_Menu_offers_show = findViewById(R.id.linearLayout_Food_Detail_Menu_offers_show);
 
         btn_Food_Detail_Menu_basket = findViewById(R.id.Food_Detail_Menu_basket);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        switch (item.getItemId()){
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+            default: break;
+        }
+
+        return super.onOptionsItemSelected(item);
+
+
+    }
+
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.Food_Detail_Menu_basket:
+                Intent intent = new Intent(Food_Details_Menu.this,Checkout_Oders.class);
+                startActivity(intent);
+                break;
+        }
     }
 }
