@@ -1,6 +1,8 @@
 package android.BeeFood.master.view.add_san_pham;
 
 import android.BeeFood.master.model.Food;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -16,9 +18,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.BeeFood.master.R;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
 import java.util.ArrayList;
 
 public class Quan_Ly_San_Pham_Fragment extends Fragment {
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     private RecyclerView recyclerView_Quan_Ly_San_Pham_RecyclerView;
     private ArrayList<Food> mArrayList = new ArrayList<>();
@@ -53,8 +62,36 @@ public class Quan_Ly_San_Pham_Fragment extends Fragment {
 
         anhXa(view);
 
+        SharedPreferences sharedPref = getActivity().getSharedPreferences("USER", Context.MODE_PRIVATE);
+        String email = sharedPref.getString("email", "");
+
         mAdapter_qlsp = new Adapter_QLSP(getActivity());
-        mAdapter_qlsp.setData(mArrayList);
+        db.collection("food")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            ArrayList<Food> list = new ArrayList<>();
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                if (email.equals(document.getData().get("email").toString())){
+                                    list.add(new Food(document.getData().get("namefood").toString(),
+                                            document.getData().get("price").toString(),
+                                            document.getData().get("address").toString(),
+                                            document.getData().get("phonenumber").toString(),
+                                            document.getData().get("email").toString(),
+                                            "Chưa có id",
+                                            document.getData().get("tenloai").toString(),
+                                            document.getData().get("ImageUrl").toString(),
+                                            document.getData().get("describle").toString()));
+                                }
+
+                            }
+                            mAdapter_qlsp.setData(list);
+                        }
+                    }
+                });
+
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false);
         recyclerView_Quan_Ly_San_Pham_RecyclerView.setLayoutManager(layoutManager);

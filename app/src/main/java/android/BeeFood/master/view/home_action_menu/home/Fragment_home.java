@@ -153,7 +153,7 @@ public class Fragment_home extends Fragment implements View.OnClickListener {
                                         document.getData().get("tenloai").toString(),
                                         document.getData().get("ImageUrl").toString(),
                                         document.getData().get("describle").toString()));
-                                Log.i("SONDT",list.size()+"");
+                                if (list.size() >= 5) break;
                             }
                             adapter_discount.setData(list);
                         }
@@ -183,7 +183,7 @@ public class Fragment_home extends Fragment implements View.OnClickListener {
                                         document.getData().get("tenloai").toString(),
                                         document.getData().get("ImageUrl").toString(),
                                         document.getData().get("describle").toString()));
-                                Log.i("SONDT",list.size()+"");
+                                if (list.size() >= 5) break;
                             }
                             adapter_recommended.setData(list);
                         }
