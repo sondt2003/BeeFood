@@ -57,11 +57,12 @@ public class Food_Details_Menu extends AppCompatActivity implements View.OnClick
 
         adapter_recyclerView_foodDetail_menu_and_drink = new Adapter_RecyclerView_FoodDetail_menu_and_drink(Food_Details_Menu.this);
         adapter_recyclerView_foodDetail_menu_and_drink.setData(mArrayList);
-        LinearLayoutManager layoutManagerMenuDrink = new LinearLayoutManager(Food_Details_Menu.this,LinearLayoutManager.VERTICAL,false);
-        recyclerView_Food_Detail_Menu_menu.setLayoutManager(layoutManagerMenuDrink);
+        LinearLayoutManager layoutManagerMenu = new LinearLayoutManager(Food_Details_Menu.this,LinearLayoutManager.VERTICAL,false);
+        recyclerView_Food_Detail_Menu_menu.setLayoutManager(layoutManagerMenu);
         recyclerView_Food_Detail_Menu_menu.setAdapter(adapter_recyclerView_foodDetail_menu_and_drink);
 
-        recyclerView_Food_Detail_Menu_drink.setLayoutManager(layoutManagerMenuDrink);
+        LinearLayoutManager layoutManagerDrink = new LinearLayoutManager(Food_Details_Menu.this,LinearLayoutManager.VERTICAL,false);
+        recyclerView_Food_Detail_Menu_drink.setLayoutManager(layoutManagerDrink);
         recyclerView_Food_Detail_Menu_drink .setAdapter(adapter_recyclerView_foodDetail_menu_and_drink);
 
         btn_Food_Detail_Menu_basket.setOnClickListener(this);

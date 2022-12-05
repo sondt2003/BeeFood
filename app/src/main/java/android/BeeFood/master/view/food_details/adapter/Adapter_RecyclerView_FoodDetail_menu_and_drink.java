@@ -37,7 +37,7 @@ public class Adapter_RecyclerView_FoodDetail_menu_and_drink extends RecyclerView
             return;
         }
 
-//        holder.img_item_restaurantDetail_menuAndDrink_avatar.setImageResource(object.getAvt());
+//        holder.img_item_restaurantDetail_menuAndDrink_avatar.setImageResource(object.get);
         holder.tv_item_restaurantDetail_menuAndDrink_name.setText(object.getName());
 //        holder.tv_item_restaurantDetail_menuAndDrink_gia.setText("$"+object.getGia());
     }
