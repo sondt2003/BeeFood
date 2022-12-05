@@ -1,6 +1,7 @@
 package android.BeeFood.master.view.home_action_menu.home;
 
 import android.BeeFood.master.R;
+import android.BeeFood.master.model.loaiFood;
 import android.BeeFood.master.view.object.Loai_food;
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,16 +11,18 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 
 
 public class Adapter_Foodtype extends BaseAdapter {
 
     private Context mContext;
-    private ArrayList<Loai_food> lis_loaiFood;
+    private ArrayList<loaiFood> lis_loaiFood;
     private int itemLayout;
 
-    public Adapter_Foodtype(Context mContext, ArrayList<Loai_food> lis_loaiFood, int itemLayout) {
+    public Adapter_Foodtype(Context mContext, ArrayList<loaiFood> lis_loaiFood, int itemLayout) {
         this.mContext = mContext;
         this.lis_loaiFood = lis_loaiFood;
         this.itemLayout = itemLayout;
@@ -57,8 +60,8 @@ public class Adapter_Foodtype extends BaseAdapter {
             holder = (itemHolder) view.getTag();
         }
 
-        holder.img_item_home_ActionMenu_FoodType_avt.setImageResource(lis_loaiFood.get(i).getAvt());
-        holder.tv_item_home_ActionMenu_FoodType_name.setText(lis_loaiFood.get(i).getName());
+        Glide.with(mContext).load(lis_loaiFood.get(i).getUrl()).into(holder.img_item_home_ActionMenu_FoodType_avt);
+        holder.tv_item_home_ActionMenu_FoodType_name.setText(lis_loaiFood.get(i).getNameloai());
         
         return view;
     }

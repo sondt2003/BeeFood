@@ -12,8 +12,10 @@
         android:id="@+id/home_ActionMenu_foodType_Back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_backspace_24"
-        android:layout_margin="10dp"/>
+        android:paddingRight="16dp"
+        android:paddingBottom="10dp"
+        android:paddingTop="8dp"
+        android:src="@drawable/ic_backspace_24" />
 
     <TextView
         android:id="@+id/home_ActionMenu_foodType_title"
@@ -28,13 +30,6 @@
         android:textColor="@color/black"
         android:textSize="20dp"
         android:textStyle="bold" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/home_ActionMenu_foodType_Sort"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/home_ActionMenu_foodType_Back"
-        />
 
 
     <LinearLayout
@@ -72,6 +67,6 @@
         android:id="@+id/home_ActionMenu_foodType_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_below="@+id/home_ActionMenu_foodType_Sort"/>
+        android:layout_marginTop="16dp"
+        android:layout_below="@+id/home_ActionMenu_foodType_Back"/>
 </RelativeLayout>

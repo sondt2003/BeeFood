@@ -3,6 +3,9 @@ package android.BeeFood.master.view.home_action_menu.home;
 import android.BeeFood.master.R;
 import android.BeeFood.master.controller.Dao.FoodDao;
 import android.BeeFood.master.model.Food;
+import android.BeeFood.master.model.loaiFood;
+import android.BeeFood.master.view.accountSetup.Screen_Profile;
+import android.BeeFood.master.view.home_action_menu.HomeActivity;
 import android.BeeFood.master.view.home_action_menu.home.craving.Activity_craving;
 import android.BeeFood.master.view.home_action_menu.home.food.Activity_food;
 import android.BeeFood.master.view.home_action_menu.home.more_category.Activity_MoreCategory;
@@ -11,7 +14,10 @@ import android.BeeFood.master.view.home_action_menu.home.recommended_for_you.Act
 import android.BeeFood.master.view.home_action_menu.home.special_offers.Activity_Special_offers;
 import android.BeeFood.master.view.home_action_menu.home.special_offers.Adapter_Special_offers;
 import android.BeeFood.master.view.object.Loai_food;
+import android.BeeFood.master.view.onboarding_sign_up_sign_in.MainActivity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -30,6 +36,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -40,6 +47,11 @@ import java.util.ArrayList;
 
 public class Fragment_home extends Fragment implements View.OnClickListener {
     FirebaseFirestore db = FirebaseFirestore.getInstance();
+    SharedPreferences sharedPreferences;
+
+    ImageView img_home_ActionMenu_home_Avt;
+    TextView tv_home_ActionMenu_home_Name;
+
     private EditText edt_home_ActionMenu_home_Craving;
     private ImageView img_home_ActionMenu_home_MyCart;
     private TextView tv_home_ActionMenu_homeSpecial_seeAll;
@@ -86,20 +98,76 @@ public class Fragment_home extends Fragment implements View.OnClickListener {
 
         AnhXa(view);
 
+        SharedPreferences sharedPref = getActivity().getSharedPreferences("USER", Context.MODE_PRIVATE);
+        String email = sharedPref.getString("email", "");
+
+        db.collection("users")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                if(email.equalsIgnoreCase(document.getData().get("email").toString())){
+                                    Glide.with(getActivity()).load(document.getData().get("ImageUrl")).into(img_home_ActionMenu_home_Avt);
+                                    tv_home_ActionMenu_home_Name.setText(document.getData().get("fullname").toString());
+                                }
+                            }
+                        }
+                    }
+                });
+
+
         FoodDao foodDao = new FoodDao();
         lis_food =  foodDao.getFood();
 
 
         // bắt buộc 8 item - chuyền vào 7 item - không sửa item cuối
-        list_FoodType.add(new Loai_food(R.drawable.avt_test,"banh mi"));
-        list_FoodType.add(new Loai_food(R.drawable.avt_test,"banh mi"));
-        list_FoodType.add(new Loai_food(R.drawable.avt_test,"banh miw"));
-        list_FoodType.add(new Loai_food(R.drawable.avt_test,"banh mi"));
-        list_FoodType.add(new Loai_food(R.drawable.avt_test,"banh mie"));
-        list_FoodType.add(new Loai_food(R.drawable.avt_test,"banh mi"));
-        list_FoodType.add(new Loai_food(R.drawable.avt_test,"banh m"));
 
-        list_FoodType.add(new Loai_food(R.drawable.avt_test,"More"));
+
+        db.collection("loaifood")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        ArrayList<loaiFood> list = new ArrayList<>();
+                        list.add(new loaiFood("https://play-lh.googleusercontent.com/Gzwk-ZmTIr2ehCXsOj_P95L5k1vE1C-ulMb8oYFQTKOHvnGK8enJgDy8MbwdjRRP3Po","All"));
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+
+                                try {
+                                    list.add(new loaiFood(document.getId(), document.getData().get("ImageUrl").toString(),document.getData().get("NameLoai").toString()));
+                                } catch (Exception e) {
+
+                                }
+                            }
+                        }
+                        adapter_FoodType = new Adapter_Foodtype(getContext(),list,R.layout.home_item_foodtype);
+                        gridView_home_ActionMenu_home_FoodType.setAdapter(adapter_FoodType);
+
+                        gridView_home_ActionMenu_home_FoodType.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                                String sItem = list.get(i).getNameloai();
+
+                                if (sItem.equals("All")){
+                                    Intent intent = new Intent(getActivity(), Activity_MoreCategory.class);
+                                    startActivity(intent);
+                                    Toast.makeText(getContext(), sItem, Toast.LENGTH_SHORT).show();
+                                    return;
+                                }
+
+                                Toast.makeText(getContext(), sItem, Toast.LENGTH_SHORT).show();
+
+                                Intent intent_toFood = new Intent(getActivity(), Activity_food.class);
+                                intent_toFood.putExtra("key_FoodType",sItem);
+                                intent_toFood.putExtra("key_chkSpecialMore",false);
+                                startActivity(intent_toFood);
+                            }
+                        });
+                    }
+                });
 
 
         lis_bannerSale.add(R.drawable.avt_test);
@@ -107,30 +175,9 @@ public class Fragment_home extends Fragment implements View.OnClickListener {
         lis_bannerSale.add(R.drawable.avt_test);
         lis_bannerSale.add(R.drawable.avt_test);
 
-        adapter_FoodType = new Adapter_Foodtype(getContext(),list_FoodType,R.layout.home_item_foodtype);
-        gridView_home_ActionMenu_home_FoodType.setAdapter(adapter_FoodType);
 
-        gridView_home_ActionMenu_home_FoodType.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-                String sItem = list_FoodType.get(i).getName();
 
-                if (sItem.equals("More")){
-                    Intent intent = new Intent(getActivity(), Activity_MoreCategory.class);
-                    startActivity(intent);
-                    Toast.makeText(getContext(), sItem, Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                Toast.makeText(getContext(), sItem, Toast.LENGTH_SHORT).show();
-
-                Intent intent_toFood = new Intent(getActivity(), Activity_food.class);
-                intent_toFood.putExtra("key_FoodType",sItem);
-                intent_toFood.putExtra("key_chkSpecialMore",false);
-                startActivity(intent_toFood);
-            }
-        });
 
 //
 
@@ -140,8 +187,8 @@ public class Fragment_home extends Fragment implements View.OnClickListener {
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        ArrayList<Food> list = new ArrayList<>();
                         if (task.isSuccessful()) {
-                            ArrayList<Food> list = new ArrayList<>();
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 list.add(new Food(document.getData().get("namefood").toString(),
                                         document.getData().get("price").toString(),
@@ -211,6 +258,10 @@ public class Fragment_home extends Fragment implements View.OnClickListener {
     }
 
     public void AnhXa(View view){
+
+        img_home_ActionMenu_home_Avt = view.findViewById(R.id.home_ActionMenu_home_Avt);
+        tv_home_ActionMenu_home_Name = view.findViewById(R.id.home_ActionMenu_home_Name);
+
         edt_home_ActionMenu_home_Craving = view.findViewById(R.id.home_ActionMenu_home_Craving);
         img_home_ActionMenu_home_MyCart = view.findViewById(R.id.home_ActionMenu_home_MyCart);
         tv_home_ActionMenu_homeSpecial_seeAll = view.findViewById(R.id.home_ActionMenu_homeSpecial_seeAll);

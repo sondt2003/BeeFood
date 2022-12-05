@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".home.Recommended_for_you.Activity_Recommended"
+    tools:context=".view.home_action_menu.home.recommended_for_you.Activity_Recommended"
     android:layout_marginTop="15dp"
     android:layout_marginRight="15dp"
     android:layout_marginLeft="15dp">
@@ -19,12 +19,24 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Recommended for you"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="6dp"
+        android:layout_marginBottom="6dp"
         android:layout_toRightOf="@+id/home_ActionMenu_Recommended_back"
-        android:layout_margin="6dp"
-        android:textSize="20dp"
+        android:text="Recommended for you"
         android:textColor="@color/black"
-        android:textStyle="bold"/>
+        android:textSize="20dp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/home_ActionMenu_Recommended_add"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/ic_baseline_post_add_24"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="6dp"
+        android:layout_marginRight="6dp"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/home_ActionMenu_Recommended_sortList"
@@ -32,6 +44,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_below="@+id/home_ActionMenu_Recommended_back"/>
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/home_ActionMenu_Recommended_list"

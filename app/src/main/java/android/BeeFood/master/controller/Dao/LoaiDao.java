@@ -41,24 +41,25 @@ public class LoaiDao {
                 });
         return true;
     }
-    public ArrayList<loaiFood> getLoaiFood(Context context) {
-        ArrayList<loaiFood> list = new ArrayList<>();
-        db.collection("food")
+    public void getLoaiFood(Context context) {
+
+        db.collection("loaifood")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        ArrayList<loaiFood> list = new ArrayList<>();
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                UserDao userDao = new UserDao();
+
                                 try {
                                     list.add(new loaiFood(document.getId(), document.getData().get("ImageUrl").toString(),document.getData().get("NameLoai").toString()));
                                 } catch (Exception e) {
+
                                 }
                             }
                         }
                     }
                 });
-        return list;
     }
 }

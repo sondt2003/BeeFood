@@ -17,6 +17,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 
 public class Adapter_Discount extends RecyclerView.Adapter<Adapter_Discount.UserViewHolder>{
@@ -46,7 +48,7 @@ public class Adapter_Discount extends RecyclerView.Adapter<Adapter_Discount.User
         Food discount = lis_Discount.get(position);
         if (discount == null) return;
 
-        holder.img_item_home_ActionMenu_discount_avt.setImageResource(R.drawable.avt_test);
+        Glide.with(mContext).load(discount.getUrl()).into(holder.img_item_home_ActionMenu_discount_avt);
         holder.tv_item_home_ActionMenu_discount_name.setText(discount.getName());
         holder.tv_item_home_ActionMenu_discount_khoangCach.setText(discount.getAddress() + " km");
         holder.tv_item_home_ActionMenu_discount_danhGia.setText(discount.getIdloai() + " (" + discount.getEmail() + "k)");

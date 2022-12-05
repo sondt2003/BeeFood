@@ -5,6 +5,7 @@ import static java.lang.Thread.sleep;
 import android.BeeFood.master.R;
 import android.BeeFood.master.controller.Dao.FoodDao;
 import android.BeeFood.master.model.Food;
+import android.BeeFood.master.model.loaiFood;
 import android.BeeFood.master.view.home_action_menu.HomeActivity;
 import android.Manifest;
 import android.content.Context;
@@ -35,9 +36,13 @@ import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -48,6 +53,9 @@ import java.util.List;
 import java.util.Locale;
 
 public class Fragment_add_san_pham extends Fragment implements LocationListener {
+
+
+    ArrayAdapter<String> adapter;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     FirebaseStorage storage = FirebaseStorage.getInstance();
@@ -63,6 +71,7 @@ public class Fragment_add_san_pham extends Fragment implements LocationListener 
     Uri uri;
     String url_profile;
     String address;
+
     public Fragment_add_san_pham() {
         // Required empty public constructor
     }
@@ -94,15 +103,34 @@ public class Fragment_add_san_pham extends Fragment implements LocationListener 
         setSelect_edt(edt_addSanPham_Address);
         setSelect_edt(edt_addSanPham_PhoneNumber);
         setSelect_edt(edt_addSanPham_moTa);
+// lấy từ đâyy spinner
+        db.collection("loaifood")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        ArrayList<loaiFood> list = new ArrayList<>();
+                        List<String> spinnerArray = new ArrayList<>();
+                        spinnerArray.add("Chọn loại");
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
 
-        List<String> spinnerArray = new ArrayList<>();
-        spinnerArray.add("Chọn thể loại");
-        spinnerArray.add("1");
-        spinnerArray.add("2");
-        spinnerArray.add("3");
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, spinnerArray);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spn_addSanPham_IDLoai.setAdapter(adapter);
+                                try {
+                                    list.add(new loaiFood(document.getId(), document.getData().get("ImageUrl").toString(), document.getData().get("NameLoai").toString()));
+                                    spinnerArray.add( document.getData().get("NameLoai").toString());
+                                } catch (Exception e) {
+
+                                }
+                            }
+                            adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, spinnerArray);
+                            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                            spn_addSanPham_IDLoai.setAdapter(adapter);
+                        }
+
+                    }
+                });
+
+
         img_addSanPham_avtFood.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -114,13 +142,13 @@ public class Fragment_add_san_pham extends Fragment implements LocationListener 
         });
         evenCLick();
 
-        TextInputLayout textInputLayout  = view.findViewById(R.id.layout_addSanPham_Address);
+        TextInputLayout textInputLayout = view.findViewById(R.id.layout_addSanPham_Address);
         textInputLayout.getStartIconDrawable();
 
         getLocation();
     }
 
-//    private void upLoadURL(View view) {
+    //    private void upLoadURL(View view) {
 //        db.collection("food")
 //                .get()
 //                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -163,12 +191,13 @@ public class Fragment_add_san_pham extends Fragment implements LocationListener 
                 } else if (edt_addSanPham_PhoneNumber.getText().toString().equals("")) {
                     Toast.makeText(getActivity(), "Chưa Nhập SDT Liên hệ", Toast.LENGTH_SHORT).show();
                 } else if (spn_addSanPham_IDLoai.getSelectedItemPosition() == 0) {
-                    Toast.makeText(getActivity(), "Chưa Chọn Thể Loại", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Chưa Chọn Thể Loại" , Toast.LENGTH_SHORT).show();
                 } else {
+                    String nameLoai =  spn_addSanPham_IDLoai.getSelectedItem().toString();
                     if (uri != null) {
-                        FoodDao foodDao=new FoodDao();
+                        FoodDao foodDao = new FoodDao();
 
-                        StorageReference demoRef = reference.child(foodDao.getEmail(getActivity())+"food.png");
+                        StorageReference demoRef = reference.child(foodDao.getEmail(getActivity()) + "food.png");
                         demoRef.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                             @Override
                             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
@@ -177,20 +206,21 @@ public class Fragment_add_san_pham extends Fragment implements LocationListener 
                                     @Override
                                     public void onSuccess(Uri DownloadUri) {
                                         url_profile = DownloadUri.toString();
-                                        Log.i("SONDTPH",url_profile);
-                                        Toast.makeText(getActivity(), "CHECK:"+url_profile, Toast.LENGTH_SHORT).show();
-                                        Food food=new Food(edt_addSanPham_nameFood.getText().toString(),
+                                        Log.i("SONDTPH", url_profile);
+                                        Toast.makeText(getActivity(), "CHECK:" + url_profile, Toast.LENGTH_SHORT).show();
+                                        Food food = new Food(edt_addSanPham_nameFood.getText().toString(),
                                                 edt_addSanPham_Price.getText().toString(),
                                                 edt_addSanPham_Address.getText().toString(),
                                                 edt_addSanPham_PhoneNumber.getText().toString(),
                                                 foodDao.getEmail(getActivity()),
-                                                spn_addSanPham_IDLoai.getSelectedItem().toString(),
+                                                nameLoai,
                                                 url_profile,
                                                 edt_addSanPham_moTa.getText().toString()
-                                                );
-                                        boolean check =foodDao.AddDataFood(food,getActivity());
-                                        Toast.makeText(getActivity(), check+"", Toast.LENGTH_SHORT).show();
-                                        if(check){
+                                        );
+                                        Toast.makeText(getActivity(), food.getIdloai()+"", Toast.LENGTH_SHORT).show();
+                                        boolean check = foodDao.AddDataFood(food, getActivity());
+                                        Toast.makeText(getActivity(), check + "", Toast.LENGTH_SHORT).show();
+                                        if (check) {
                                             startActivity(new Intent(getActivity(), HomeActivity.class));
                                         }
                                     }

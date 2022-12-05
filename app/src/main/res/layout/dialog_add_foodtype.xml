@@ -10,8 +10,9 @@
         android:layout_height="52dp"
         android:text="Thêm loại"
         android:textSize="24sp"
-        android:background="@color/active"
+        android:background="@drawable/bg_dialog_title"
         android:gravity="center"/>
+
     <androidx.cardview.widget.CardView
         android:id="@+id/layout_dialog_addFoodType_avt"
         android:layout_width="wrap_content"

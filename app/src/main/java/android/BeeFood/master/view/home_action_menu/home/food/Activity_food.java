@@ -5,18 +5,27 @@ import android.BeeFood.master.model.Food;
 import android.BeeFood.master.view.home_action_menu.home.Adapter_Recommended;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
 import java.util.ArrayList;
 
 public class Activity_food extends AppCompatActivity {
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     private ImageView img_home_ActionMenu_foodType_Back;
     private LinearLayout LineaLayout_home_ActionMenu_foodType_Empty;
@@ -26,9 +35,6 @@ public class Activity_food extends AppCompatActivity {
     private Adapter_Recommended adapter_recommended;
     private RecyclerView recyclerView_home_ActionMenu_foodType_list;
 
-    private ArrayList<String> lis_foodSort = new ArrayList<>();
-    private Adapter_foodSort adapter_foodSort;
-    private RecyclerView recyclerView_home_ActionMenu_foodType_sort;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,45 +44,54 @@ public class Activity_food extends AppCompatActivity {
         AnhXa();
 
         Intent intent = getIntent();
-        String sTitle = intent.getStringExtra("key_FoodType");
+        String sTitle = intent.getStringExtra("key_FoodType").trim();
         boolean chkSpecialMore = intent.getBooleanExtra("key_chkSpecialMore",false);
 
         tv_home_ActionMenu_foodType_title.setText(sTitle);
 
-        lis_foodSort.add("sao");
-        lis_foodSort.add("gia");
-        lis_foodSort.add("khoang cach");
-        lis_foodSort.add("so luot ban");
-
-
-        adapter_foodSort = new Adapter_foodSort(Activity_food.this);
-        adapter_foodSort.setData(lis_foodSort);
-
-        LinearLayoutManager manager = new LinearLayoutManager(Activity_food.this,LinearLayoutManager.HORIZONTAL,false);
-        recyclerView_home_ActionMenu_foodType_sort.setLayoutManager(manager);
-        recyclerView_home_ActionMenu_foodType_sort.setAdapter(adapter_foodSort);
-
-
-//        lis_food.add(new Food(R.drawable.avt_test,"Name",1.8,4.8,1,6.00,2.00));
-//        lis_food.add(new Food(R.drawable.avt_test,"Name",1.8,4.8,1,6.00,2.00));
-//        lis_food.add(new Food(R.drawable.avt_test,"Name",1.8,4.8,1,6.00,2.00));
-//        lis_food.add(new Food(R.drawable.avt_test,"Name",1.8,4.8,1,6.00,2.00));
-//        lis_food.add(new Food(R.drawable.avt_test,"Name",1.8,4.8,1,6.00,2.00));
-//        lis_food.add(new Food(R.drawable.avt_test,"Name",1.8,4.8,1,6.00,2.00));
-
 
         adapter_recommended = new Adapter_Recommended(Activity_food.this);
-        adapter_recommended.setData(lis_food);
+        ArrayList<Food> listgetfood = new ArrayList<>();
 
-        LinearLayoutManager manager1 = new LinearLayoutManager(Activity_food.this,LinearLayoutManager.VERTICAL,false);
-        recyclerView_home_ActionMenu_foodType_list.setLayoutManager(manager1);
-        recyclerView_home_ActionMenu_foodType_list.setAdapter(adapter_recommended);
+        db.collection("food")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        ArrayList<Food> list = new ArrayList<>();
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                if (sTitle.equalsIgnoreCase(document.getData().get("tenloai").toString().trim())){
+                                    list.add(new Food(document.getData().get("namefood").toString(),
+                                            document.getData().get("price").toString(),
+                                            document.getData().get("address").toString(),
+                                            document.getData().get("phonenumber").toString(),
+                                            document.getData().get("email").toString(),
+                                            "Chưa có id",
+                                            document.getData().get("tenloai").toString(),
+                                            document.getData().get("ImageUrl").toString(),
+                                            document.getData().get("describle").toString()));
+                                }
 
-        if (lis_food.isEmpty()){
-            LineaLayout_home_ActionMenu_foodType_Empty.setVisibility(View.VISIBLE);
-        }else{
-            LineaLayout_home_ActionMenu_foodType_Empty.setVisibility(View.INVISIBLE);
-        }
+                            }
+                        }
+
+                        if (list.isEmpty()){
+                            LineaLayout_home_ActionMenu_foodType_Empty.setVisibility(View.VISIBLE);
+                        }else{
+                            LineaLayout_home_ActionMenu_foodType_Empty.setVisibility(View.INVISIBLE);
+                        }
+
+                        adapter_recommended.setData(list);
+                        LinearLayoutManager manager1 = new LinearLayoutManager(Activity_food.this,LinearLayoutManager.VERTICAL,false);
+                        recyclerView_home_ActionMenu_foodType_list.setLayoutManager(manager1);
+                        recyclerView_home_ActionMenu_foodType_list.setAdapter(adapter_recommended);
+
+                    }
+                });
+
+
+
 
 
         img_home_ActionMenu_foodType_Back.setOnClickListener(new View.OnClickListener() {
@@ -100,7 +115,6 @@ public class Activity_food extends AppCompatActivity {
     public void AnhXa(){
         LineaLayout_home_ActionMenu_foodType_Empty = findViewById(R.id.home_ActionMenu_foodType_Empty);
         recyclerView_home_ActionMenu_foodType_list = findViewById(R.id.home_ActionMenu_foodType_list);
-        recyclerView_home_ActionMenu_foodType_sort = findViewById(R.id.home_ActionMenu_foodType_Sort);
         img_home_ActionMenu_foodType_Back = findViewById(R.id.home_ActionMenu_foodType_Back);
         tv_home_ActionMenu_foodType_title = findViewById(R.id.home_ActionMenu_foodType_title);
     }

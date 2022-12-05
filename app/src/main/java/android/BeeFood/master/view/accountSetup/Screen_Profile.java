@@ -79,7 +79,7 @@ public class Screen_Profile extends AppCompatActivity {
                     if (uri != null) {
                         SharedPreferences sharedPref = getSharedPreferences("USER", MODE_PRIVATE);
                         String email = sharedPref.getString("email", "");
-                        StorageReference demoRef = reference.child(email+"profile.png");
+                        StorageReference demoRef = reference.child(email+".profile.png");
                         demoRef.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                             @Override
                             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {

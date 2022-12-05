@@ -51,7 +51,8 @@
                 android:layout_marginTop="25dp"
                 android:layout_marginStart="7dp"
                 android:textStyle="bold"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black"
+                android:maxLines="1"/>
 
 
             <androidx.cardview.widget.CardView
@@ -122,7 +123,7 @@
             <GridView
                 android:id="@+id/home_ActionMenu_home_FoodType"
                 android:layout_width="match_parent"
-                android:layout_height="180dp"
+                android:layout_height="wrap_content"
                 android:numColumns="4"
                 android:layout_marginTop="20dp"
                 android:layout_below="@+id/home_ActionMenu_Special_banner"/>
