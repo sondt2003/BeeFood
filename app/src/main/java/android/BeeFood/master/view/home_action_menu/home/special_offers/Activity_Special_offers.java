@@ -46,9 +46,10 @@ public class Activity_Special_offers extends AppCompatActivity {
         img_home_ActionMenu_SpecialOffers_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Activity_Special_offers.this, HomeActivity.class);
-                startActivity(intent);
-                finish();
+//                Intent intent = new Intent(Activity_Special_offers.this, HomeActivity.class);
+//                startActivity(intent);
+//                finish();
+                onBackPressed();
             }
         });
 

@@ -2,8 +2,10 @@ package android.BeeFood.master.view.home_action_menu.home;
 
 import android.BeeFood.master.R;
 import android.BeeFood.master.model.Food;
+import android.BeeFood.master.view.food_details.Food_Details_Menu;
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,7 +55,8 @@ public class Adapter_Discount extends RecyclerView.Adapter<Adapter_Discount.User
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(mContext, discount.getName(), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(mContext, Food_Details_Menu.class);
+                mContext.startActivity(intent);
             }
         });
     }

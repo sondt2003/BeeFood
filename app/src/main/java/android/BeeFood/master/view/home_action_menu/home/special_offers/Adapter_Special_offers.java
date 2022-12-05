@@ -1,7 +1,9 @@
 package android.BeeFood.master.view.home_action_menu.home.special_offers;
 
 import android.BeeFood.master.R;
+import android.BeeFood.master.view.food_details.Food_Details_Menu;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,6 +40,13 @@ public class Adapter_Special_offers extends RecyclerView.Adapter<Adapter_Special
         int i_banner = lis_Banner.get(position);
 
         holder.img_home_item_special_banner.setImageResource(i_banner);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(mContext, Food_Details_Menu.class);
+                mContext.startActivity(intent);
+            }
+        });
 
     }
 
