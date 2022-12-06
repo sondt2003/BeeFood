@@ -38,7 +38,7 @@ public class Add_To_Basket extends AppCompatActivity implements View.OnClickList
     private ImageButton btn_add_To_Basket_number_giam, btn_add_To_Basket_number_tang;
     private Button btn_add_To_Basket_number_add;
 
-    int count = 0;
+    int count = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,7 +79,6 @@ public class Add_To_Basket extends AppCompatActivity implements View.OnClickList
                                     food = new Food(document.getData().get("namefood").toString(),document.getData().get("price").toString(),document.getData().get("address").toString(),
                                             document.getData().get("phonenumber").toString(),document.getData().get("email").toString(),document.getData().get("tenloai").toString(),
                                             document.getData().get("ImageUrl").toString(),document.getData().get("describle").toString());
-                                    Toast.makeText(Add_To_Basket.this, "1", Toast.LENGTH_SHORT).show();
                                 }
                             }
                         }
@@ -87,6 +86,8 @@ public class Add_To_Basket extends AppCompatActivity implements View.OnClickList
                         Glide.with(getApplication()).load(food.getUrl()).into(img_add_To_Basket_banner);
                         tv_add_To_Basket_name.setText(food.getName());
                         btn_add_To_Basket_number_add.setText("Add to basket - " + food.getPrice() + " vnd");
+                        tv_add_To_Basket_description.setText(food.getDescrible());
+
                     }
                 });
 
@@ -166,8 +167,8 @@ public class Add_To_Basket extends AppCompatActivity implements View.OnClickList
                 tv_add_To_Basket_number.setText("" + count);
                 break;
             case R.id.add_To_Basket_number_giam:
-                if (count <= 0) {
-                    Toast.makeText(this, "Số lượng không thể nhỏ hơn 0!", Toast.LENGTH_SHORT).show();
+                if (count <= 1) {
+                    Toast.makeText(this, "Số lượng không thể nhỏ hơn 1!", Toast.LENGTH_SHORT).show();
                 }else {
                     count--;
                     tv_add_To_Basket_number.setText("" + count);
