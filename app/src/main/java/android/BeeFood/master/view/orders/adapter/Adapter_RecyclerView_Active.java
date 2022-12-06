@@ -18,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -103,11 +104,36 @@ public class Adapter_RecyclerView_Active extends RecyclerView.Adapter<Adapter_Re
                     public void onClick(DialogInterface dialogInterface, int i) {
                         BuyFoodDao buyFoodDao = new BuyFoodDao();
                         buyFoodDao.updateFood("daHuy",mContext,object.getIdBuyFood());
+
+                        db.collection("buyfood")
+                                .get()
+                                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                        ArrayList<BuyFood> list = new ArrayList<>();
+                                        if (task.isSuccessful()) {
+                                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                                if(document.getData().get("status").toString().equalsIgnoreCase("chuaThanhToan")){
+                                                    list.add(new BuyFood(
+                                                            document.getId(),
+                                                            document.getData().get("idfood").toString(),
+                                                            document.getData().get("emailuser").toString(),
+                                                            document.getData().get("emailfood").toString(),
+                                                            document.getData().get("amountofood").toString(),
+                                                            document.getData().get("priceOderFood").toString(),
+                                                            "1.8",  //chưa có khoảng cách
+                                                            document.getData().get("status").toString()));
+                                                }
+
+                                            }
+                                        }
+                                        setData(list);
+                                    }
+                                });
                     }
                 });
                 builder.setNegativeButton("No",null);
                 builder.show();
-
             }
         });
     }

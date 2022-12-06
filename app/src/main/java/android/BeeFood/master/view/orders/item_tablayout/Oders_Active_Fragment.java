@@ -74,15 +74,17 @@ public class Oders_Active_Fragment extends Fragment {
                         ArrayList<BuyFood> list = new ArrayList<>();
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                list.add(new BuyFood(
-                                        document.getId(),
-                                        document.getData().get("idfood").toString(),
-                                        document.getData().get("emailuser").toString(),
-                                        document.getData().get("emailfood").toString(),
-                                        document.getData().get("amountofood").toString(),
-                                        document.getData().get("priceOderFood").toString(),
-                                        "1.8",  //chưa có khoảng cách
-                                        document.getData().get("status").toString()));
+                                if(document.getData().get("status").toString().equalsIgnoreCase("chuaThanhToan")){
+                                    list.add(new BuyFood(
+                                            document.getId(),
+                                            document.getData().get("idfood").toString(),
+                                            document.getData().get("emailuser").toString(),
+                                            document.getData().get("emailfood").toString(),
+                                            document.getData().get("amountofood").toString(),
+                                            document.getData().get("priceOderFood").toString(),
+                                            "1.8",  //chưa có khoảng cách
+                                            document.getData().get("status").toString()));
+                                }
 
                             }
                         }
