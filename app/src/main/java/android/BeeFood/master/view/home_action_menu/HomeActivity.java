@@ -110,9 +110,9 @@ public class HomeActivity extends AppCompatActivity {
         registerReceiver(broadcastReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
     }
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-        unregisterReceiver(broadcastReceiver);
-    }
+//    @Override
+//    protected void onPause() {
+//        super.onPause();
+//        unregisterReceiver(broadcastReceiver);
+//    }
 }

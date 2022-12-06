@@ -26,14 +26,12 @@ public class InternetCheckService extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         mContext = context;
         String status = NetworkUtil.getNetWorkState(context);
-
         AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
         LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(mContext.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(R.layout.dialog_isconnect_wifi, null);
         Button btnRetry = view.findViewById(R.id.btnRetry);
         builder.setView(view);
         final Dialog dialog = builder.create();
-
         btnRetry.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
