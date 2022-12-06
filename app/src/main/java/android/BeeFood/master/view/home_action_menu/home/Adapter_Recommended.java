@@ -8,6 +8,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,6 +52,7 @@ public class Adapter_Recommended extends RecyclerView.Adapter<Adapter_Recommende
 
         if (recommended == null) return;
 
+
 //        holder.img_item_home_ActionMenu_recommended_avt.setImageResource(R.drawable.avt_test);
         Glide.with(mContext).load(recommended.getUrl()).into(holder.img_item_home_ActionMenu_recommended_avt);
         holder.tv_item_home_ActionMenu_recommended_name.setText(recommended.getName());
@@ -62,7 +64,7 @@ public class Adapter_Recommended extends RecyclerView.Adapter<Adapter_Recommende
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(mContext, Add_To_Basket.class);
-                intent.putExtra("key_id_food",recommended.getId());
+                intent.putExtra("key_idFood",recommended.getId());
                 mContext.startActivity(intent);
             }
         });

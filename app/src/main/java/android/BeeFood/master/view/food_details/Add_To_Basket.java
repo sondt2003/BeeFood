@@ -30,6 +30,7 @@ import java.util.ArrayList;
 
 public class Add_To_Basket extends AppCompatActivity implements View.OnClickListener {
     FirebaseFirestore db = FirebaseFirestore.getInstance();
+    SharedPreferences sharedPreferences;
 
     private Toolbar toolbar_add_To_Basket_toolbar;
     private ImageView img_add_To_Basket_banner,img_add_To_Basket_addCart;
@@ -37,6 +38,8 @@ public class Add_To_Basket extends AppCompatActivity implements View.OnClickList
             tv_add_To_Basket_khoangCach, tv_add_To_Basket_soTien;
     private ImageButton btn_add_To_Basket_number_giam, btn_add_To_Basket_number_tang;
     private Button btn_add_To_Basket_number_add;
+
+    String idFood = "";
 
     int count = 1;
 
@@ -47,15 +50,10 @@ public class Add_To_Basket extends AppCompatActivity implements View.OnClickList
 
         anhXa();
 
-        Intent intent = getIntent();
-        String idFood = intent.getStringExtra("key_id_food");
-
-
 
         setSupportActionBar(toolbar_add_To_Basket_toolbar);
         getSupportActionBar().setTitle("");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
 
 
         btn_add_To_Basket_number_add.setOnClickListener(this);
@@ -66,14 +64,16 @@ public class Add_To_Basket extends AppCompatActivity implements View.OnClickList
 
         img_add_To_Basket_addCart.setOnClickListener(this);
 
-        SharedPreferences sharedPref = Add_To_Basket.this.getSharedPreferences("USER", Context.MODE_PRIVATE);
-        String email = sharedPref.getString("email", "");
+//        SharedPreferences sharedPref = Add_To_Basket.this.getSharedPreferences("USER", Context.MODE_PRIVATE);
+//        String email = sharedPref.getString("email", "");
 
         db.collection("food")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        Intent intent2 = getIntent();
+                        idFood = intent2.getStringExtra("key_idFood");
                         Food food = new Food();
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
@@ -89,6 +89,7 @@ public class Add_To_Basket extends AppCompatActivity implements View.OnClickList
                         tv_add_To_Basket_name.setText(food.getName());
                         btn_add_To_Basket_number_add.setText("Add to basket - " + food.getPrice() + " vnd");
                         tv_add_To_Basket_description.setText(food.getDescrible());
+
 
                     }
                 });
@@ -156,12 +157,15 @@ public class Add_To_Basket extends AppCompatActivity implements View.OnClickList
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.add_To_Basket_number_add:
-                if (Integer.parseInt(tv_add_To_Basket_number.getText().toString()) != 0){
+                int soLuongSP = Integer.parseInt(tv_add_To_Basket_number.getText().toString());
+                if (soLuongSP != 0){
                     Intent intent = new Intent(Add_To_Basket.this, Checkout_Oders.class);
+                    intent.putExtra("key_soluongSP",soLuongSP);
+                    intent.putExtra("key_idFood",idFood);
                     startActivity(intent);
                 }
                 else {
-                    Toast.makeText(this, "Số lượng lớn hơn 0", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Add_To_Basket.this, "Số lượng lớn hơn 0", Toast.LENGTH_SHORT).show();
                 }
                 break;
             case R.id.add_To_Basket_number_tang:
@@ -175,6 +179,7 @@ public class Add_To_Basket extends AppCompatActivity implements View.OnClickList
                     count--;
                     tv_add_To_Basket_number.setText("" + count);
                 }
+
                 break;
         }
     }
