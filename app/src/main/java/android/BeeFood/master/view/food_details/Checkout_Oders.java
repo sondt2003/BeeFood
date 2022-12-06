@@ -39,18 +39,17 @@ public class Checkout_Oders extends AppCompatActivity implements View.OnClickLis
 
 
         anhXa();
-
         Bundle bundle = getIntent().getExtras();
-        checkDiscount =  bundle.getInt("checkVisible");
-        if (checkDiscount != 0 ){
-
-            tv_checkout_Oders_home.setVisibility(View.INVISIBLE);
-            relativeLayout_checkout_Discount.setVisibility(View.VISIBLE);
-            tv_checkout_Oders_soTienGiam.setText(bundle.getString("soTienGiam"));
-            tv_checkout_Oders_Min.setText(bundle.getString("min"));
-            tv_checkout_Oders_Max.setText(bundle.getString("max"));
-            tv_checkout_Oders_soLuong.setText(bundle.getString("soLuong"));
-
+        if (checkDiscount == 0 ){
+            checkDiscount =  bundle.getInt("checkVisible");
+            if (checkDiscount == 1){
+                tv_checkout_Oders_home.setVisibility(View.INVISIBLE);
+                relativeLayout_checkout_Discount.setVisibility(View.VISIBLE);
+                tv_checkout_Oders_soTienGiam.setText(bundle.getString("soTienGiam"));
+                tv_checkout_Oders_Min.setText(bundle.getString("min"));
+                tv_checkout_Oders_Max.setText(bundle.getString("max"));
+                tv_checkout_Oders_soLuong.setText(bundle.getString("soLuong"));
+            }
         }
 
 
