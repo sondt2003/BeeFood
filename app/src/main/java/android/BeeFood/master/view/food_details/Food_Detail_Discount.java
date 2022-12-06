@@ -11,6 +11,7 @@ import android.BeeFood.master.model.khuyenMai;
 import android.BeeFood.master.view.add_san_pham.Adapter_KhuyenMai;
 import android.BeeFood.master.view.food_details.adapter.Adapter_RecyclerView_Discount;
 import android.os.Bundle;
+import android.view.MenuItem;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -49,6 +50,17 @@ public class Food_Detail_Discount extends AppCompatActivity {
     private void anhXa() {
         toolbar_food_detail_discount_toolbar = findViewById(R.id.food_detail_discount_toolbar);
         recyclerView_food_detail_discount_recyclerView = findViewById(R.id.food_detail_discount_recyclerView);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                onBackPressed();
+                finish();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     public void loadList() {

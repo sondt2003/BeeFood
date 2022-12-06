@@ -22,21 +22,38 @@ import java.util.ArrayList;
 public class Checkout_Oders extends AppCompatActivity implements View.OnClickListener {
 
     private Toolbar toolbar_checkout_Oders_Toolbar;
-    private TextView tv_checkout_Oders_address, tv_checkout_Oders_Subtotal_Money, tv_checkout_Oders_Delivery_Money, tv_checkout_Oders_Total_Money;
+    private TextView tv_checkout_Oders_address, tv_checkout_Oders_Subtotal_Money, tv_checkout_Oders_Delivery_Money, tv_checkout_Oders_Total_Money,
+    tv_checkout_Oders_soTienGiam,tv_checkout_Oders_Min,tv_checkout_Oders_Max,tv_checkout_Oders_soLuong,tv_checkout_Oders_home;
     private Button btn_checkout_Oders_PlaceOrder, btn_checkout_Oders_AddItem;
     private RecyclerView recyclerView_checkout_Oders_RecyclerView;
-    private RelativeLayout discount_checkout_Oders_discout_show;
+    private RelativeLayout discount_checkout_Oders_discout_show,relativeLayout_checkout_Discount;
 
     private Adapter_RecyclerView_CheckOut_OrderSummary adapter_recyclerView_checkOut_orderSummary;
     private ArrayList<Food> mArrayList = new ArrayList<>();
+    private int checkDiscount = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_checkout_oders);
 
+
         anhXa();
-//
+
+        Bundle bundle = getIntent().getExtras();
+        checkDiscount =  bundle.getInt("checkVisible");
+        if (checkDiscount != 0 ){
+
+            tv_checkout_Oders_home.setVisibility(View.INVISIBLE);
+            relativeLayout_checkout_Discount.setVisibility(View.VISIBLE);
+            tv_checkout_Oders_soTienGiam.setText(bundle.getString("soTienGiam"));
+            tv_checkout_Oders_Min.setText(bundle.getString("min"));
+            tv_checkout_Oders_Max.setText(bundle.getString("max"));
+            tv_checkout_Oders_soLuong.setText(bundle.getString("soLuong"));
+
+        }
+
+
         setSupportActionBar(toolbar_checkout_Oders_Toolbar);
         getSupportActionBar().setTitle("Checkout Orders");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -78,11 +95,17 @@ public class Checkout_Oders extends AppCompatActivity implements View.OnClickLis
         tv_checkout_Oders_Subtotal_Money = findViewById(R.id.checkout_Oders_Subtotal_Money);
         tv_checkout_Oders_Delivery_Money = findViewById(R.id.checkout_Oders_Delivery_Money);
         tv_checkout_Oders_Total_Money = findViewById(R.id.checkout_Oders_Total_Money);
+        tv_checkout_Oders_soTienGiam = findViewById(R.id.checkout_Oders_soTienGiam);
+        tv_checkout_Oders_Min = findViewById(R.id.checkout_Oders_Min);
+        tv_checkout_Oders_Max = findViewById(R.id.checkout_Oders_Max);
+        tv_checkout_Oders_soLuong = findViewById(R.id.checkout_Oders_soLuong);
+        tv_checkout_Oders_home = findViewById(R.id.checkout_Oders_home);
 
         btn_checkout_Oders_PlaceOrder = findViewById(R.id.checkout_Oders_PlaceOrder);
         btn_checkout_Oders_AddItem = findViewById(R.id.checkout_Oders_AddItem);
 
         discount_checkout_Oders_discout_show = findViewById(R.id.checkout_Oders_discout_show);
+        relativeLayout_checkout_Discount = findViewById(R.id.checkout_Discount);
 
 
 
