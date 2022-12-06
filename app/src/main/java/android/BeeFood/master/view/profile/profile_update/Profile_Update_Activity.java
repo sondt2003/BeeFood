@@ -67,7 +67,7 @@ public class Profile_Update_Activity extends AppCompatActivity implements Locati
 
         AnhXa();
         setSelect_edt();
-getLocation();
+//        getLocation();
         img_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -208,6 +208,7 @@ getLocation();
                                         edt_profile_Update_NickName.setText(document.getData().get("nickname").toString());
                                         edt_profile_update_DateOfBirth.setText(document.getData().get("dateofbirth").toString());
                                         edt_profile_update_Email.setText(document.getData().get("email").toString());
+                                        edt_profile_update_location.setText(document.getData().get("address").toString());
                                         if(document.getData().get("gender").equals("Nam")){
                                             spn_profile_spinner_gender.setSelection(2);
                                         } else {

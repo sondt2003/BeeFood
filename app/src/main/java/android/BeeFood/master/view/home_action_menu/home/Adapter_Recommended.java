@@ -60,6 +60,7 @@ public class Adapter_Recommended extends RecyclerView.Adapter<Adapter_Recommende
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(mContext, Add_To_Basket.class);
+                intent.putExtra("key_id_food",recommended.getId());
                 mContext.startActivity(intent);
             }
         });

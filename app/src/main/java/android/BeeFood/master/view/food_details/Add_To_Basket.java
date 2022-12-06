@@ -5,8 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.BeeFood.master.R;
+import android.BeeFood.master.model.Food;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -15,7 +19,18 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.ArrayList;
+
 public class Add_To_Basket extends AppCompatActivity implements View.OnClickListener {
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+
     private Toolbar toolbar_add_To_Basket_toolbar;
     private ImageView img_add_To_Basket_banner;
     private TextView tv_add_To_Basket_name, tv_add_To_Basket_description, tv_add_To_Basket_number, tv_add_To_Basket_vote, tv_add_To_Basket_reviews,
@@ -32,16 +47,48 @@ public class Add_To_Basket extends AppCompatActivity implements View.OnClickList
 
         anhXa();
 
+        Intent intent = getIntent();
+        String idFood = intent.getStringExtra("key_id_food");
+
+
 
         setSupportActionBar(toolbar_add_To_Basket_toolbar);
         getSupportActionBar().setTitle("");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
 
         btn_add_To_Basket_number_add.setOnClickListener(this);
         btn_add_To_Basket_number_giam.setOnClickListener(this);
         btn_add_To_Basket_number_tang.setOnClickListener(this);
 
         tv_add_To_Basket_number.setText("" + count);
+
+        SharedPreferences sharedPref = Add_To_Basket.this.getSharedPreferences("USER", Context.MODE_PRIVATE);
+        String email = sharedPref.getString("email", "");
+
+        db.collection("food")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        Food food = new Food();
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                if (idFood.equalsIgnoreCase(document.getId())){
+                                    food = new Food(document.getData().get("namefood").toString(),document.getData().get("price").toString(),document.getData().get("address").toString(),
+                                            document.getData().get("phonenumber").toString(),document.getData().get("email").toString(),document.getData().get("tenloai").toString(),
+                                            document.getData().get("ImageUrl").toString(),document.getData().get("describle").toString());
+                                    Toast.makeText(Add_To_Basket.this, "1", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        }
+                        //
+                        Glide.with(getApplication()).load(food.getUrl()).into(img_add_To_Basket_banner);
+                        tv_add_To_Basket_name.setText(food.getName());
+                        btn_add_To_Basket_number_add.setText("Add to basket - " + food.getPrice() + " vnd");
+                    }
+                });
 
     }
 

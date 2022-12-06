@@ -16,6 +16,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -94,13 +95,16 @@ public class Activity_Recommended extends AppCompatActivity {
         recyclerView_home_ActionMenu_Recommended_sortList.setLayoutManager(manager);
         recyclerView_home_ActionMenu_Recommended_sortList.setAdapter(mAdapter_recommended_foodSort);
 
-        recyclerView_home_ActionMenu_Recommended_sortList.setOnClickListener(new View.OnClickListener() {
+        recyclerView_home_ActionMenu_Recommended_sortList.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
-            public void onClick(View view) {
-
+            public void onFocusChange(View view, boolean b) {
+                if (b){
+                    Toast.makeText(Activity_Recommended.this, "true", Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(Activity_Recommended.this, "false", Toast.LENGTH_SHORT).show();
+                }
             }
         });
-
 
 
         adapter_recommended = new Adapter_Recommended(Activity_Recommended.this);
@@ -255,4 +259,5 @@ public class Activity_Recommended extends AppCompatActivity {
             Glide.with(getApplication()).load(uri).into(img_dialog_addFoodType_avt);
         }
     }
+
 }

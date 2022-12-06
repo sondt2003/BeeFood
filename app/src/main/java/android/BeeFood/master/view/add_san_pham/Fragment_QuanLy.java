@@ -63,6 +63,8 @@ public class Fragment_QuanLy extends Fragment {
                     case 1:
                         tab.setText("Quản lý sản phẩm");
                         break;
+                    case 2:
+                        tab.setText("Khuyến mại");
                 }
             }
         });

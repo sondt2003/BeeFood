@@ -60,7 +60,7 @@ public class Activity_food extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 if (sTitle.equalsIgnoreCase(document.getData().get("tenloai").toString().trim())){
-                                    list.add(new Food(document.getData().get("namefood").toString(),
+                                    list.add(new Food(document.getId(),document.getData().get("namefood").toString(),
                                             document.getData().get("price").toString(),
                                             document.getData().get("address").toString(),
                                             document.getData().get("phonenumber").toString(),

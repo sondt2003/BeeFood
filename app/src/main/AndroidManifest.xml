@@ -80,6 +80,7 @@
             android:label="" />
         <activity android:name=".view.onboarding_sign_up_sign_in.Onboarding_Screen" android:exported="false"/>
         <activity android:name=".view.onboarding_sign_up_sign_in.RegisterActivity" android:exported="false"/>
+
         <activity android:name=".view.onboarding_sign_up_sign_in.Splash_Screen" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -89,10 +90,10 @@
         <activity
             android:name=".view.onboarding_sign_up_sign_in.MainActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
         </activity>
         <!--ac_Profile-->
         <activity android:name=".view.profile.address.Address_Activity"

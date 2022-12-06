@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="10dp"
+    android:layout_margin="8dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:paddingEnd="10dp"
+        android:paddingStart="10dp">
+
+        <TextView
+            android:id="@+id/item_KhuyenMai_ma"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mã : KJDGJFGJGSDFG"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:maxLines="1"/>
+
+        <TextView
+            android:id="@+id/item_KhuyenMai_Min"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Min : 10000 vnd"
+            android:layout_below="@+id/item_KhuyenMai_ma"/>
+
+        <TextView
+            android:id="@+id/item_KhuyenMai_Max"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Max : 20000 vnd"
+            android:layout_below="@+id/item_KhuyenMai_ma"
+            android:layout_marginLeft="8dp"
+            android:layout_toRightOf="@+id/item_KhuyenMai_Min"/>
+
+        <TextView
+            android:id="@+id/item_KhuyenMai_soTienGiam"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Giảm : 10000 vnd"
+            android:layout_below="@+id/item_KhuyenMai_Min"/>
+
+        <TextView
+            android:id="@+id/item_KhuyenMai_soLuong"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="3"
+            android:textStyle="bold"
+            android:textSize="24sp"
+            android:layout_marginEnd="20dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Số lượng"
+            android:layout_below="@+id/item_KhuyenMai_soLuong"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="12dp"/>
+
+
+
+
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

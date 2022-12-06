@@ -3,14 +3,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".view.add_san_pham.Quan_Ly_San_Pham_Fragment"
+    tools:context=".view.add_san_pham.Fragment_KhuyenMai"
     android:padding="16dp">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/Quan_Ly_San_Pham_RecyclerView"
+        android:id="@+id/addSanPham_KhuyenMai_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="56dp"/>
+
+    <Button
+        android:id="@+id/addSanPham_KhuyenMai_Add"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:background="@drawable/bg_btn_gree"
+        android:text="Add"
+        android:textColor="@color/white"
+        android:layout_marginTop="570dp"/>
+
 
 </RelativeLayout>

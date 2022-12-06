@@ -344,7 +344,7 @@
 
         <android.widget.Button
             android:id="@+id/add_To_Basket_number_add"
-            android:background="@drawable/bgr_button_food_detail"
+            android:background="@drawable/bg_btn_gree"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="16sp"

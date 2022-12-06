@@ -23,6 +23,8 @@ public class Adapter_QuanLy extends FragmentStateAdapter {
             case 1:
                 fragment =  Quan_Ly_San_Pham_Fragment.newInstance();
                 break;
+            case 2:
+                fragment = Fragment_KhuyenMai.newInstance();
         }
         return fragment;
     }
@@ -30,6 +32,6 @@ public class Adapter_QuanLy extends FragmentStateAdapter {
 
     @Override
     public int getItemCount() {
-        return 2;
+        return 3;
     }
 }

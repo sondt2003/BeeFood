@@ -35,26 +35,26 @@ public class HomeActivity extends AppCompatActivity {
         checkInternet();
         AnhXa();
 
-        Intent intent = getIntent();
+//        Intent intent = getIntent();
 
-        int activity_back = 0;
-        activity_back = intent.getIntExtra("key_back",0);
-        switch (activity_back){
-            case 0:
-                loadFragment(Fragment_home.newInstance());
-                break;
-            case 1:
-                loadFragment(OrdersFragment.newInstance());
-                break;
-            case 2:
-                loadFragment(History_Fragment.newInstance());
-                break;
-            case 3:
-                loadFragment(Profile_Fragment.newInstance());
-                break;
-        }
+//        int activity_back = 0;
+//        activity_back = intent.getIntExtra("key_back",0);
+//        switch (activity_back){
+//            case 0:
+//                loadFragment(Fragment_home.newInstance());
+//                break;
+//            case 1:
+//                loadFragment(OrdersFragment.newInstance());
+//                break;
+//            case 2:
+//                loadFragment(History_Fragment.newInstance());
+//                break;
+//            case 3:
+//                loadFragment(Profile_Fragment.newInstance());
+//                break;
+//        }
 
-
+        loadFragment(Fragment_home.newInstance());
 
         btnNavigation_home_ActionMenu_Main_layout.setOnItemSelectedListener(item -> {
             switch (item.getItemId()){
@@ -95,6 +95,7 @@ public class HomeActivity extends AppCompatActivity {
         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
+                finishAffinity();
                 System.exit(0);
             }
         });

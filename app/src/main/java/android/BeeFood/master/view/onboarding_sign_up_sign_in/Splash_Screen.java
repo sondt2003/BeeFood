@@ -17,6 +17,7 @@ public class Splash_Screen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
+
         FoodDao foodDao=new FoodDao();
         if(!foodDao.getEmail(getApplication()).isEmpty()){
             startActivity(new Intent(Splash_Screen.this, HomeActivity.class));

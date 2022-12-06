@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/cBg">
+
+    <TextView
+        android:id="@+id/layout_KhuyenMai_title"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:text="Add phiếu giảm giá"
+        android:textStyle="bold"
+        android:textSize="24sp"
+        android:gravity="center"
+        android:background="@drawable/bg_dialog_title"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layout_dialog_khuyenMai_soTienGiam"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:startIconDrawable="@drawable/ic_baseline_price_change_24"
+        android:layout_below="@+id/layout_KhuyenMai_title"
+        app:endIconMode="clear_text"
+        android:layout_marginTop="32dp"
+        app:hintEnabled="false">
+
+        <EditText
+            android:id="@+id/dialog_khuyenMai_soTienGiam"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:background="@drawable/bg_edt_login_noselect"
+            android:inputType="number"
+            android:hint="Số tiền giảm"
+            android:textSize="16sp"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layout_dialog_khuyenMai_Min"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:startIconDrawable="@drawable/ic_baseline_price_change_24"
+        android:layout_below="@+id/layout_dialog_khuyenMai_soTienGiam"
+        app:endIconMode="clear_text"
+        android:layout_marginTop="16dp"
+        app:hintEnabled="false">
+
+        <EditText
+            android:id="@+id/dialog_khuyenMai_Min"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:background="@drawable/bg_edt_login_noselect"
+            android:inputType="number"
+            android:hint="Min"
+            android:textSize="16sp"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layout_dialog_khuyenMai_Max"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:startIconDrawable="@drawable/ic_baseline_price_change_24"
+        android:layout_below="@+id/layout_dialog_khuyenMai_Min"
+        app:endIconMode="clear_text"
+        android:layout_marginTop="16dp"
+        app:hintEnabled="false">
+
+        <EditText
+            android:id="@+id/dialog_khuyenMai_Max"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:background="@drawable/bg_edt_login_noselect"
+            android:inputType="number"
+            android:hint="Max"
+            android:textSize="16sp"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layout_dialog_khuyenMai_soLuong"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:startIconDrawable="@drawable/ic_baseline_price_change_24"
+        android:layout_below="@+id/layout_dialog_khuyenMai_Max"
+        app:endIconMode="clear_text"
+        android:layout_marginTop="16dp"
+        app:hintEnabled="false">
+
+        <EditText
+            android:id="@+id/dialog_khuyenMai_soLuong"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:background="@drawable/bg_edt_login_noselect"
+            android:inputType="number"
+            android:hint="Số lượng"
+            android:textSize="16sp"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layout_dialog_khuyenMai_soLuong"
+        android:weightSum="2"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="16dp">
+
+        <Button
+            android:id="@+id/dialog_khuyenMai_cancel"
+            android:layout_width="0dp"
+            android:layout_height="52dp"
+            android:layout_weight="1"
+            android:layout_margin="8dp"
+            android:text="cancel"/>
+
+        <Button
+            android:id="@+id/dialog_khuyenMai_Add"
+            android:layout_width="0dp"
+            android:layout_height="52dp"
+            android:layout_weight="1"
+            android:layout_margin="8dp"
+            android:text="Add"/>
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>

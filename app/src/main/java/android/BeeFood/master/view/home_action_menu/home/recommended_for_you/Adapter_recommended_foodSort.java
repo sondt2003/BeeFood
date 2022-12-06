@@ -50,18 +50,16 @@ public class Adapter_recommended_foodSort extends RecyclerView.Adapter<Adapter_r
         loaiFood food = lis_food.get(position);
         if (food == null) return;
 
-            Glide.with(mContext).load(food.getUrl()).into(holder.img_foodAvt_item_sort_avt);
+        Glide.with(mContext).load(food.getUrl()).into(holder.img_foodAvt_item_sort_avt);
+        holder.tv_foodAvt_item_sort_name.setText(food.getNameloai());
 
-            holder.tv_foodAvt_item_sort_name.setText(food.getNameloai());
-
-            holder.itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    nameLoai = food.getNameloai();
-                }
-            });
-
-
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                nameLoai = food.getNameloai();
+                Toast.makeText(mContext, ""+ food.getNameloai(), Toast.LENGTH_SHORT).show();
+            }
+        });
 
 
     }

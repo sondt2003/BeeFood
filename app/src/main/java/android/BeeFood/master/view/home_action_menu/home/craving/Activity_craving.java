@@ -94,7 +94,7 @@ public class Activity_craving extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 if (document.getData().get("namefood").toString().trim().contains(nameFood)){
-                                    list.add(new Food(document.getData().get("namefood").toString(),
+                                    list.add(new Food(document.getId(),document.getData().get("namefood").toString(),
                                             document.getData().get("price").toString(),
                                             document.getData().get("address").toString(),
                                             document.getData().get("phonenumber").toString(),

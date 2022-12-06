@@ -20,6 +20,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -37,9 +38,11 @@ import com.google.firebase.storage.StorageReference;
 public class Profile_Fragment extends Fragment {
 
     ImageView avartar;
+    TextView tv_profile_name;
     Uri uri;
     String url_profile;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
+
 
     FirebaseStorage storage = FirebaseStorage.getInstance();
     StorageReference reference = storage.getReference();
@@ -72,6 +75,8 @@ public class Profile_Fragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        tv_profile_name = view.findViewById(R.id.profile_name);
 
         btnProfile = view.findViewById(R.id.profile_profileEdit_OnClick);
         btnProfile.setOnClickListener(new View.OnClickListener() {
@@ -130,6 +135,7 @@ public class Profile_Fragment extends Fragment {
                     public void onClick(DialogInterface dialogInterface, int i) {
                         Intent intent = new Intent(getActivity(), MainActivity.class);
                         startActivity(intent);
+                        getActivity().finishAffinity();
                     }
                 });
                 builder.setNegativeButton("No", null);
@@ -149,6 +155,7 @@ public class Profile_Fragment extends Fragment {
                                     if (email.equalsIgnoreCase(document.getData().get("email").toString())) {
                                         url_profile = document.getData().get("ImageUrl").toString();
                                         Glide.with(getActivity()).load(url_profile).into(avartar);
+                                        tv_profile_name.setText(document.getData().get("fullname").toString().trim());
                                     }
                                 } catch (Exception e) {
                                 }

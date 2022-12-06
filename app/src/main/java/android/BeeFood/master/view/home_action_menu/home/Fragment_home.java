@@ -122,8 +122,6 @@ public class Fragment_home extends Fragment implements View.OnClickListener {
         lis_food =  foodDao.getFood();
 
 
-        // bắt buộc 8 item - chuyền vào 7 item - không sửa item cuối
-
 
         db.collection("loaifood")
                 .get()
@@ -177,8 +175,9 @@ public class Fragment_home extends Fragment implements View.OnClickListener {
 
 
 //
-
+        adapter_recommended = new Adapter_Recommended(getContext());
         adapter_discount = new Adapter_Discount(getContext());
+
         db.collection("food")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -187,7 +186,7 @@ public class Fragment_home extends Fragment implements View.OnClickListener {
                         ArrayList<Food> list = new ArrayList<>();
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                list.add(new Food(document.getData().get("namefood").toString(),
+                                list.add(new Food(document.getId(),document.getData().get("namefood").toString(),
                                         document.getData().get("price").toString(),
                                         document.getData().get("address").toString(),
                                         document.getData().get("phonenumber").toString(),
@@ -199,6 +198,7 @@ public class Fragment_home extends Fragment implements View.OnClickListener {
                                 if (list.size() >= 5) break;
                             }
                             adapter_discount.setData(list);
+                            adapter_recommended.setData(list);
                         }
                     }
                 });
@@ -206,32 +206,6 @@ public class Fragment_home extends Fragment implements View.OnClickListener {
         LinearLayoutManager manager = new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false);
         recyclerView_home_ActionMenu_home_Discout.setLayoutManager(manager);
         recyclerView_home_ActionMenu_home_Discout.setAdapter(adapter_discount);
-
-
-        adapter_recommended = new Adapter_Recommended(getContext());
-        db.collection("food")
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            ArrayList<Food> list = new ArrayList<>();
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                list.add(new Food(document.getData().get("namefood").toString(),
-                                        document.getData().get("price").toString(),
-                                        document.getData().get("address").toString(),
-                                        document.getData().get("phonenumber").toString(),
-                                        document.getData().get("email").toString(),
-                                        "Chưa có id",
-                                        document.getData().get("tenloai").toString(),
-                                        document.getData().get("ImageUrl").toString(),
-                                        document.getData().get("describle").toString()));
-                                if (list.size() >= 5) break;
-                            }
-                            adapter_recommended.setData(list);
-                        }
-                    }
-                });
 
 
         LinearLayoutManager manager1 = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);

@@ -78,7 +78,7 @@
         <EditText
             android:id="@+id/home_ActionMenu_home_Craving"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="52dp"
             android:hint=" What are you craving ?"
             android:layout_marginTop="20dp"
             android:background="@drawable/home_edtcraving"
@@ -99,7 +99,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Special Offers"
-                style="@style/txtTieuDe" />
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"/>
 
             <TextView
                 android:id="@+id/home_ActionMenu_homeSpecial_seeAll"
@@ -143,7 +145,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Discount Guaranteed!"
-                style="@style/txtTieuDe"/>
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/home_ActionMenu_home_Discount"
@@ -164,7 +168,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Recommended for you"
-                style="@style/txtTieuDe"/>
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"/>
 
             <TextView
                 android:id="@+id/home_ActionMenu_homeRecommended_seeAll"

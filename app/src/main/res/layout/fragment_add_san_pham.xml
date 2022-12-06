@@ -9,7 +9,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_margin="16dp">
 
         <androidx.cardview.widget.CardView
@@ -103,7 +103,7 @@
                 android:layout_height="52dp"
                 android:hint="Phone number"
                 android:background="@drawable/bg_edt_login_noselect"
-                android:inputType="textPersonName"/>
+                android:inputType="phone" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
