@@ -115,10 +115,13 @@
         <activity
             android:name=".view.profile.profile_update.Profile_Update_Activity"
             android:exported="false" /> <!--  -->
+
+
         <!-- Food Detail -->
         <activity
             android:name=".view.food_details.Food_Detail_Discount"
-            android:exported="false">
+            android:exported="false"
+            android:parentActivityName=".view.food_details.Checkout_Oders">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />

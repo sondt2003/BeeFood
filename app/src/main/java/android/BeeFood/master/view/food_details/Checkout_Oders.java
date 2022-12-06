@@ -51,6 +51,8 @@ public class Checkout_Oders extends AppCompatActivity implements View.OnClickLis
 
         btn_checkout_Oders_AddItem.setOnClickListener(this);
         btn_checkout_Oders_PlaceOrder.setOnClickListener(this);
+        discount_checkout_Oders_discout_show.setOnClickListener(this);
+
 
     }
 
@@ -81,6 +83,7 @@ public class Checkout_Oders extends AppCompatActivity implements View.OnClickLis
         btn_checkout_Oders_AddItem = findViewById(R.id.checkout_Oders_AddItem);
 
         discount_checkout_Oders_discout_show = findViewById(R.id.checkout_Oders_discout_show);
+
 
 
     }

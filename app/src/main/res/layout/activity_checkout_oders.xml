@@ -162,7 +162,7 @@
                 android:layout_toRightOf="@id/layout_cardView_discout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Home"
+                android:text="Discount"
                 android:textStyle="bold"
                 android:textSize="18sp"
                 android:textColor="@color/black"

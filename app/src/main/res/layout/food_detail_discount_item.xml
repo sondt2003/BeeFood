@@ -31,7 +31,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/layout_cardView_item_discount"
-            android:layout_marginLeft="24dp"
+            android:layout_marginLeft="16dp"
             >
             <TextView
                 android:textSize="18sp"
@@ -40,7 +40,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Giảm: 10000 VNĐ"
-                android:layout_marginBottom="8dp"/>
+                android:layout_marginBottom="4dp"/>
             <TextView
                 android:layout_below="@+id/food_detail_discount_item_soTienGiam"
                 android:id="@+id/food_detail_discount_item_Min"
@@ -48,9 +48,7 @@
                 android:layout_height="wrap_content"
                 android:text="Min: 1000 VNĐ"/>
             <TextView
-                android:layout_marginLeft="16sp"
-                android:layout_below="@+id/food_detail_discount_item_soTienGiam"
-                android:layout_toRightOf="@id/food_detail_discount_item_Min"
+                android:layout_below="@+id/food_detail_discount_item_Min"
                 android:id="@+id/food_detail_discount_item_Max"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -60,6 +58,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
             >
             <TextView
                 android:id="@+id/food_detail_discount_item_soLuong"
