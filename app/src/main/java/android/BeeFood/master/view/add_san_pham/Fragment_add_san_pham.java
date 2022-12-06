@@ -195,38 +195,64 @@ public class Fragment_add_san_pham extends Fragment implements LocationListener 
                 } else {
                     String nameLoai =  spn_addSanPham_IDLoai.getSelectedItem().toString();
                     if (uri != null) {
-                        FoodDao foodDao = new FoodDao();
 
-                        StorageReference demoRef = reference.child(foodDao.getEmail(getActivity()) + "food.png");
-                        demoRef.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                            @Override
-                            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                                Toast.makeText(getActivity(), "Uploaded", Toast.LENGTH_SHORT).show();
-                                demoRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+
+                        db.collection("loaifood")
+                                .get()
+                                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                                     @Override
-                                    public void onSuccess(Uri DownloadUri) {
-                                        url_profile = DownloadUri.toString();
-                                        Log.i("SONDTPH", url_profile);
-                                        Toast.makeText(getActivity(), "CHECK:" + url_profile, Toast.LENGTH_SHORT).show();
-                                        Food food = new Food(edt_addSanPham_nameFood.getText().toString(),
-                                                edt_addSanPham_Price.getText().toString(),
-                                                edt_addSanPham_Address.getText().toString(),
-                                                edt_addSanPham_PhoneNumber.getText().toString(),
-                                                foodDao.getEmail(getActivity()),
-                                                nameLoai,
-                                                url_profile,
-                                                edt_addSanPham_moTa.getText().toString()
-                                        );
-                                        Toast.makeText(getActivity(), food.getIdloai()+"", Toast.LENGTH_SHORT).show();
-                                        boolean check = foodDao.AddDataFood(food, getActivity());
-                                        Toast.makeText(getActivity(), check + "", Toast.LENGTH_SHORT).show();
-                                        if (check) {
-                                            startActivity(new Intent(getActivity(), HomeActivity.class));
+                                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                        ArrayList<loaiFood> list = new ArrayList<>();
+
+                                        if (task.isSuccessful()) {
+                                            for (QueryDocumentSnapshot document : task.getResult()) {
+
+                                                try {
+                                                    list.add(new loaiFood(document.getId(), document.getData().get("ImageUrl").toString(), document.getData().get("NameLoai").toString()));
+                                                } catch (Exception e) {
+
+                                                }
+                                            }
+                                            //
+                                            FoodDao foodDao = new FoodDao();
+
+                                            StorageReference demoRef = reference.child(foodDao.getEmail(getActivity())+ "." + list.size() + "." + "food.png");
+                                            demoRef.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                                                @Override
+                                                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                                    Toast.makeText(getActivity(), "Uploaded", Toast.LENGTH_SHORT).show();
+                                                    demoRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                                        @Override
+                                                        public void onSuccess(Uri DownloadUri) {
+                                                            url_profile = DownloadUri.toString();
+                                                            Log.i("SONDTPH", url_profile);
+                                                            Toast.makeText(getActivity(), "CHECK:" + url_profile, Toast.LENGTH_SHORT).show();
+                                                            Food food = new Food(edt_addSanPham_nameFood.getText().toString(),
+                                                                    edt_addSanPham_Price.getText().toString(),
+                                                                    edt_addSanPham_Address.getText().toString(),
+                                                                    edt_addSanPham_PhoneNumber.getText().toString(),
+                                                                    foodDao.getEmail(getActivity()),
+                                                                    nameLoai,
+                                                                    url_profile,
+                                                                    edt_addSanPham_moTa.getText().toString()
+                                                            );
+                                                            Toast.makeText(getActivity(), food.getIdloai()+"", Toast.LENGTH_SHORT).show();
+                                                            boolean check = foodDao.AddDataFood(food, getActivity());
+                                                            Toast.makeText(getActivity(), check + "", Toast.LENGTH_SHORT).show();
+                                                            if (check) {
+                                                                startActivity(new Intent(getActivity(), HomeActivity.class));
+                                                            }
+                                                        }
+                                                    });
+                                                }
+                                            });
                                         }
+
                                     }
                                 });
-                            }
-                        });
+
+
+
                     } else {
                         Toast.makeText(getActivity(), "Vui lòng Chọn Ảnh Sản Phẩm", Toast.LENGTH_SHORT).show();
                     }

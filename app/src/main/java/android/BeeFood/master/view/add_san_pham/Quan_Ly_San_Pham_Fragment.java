@@ -87,14 +87,15 @@ public class Quan_Ly_San_Pham_Fragment extends Fragment {
 
                             }
                             mAdapter_qlsp.setData(list);
+                            LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
+                            recyclerView_Quan_Ly_San_Pham_RecyclerView.setLayoutManager(layoutManager);
+                            recyclerView_Quan_Ly_San_Pham_RecyclerView.setAdapter(mAdapter_qlsp);
                         }
                     }
                 });
 
 
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
-        recyclerView_Quan_Ly_San_Pham_RecyclerView.setLayoutManager(layoutManager);
-        recyclerView_Quan_Ly_San_Pham_RecyclerView.setAdapter(mAdapter_qlsp);
+
 
     }
 

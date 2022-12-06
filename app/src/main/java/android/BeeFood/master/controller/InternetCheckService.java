@@ -31,7 +31,7 @@ public class InternetCheckService extends BroadcastReceiver {
         View view = inflater.inflate(R.layout.dialog_isconnect_wifi, null);
         Button btnRetry = view.findViewById(R.id.btnRetry);
         builder.setView(view);
-        final Dialog dialog = builder.create();
+//        Dialog dialog = builder.create();
         btnRetry.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -45,7 +45,8 @@ public class InternetCheckService extends BroadcastReceiver {
             }
         });
         if (status.isEmpty() || status.equals("No internet")) {
-            dialog.show();
+//            dialog.show();
+            Toast.makeText(context, "No internet", Toast.LENGTH_SHORT).show();
         }
         Toast.makeText(context, status, Toast.LENGTH_SHORT).show();
     }

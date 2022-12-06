@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
     GoogleSignInAccount account;
     CallbackManager callbackManager;
     SharedPreferences sharedPreferences;
-    BroadcastReceiver  broadcastReceiver = new InternetCheckService(getApplication(),"MainActivity");
+    BroadcastReceiver  broadcastReceiver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,13 +89,15 @@ public class MainActivity extends AppCompatActivity {
         SetupsLogin();
         EventClick();
         createChannelNotification();
+
+        broadcastReceiver = new InternetCheckService(getApplication(),"MainActivity");
+
         callbackManager = CallbackManager.Factory.create();
         LoginManager.getInstance().registerCallback(callbackManager,
                 new FacebookCallback<LoginResult>() {
                     @Override
                     public void onSuccess(LoginResult loginResult) {
                         // App code
-
                     }
 
                     @Override
@@ -122,11 +124,12 @@ public class MainActivity extends AppCompatActivity {
         registerReceiver(broadcastReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
     }
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-        unregisterReceiver(broadcastReceiver);
-    }
+
+//    @Override
+//    protected void onPause() {
+//        super.onPause();
+//        unregisterReceiver(broadcastReceiver);
+//    }
 
     private void LayThongTinFb() {
         AccessToken accessToken = AccessToken.getCurrentAccessToken();

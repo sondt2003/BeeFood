@@ -14,6 +14,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 
 public class Adapter_QLSP extends RecyclerView.Adapter<Adapter_QLSP.UserViewHolder>{
@@ -39,7 +41,7 @@ public class Adapter_QLSP extends RecyclerView.Adapter<Adapter_QLSP.UserViewHold
             return;
         }
 
-
+        Glide.with(mContext).load(object.getUrl()).into(holder.img_qlsp_Item_avatar);
 //        holder.img_qlsp_Item_avatar.setImageResource(object.getAvt());
 //        holder.tv_qlsp_Item_name.setText(object.getName());
 //        holder.tv_qlsp_Item_loai.setText("Loại: "+object.getId_loai());

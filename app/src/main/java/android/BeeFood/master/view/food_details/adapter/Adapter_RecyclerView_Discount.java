@@ -46,15 +46,7 @@ public class Adapter_RecyclerView_Discount extends RecyclerView.Adapter<Adapter_
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                khuyenMai khuyenMai = new khuyenMai(object.getSoTienGiam(),object.getMin(),object.getMax(),object.getSoLuong());
-                Intent intent = new Intent(mContext, Checkout_Oders.class);
-                Bundle bundle = new Bundle();
-                bundle.putInt("checkVisible",1);
-                bundle.putString("soTienGiam",object.getSoTienGiam());
-                bundle.putString("min",object.getMin());
-                bundle.putString("max",object.getMax());
-                bundle.putString("soLuong",object.getSoLuong());
-                intent.putExtras(bundle);
+                Intent intent = new Intent(mContext,Checkout_Oders.class);
                 mContext.startActivity(intent);
 
             }

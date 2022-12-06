@@ -201,6 +201,7 @@ public class Activity_Recommended extends AppCompatActivity {
                                                         }
                                                     }
                                                 }
+
                                                 StorageReference demoRef = reference.child(email+"."+ list.size()+".loai.png");
                                                 demoRef.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                                                     @Override
