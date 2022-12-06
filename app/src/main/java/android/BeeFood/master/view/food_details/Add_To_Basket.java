@@ -32,7 +32,7 @@ public class Add_To_Basket extends AppCompatActivity implements View.OnClickList
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     private Toolbar toolbar_add_To_Basket_toolbar;
-    private ImageView img_add_To_Basket_banner;
+    private ImageView img_add_To_Basket_banner,img_add_To_Basket_addCart;
     private TextView tv_add_To_Basket_name, tv_add_To_Basket_description, tv_add_To_Basket_number, tv_add_To_Basket_vote, tv_add_To_Basket_reviews,
             tv_add_To_Basket_khoangCach, tv_add_To_Basket_soTien;
     private ImageButton btn_add_To_Basket_number_giam, btn_add_To_Basket_number_tang;
@@ -63,6 +63,8 @@ public class Add_To_Basket extends AppCompatActivity implements View.OnClickList
         btn_add_To_Basket_number_tang.setOnClickListener(this);
 
         tv_add_To_Basket_number.setText("" + count);
+
+        img_add_To_Basket_addCart.setOnClickListener(this);
 
         SharedPreferences sharedPref = Add_To_Basket.this.getSharedPreferences("USER", Context.MODE_PRIVATE);
         String email = sharedPref.getString("email", "");
@@ -104,7 +106,7 @@ public class Add_To_Basket extends AppCompatActivity implements View.OnClickList
         tv_add_To_Basket_name = findViewById(R.id.add_To_Basket_name);
         tv_add_To_Basket_description = findViewById(R.id.add_To_Basket_description);
         tv_add_To_Basket_number = findViewById(R.id.add_To_Basket_number);
-
+        img_add_To_Basket_addCart = findViewById(R.id.add_To_Basket_addCart);
 
         btn_add_To_Basket_number_giam = findViewById(R.id.add_To_Basket_number_giam);
         btn_add_To_Basket_number_tang = findViewById(R.id.add_To_Basket_number_tang);
@@ -173,7 +175,6 @@ public class Add_To_Basket extends AppCompatActivity implements View.OnClickList
                     count--;
                     tv_add_To_Basket_number.setText("" + count);
                 }
-
                 break;
         }
     }

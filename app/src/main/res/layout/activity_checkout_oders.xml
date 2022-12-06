@@ -265,7 +265,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
-                android:layout_marginBottom="80dp"
+                android:layout_marginBottom="96dp"
                 android:background="@drawable/bgr_item_checkout_oders"
                 android:orientation="vertical"
                 android:padding="24dp">
@@ -314,17 +314,43 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
-                        android:text="$24.00"
+                        android:text="$5.00"
                         android:textColor="@color/black"
                         android:textSize="16dp"
                         android:textStyle="bold" />
+
+                </RelativeLayout>
+                <RelativeLayout
+                    android:id="@+id/layout_discount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/layout_deliver_fee"
+                    android:padding="8dp">
+
+                    <TextView
+                        android:id="@+id/tv_discount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="Discount" />
+
+                    <TextView
+                        android:id="@+id/checkout_Oders_gia_discount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="- $7.00"
+                        android:textColor="@color/black"
+                        android:textSize="16dp"
+                        android:textStyle="bold" />
+
                 </RelativeLayout>
 
                 <TextView
                     android:id="@+id/line"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:layout_below="@id/layout_deliver_fee"
+                    android:layout_below="@id/layout_discount"
                     android:layout_marginTop="16dp"
                     android:layout_marginBottom="16dp"
                     android:background="#CCCCCC" />
@@ -334,7 +360,6 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/line"
                     android:padding="8dp">
-
                     <TextView
                         android:id="@+id/tv_Total"
                         android:layout_width="wrap_content"
@@ -348,7 +373,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
-                        android:text="$24.00"
+                        android:text="$22.00"
                         android:textColor="@color/black"
                         android:textSize="16dp"
                         android:textStyle="bold" />
@@ -365,7 +390,10 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:background="@color/cBg"
-        android:padding="10dp">
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="16dp">
 
         <android.widget.Button
             android:id="@+id/checkout_Oders_PlaceOrder"
