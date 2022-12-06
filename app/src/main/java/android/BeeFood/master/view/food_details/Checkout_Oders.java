@@ -88,7 +88,7 @@ public class Checkout_Oders extends AppCompatActivity implements View.OnClickLis
         tv_checkout_Oders_Min = findViewById(R.id.checkout_Oders_Min);
         tv_checkout_Oders_Max = findViewById(R.id.checkout_Oders_Max);
         tv_checkout_Oders_soLuong = findViewById(R.id.checkout_Oders_soLuong);
-        tv_checkout_Oders_home = findViewById(R.id.checkout_Oders_home);
+        tv_checkout_Oders_home = findViewById(R.id.checkout_Oders_Discount);
 
         btn_checkout_Oders_PlaceOrder = findViewById(R.id.checkout_Oders_PlaceOrder);
         btn_checkout_Oders_AddItem = findViewById(R.id.checkout_Oders_AddItem);

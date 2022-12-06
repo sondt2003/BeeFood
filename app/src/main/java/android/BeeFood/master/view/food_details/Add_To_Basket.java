@@ -153,8 +153,13 @@ public class Add_To_Basket extends AppCompatActivity implements View.OnClickList
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.add_To_Basket_number_add:
-                Intent intent = new Intent(Add_To_Basket.this, Checkout_Oders.class);
-                startActivity(intent);
+                if (Integer.parseInt(tv_add_To_Basket_number.getText().toString()) != 0){
+                    Intent intent = new Intent(Add_To_Basket.this, Checkout_Oders.class);
+                    startActivity(intent);
+                }
+                else {
+                    Toast.makeText(this, "Số lượng lớn hơn 0", Toast.LENGTH_SHORT).show();
+                }
                 break;
             case R.id.add_To_Basket_number_tang:
                 count++;

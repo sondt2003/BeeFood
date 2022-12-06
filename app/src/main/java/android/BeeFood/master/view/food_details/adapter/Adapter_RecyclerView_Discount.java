@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -46,9 +47,10 @@ public class Adapter_RecyclerView_Discount extends RecyclerView.Adapter<Adapter_
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                AppCompatActivity activity = new AppCompatActivity();
                 Intent intent = new Intent(mContext,Checkout_Oders.class);
+                activity.finish();
                 mContext.startActivity(intent);
-
             }
         });
     }
