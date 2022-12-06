@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="15dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginBottom="8dp"
+    android:layout_marginLeft="16dp"
+    android:layout_marginRight="16dp">
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="8dp">
+        <androidx.cardview.widget.CardView
+            android:layout_centerVertical="true"
+            android:id="@+id/layout_cardView_item_discount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="50dp">
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@color/cChinh"
+                android:padding="8dp"
+                android:src="@drawable/ic_baseline_local_offer_white_24" />
+        </androidx.cardview.widget.CardView>
+
+        <RelativeLayout
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/layout_cardView_item_discount"
+            android:layout_marginLeft="24dp"
+            >
+            <TextView
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:id="@+id/food_detail_discount_item_soTienGiam"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Giảm: 10000 VNĐ"
+                android:layout_marginBottom="8dp"/>
+            <TextView
+                android:layout_below="@+id/food_detail_discount_item_soTienGiam"
+                android:id="@+id/food_detail_discount_item_Min"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Min: 1000 VNĐ"/>
+            <TextView
+                android:layout_marginLeft="16sp"
+                android:layout_below="@+id/food_detail_discount_item_soTienGiam"
+                android:layout_toRightOf="@id/food_detail_discount_item_Min"
+                android:id="@+id/food_detail_discount_item_Max"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Max: 10000 VNĐ"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            >
+            <TextView
+                android:id="@+id/food_detail_discount_item_soLuong"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="3"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:layout_centerHorizontal="true"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Số lượng"
+                android:layout_below="@+id/food_detail_discount_item_soLuong" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+
+</androidx.cardview.widget.CardView>

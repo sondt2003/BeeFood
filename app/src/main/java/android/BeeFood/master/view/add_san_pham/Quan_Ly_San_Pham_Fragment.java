@@ -34,7 +34,6 @@ public class Quan_Ly_San_Pham_Fragment extends Fragment {
     private Adapter_QLSP mAdapter_qlsp;
 
 
-
     public Quan_Ly_San_Pham_Fragment() {
         // Required empty public constructor
     }
@@ -61,7 +60,7 @@ public class Quan_Ly_San_Pham_Fragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         anhXa(view);
-mArrayList.add(new Food("NAM","","","","","","","",""));
+//        mArrayList.add(new Food("NAM", "", "", "", "", "", "", "", ""));
         SharedPreferences sharedPref = getActivity().getSharedPreferences("USER", Context.MODE_PRIVATE);
         String email = sharedPref.getString("email", "");
 
@@ -74,7 +73,7 @@ mArrayList.add(new Food("NAM","","","","","","","",""));
                         if (task.isSuccessful()) {
                             ArrayList<Food> list = new ArrayList<>();
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                if (email.equals(document.getData().get("email").toString())){
+                                if (email.equals(document.getData().get("email").toString())) {
                                     list.add(new Food(document.getData().get("namefood").toString(),
                                             document.getData().get("price").toString(),
                                             document.getData().get("address").toString(),
@@ -93,7 +92,7 @@ mArrayList.add(new Food("NAM","","","","","","","",""));
                 });
 
 
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         recyclerView_Quan_Ly_San_Pham_RecyclerView.setLayoutManager(layoutManager);
         recyclerView_Quan_Ly_San_Pham_RecyclerView.setAdapter(mAdapter_qlsp);
 

@@ -11,7 +11,6 @@ public class khuyenMai {
         this.soLuong = soLuong;
     }
 
-
     public khuyenMai(String soTienGiam, String min, String max, String soLuong) {
         this.soTienGiam = soTienGiam;
         Min = min;

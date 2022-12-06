@@ -7,6 +7,7 @@ import android.BeeFood.master.view.food_details.Food_Details_Menu;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +24,7 @@ import java.util.ArrayList;
 
 public class Adapter_Recommended extends RecyclerView.Adapter<Adapter_Recommended.UserViewHolder>{
 
+    SharedPreferences sharedPreferences;
     private Context mContext;
     private ArrayList<Food> lis_recommended;
 

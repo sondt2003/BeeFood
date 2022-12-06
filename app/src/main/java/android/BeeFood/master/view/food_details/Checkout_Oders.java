@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -24,6 +25,7 @@ public class Checkout_Oders extends AppCompatActivity implements View.OnClickLis
     private TextView tv_checkout_Oders_address, tv_checkout_Oders_Subtotal_Money, tv_checkout_Oders_Delivery_Money, tv_checkout_Oders_Total_Money;
     private Button btn_checkout_Oders_PlaceOrder, btn_checkout_Oders_AddItem;
     private RecyclerView recyclerView_checkout_Oders_RecyclerView;
+    private RelativeLayout discount_checkout_Oders_discout_show;
 
     private Adapter_RecyclerView_CheckOut_OrderSummary adapter_recyclerView_checkOut_orderSummary;
     private ArrayList<Food> mArrayList = new ArrayList<>();
@@ -52,6 +54,17 @@ public class Checkout_Oders extends AppCompatActivity implements View.OnClickLis
 
     }
 
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+            default:
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     public void anhXa() {
 
@@ -67,6 +80,8 @@ public class Checkout_Oders extends AppCompatActivity implements View.OnClickLis
         btn_checkout_Oders_PlaceOrder = findViewById(R.id.checkout_Oders_PlaceOrder);
         btn_checkout_Oders_AddItem = findViewById(R.id.checkout_Oders_AddItem);
 
+        discount_checkout_Oders_discout_show = findViewById(R.id.checkout_Oders_discout_show);
+
 
     }
 
@@ -79,6 +94,10 @@ public class Checkout_Oders extends AppCompatActivity implements View.OnClickLis
             case R.id.checkout_Oders_AddItem:
                 Intent intent = new Intent(Checkout_Oders.this,Food_Details_Menu.class);
                 startActivity(intent);
+                break;
+            case R.id.checkout_Oders_discout_show:
+                Intent intent1 = new Intent(Checkout_Oders.this,Food_Detail_Discount.class);
+                startActivity(intent1);
                 break;
         }
     }

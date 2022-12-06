@@ -109,7 +109,6 @@ public class Add_To_Basket extends AppCompatActivity implements View.OnClickList
         btn_add_To_Basket_number_tang = findViewById(R.id.add_To_Basket_number_tang);
 
         btn_add_To_Basket_number_add = findViewById(R.id.add_To_Basket_number_add);
-
         btn_add_To_Basket_number_tang.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
@@ -117,17 +116,25 @@ public class Add_To_Basket extends AppCompatActivity implements View.OnClickList
                     @Override
                     public void run() {
                       try {
-                        count += 5;
-                        Thread.sleep(1000);
+                      while (true){
+                          count += 5;
+                          Log.i("SONDTPH",count+"");
+                          Thread.sleep(1000);
                           tv_add_To_Basket_number.setText("" + count);
+                          if(!btn_add_To_Basket_number_tang.isSelected()){
+                              break;
+                          }
+                      }
                       }catch (Exception e){
 
                       }
                     }
                 });
+                thread.run();
                 return false;
             }
         });
+
     }
 
     @Override
@@ -148,7 +155,6 @@ public class Add_To_Basket extends AppCompatActivity implements View.OnClickList
             case R.id.add_To_Basket_number_add:
                 Intent intent = new Intent(Add_To_Basket.this, Checkout_Oders.class);
                 startActivity(intent);
-                finish();
                 break;
             case R.id.add_To_Basket_number_tang:
                 count++;

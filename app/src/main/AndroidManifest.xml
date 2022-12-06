@@ -22,39 +22,36 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
 
-        <activity android:name=".view.home_action_menu.HomeActivity"
+        <activity
+            android:name=".view.home_action_menu.HomeActivity"
             android:exported="false">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
-        </activity>
-        
-        <activity android:name=".view.home_action_menu.home.craving.Activity_craving"
-            android:exported="false">
-        </activity>
-        <activity android:name=".view.home_action_menu.home.food.Activity_food"
-            android:exported="false">
-        </activity>
-        <activity android:name=".view.home_action_menu.home.more_category.Activity_MoreCategory"
-            android:exported="false">
-        </activity>
-        <activity android:name=".view.home_action_menu.home.mycart.Activity_MyCart"
-            android:exported="false">
-        </activity>
 
-        <activity android:name=".view.home_action_menu.home.recommended_for_you.Activity_Recommended"
-            android:exported="false">
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
-
-        <activity android:name=".view.home_action_menu.home.special_offers.Activity_Special_offers"
-            android:exported="false">
-        </activity>
-
+        <activity
+            android:name=".view.home_action_menu.home.craving.Activity_craving"
+            android:exported="false"></activity>
+        <activity
+            android:name=".view.home_action_menu.home.food.Activity_food"
+            android:exported="false"></activity>
+        <activity
+            android:name=".view.home_action_menu.home.more_category.Activity_MoreCategory"
+            android:exported="false"></activity>
+        <activity
+            android:name=".view.home_action_menu.home.mycart.Activity_MyCart"
+            android:exported="false"></activity>
+        <activity
+            android:name=".view.home_action_menu.home.recommended_for_you.Activity_Recommended"
+            android:exported="false"></activity>
+        <activity
+            android:name=".view.home_action_menu.home.special_offers.Activity_Special_offers"
+            android:exported="false"></activity>
         <activity
             android:name=".view.accountSetup.Screen_Pin_Code"
-            android:exported="false">
-        </activity>
+            android:exported="false"></activity>
         <activity
             android:name=".view.accountSetup.Screen_Recognition"
             android:exported="false" />
@@ -64,10 +61,11 @@
         <activity
             android:name=".view.accountSetup.Screen_Profile"
             android:exported="false">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
 
         <meta-data
@@ -78,66 +76,73 @@
             android:name=".view.accountSetup.MapsActivity"
             android:exported="false"
             android:label="" />
-        <activity android:name=".view.onboarding_sign_up_sign_in.Onboarding_Screen" android:exported="false"/>
-        <activity android:name=".view.onboarding_sign_up_sign_in.RegisterActivity" android:exported="false"/>
-
-        <activity android:name=".view.onboarding_sign_up_sign_in.Splash_Screen" android:exported="true">
+        <activity
+            android:name=".view.onboarding_sign_up_sign_in.Onboarding_Screen"
+            android:exported="false" />
+        <activity
+            android:name=".view.onboarding_sign_up_sign_in.RegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.onboarding_sign_up_sign_in.Splash_Screen"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".view.onboarding_sign_up_sign_in.MainActivity"
             android:exported="true">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
-        </activity>
-        <!--ac_Profile-->
-        <activity android:name=".view.profile.address.Address_Activity"
-            android:exported="false"/>
 
-        <activity android:name=".view.profile.security.Security_Activity"
-            android:exported="false"/>
-
-        <activity android:name=".view.profile.language.Language_Activity"
-            android:exported="false"/>
-
-        <activity android:name=".view.profile.notification.Notification_Activity"
-            android:exported="false"/>
-
-        <activity android:name=".view.profile.profile_update.Profile_Update_Activity"
-            android:exported="false"/>
-        <!--        -->
-
-<!--        Food Detail-->
-
-        <activity android:name=".view.food_details.Add_To_Basket"
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
+        </activity> <!-- ac_Profile -->
+        <activity
+            android:name=".view.profile.address.Address_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".view.profile.security.Security_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".view.profile.language.Language_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".view.profile.notification.Notification_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".view.profile.profile_update.Profile_Update_Activity"
+            android:exported="false" /> <!--  -->
+        <!-- Food Detail -->
+        <activity
+            android:name=".view.food_details.Food_Detail_Discount"
             android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
         </activity>
-
-        <activity android:name=".view.food_details.Food_Details_Menu"
+        <activity
+            android:name=".view.food_details.Add_To_Basket"
+            android:exported="false"></activity>
+        <activity
+            android:name=".view.food_details.Food_Details_Menu"
             android:exported="false"
-            android:parentActivityName=".view.food_details.Checkout_Oders">
-        </activity>
-
-        <activity android:name=".view.food_details.Checkout_Oders"
+            android:parentActivityName=".view.food_details.Checkout_Oders"></activity>
+        <activity
+            android:name=".view.food_details.Checkout_Oders"
             android:exported="false"
-            android:parentActivityName=".view.food_details.Add_To_Basket">
-        </activity>
-        <receiver android:name=".controller.InternetCheckService"
+            android:parentActivityName=".view.food_details.Add_To_Basket"></activity>
+
+        <receiver
+            android:name=".controller.InternetCheckService"
             android:exported="true">
             <intent-filter>
-                <action android:name="android.net.wifi.WIFI_STATE_CHANGED"/>
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+                <action android:name="android.net.wifi.WIFI_STATE_CHANGED" />
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
             </intent-filter>
-        </receiver>
-
-
-<!--        -->
-
+        </receiver> <!--  -->
         <service
             android:name=".controller.MyFirebaseMessagingService"
             android:exported="false">
@@ -171,10 +176,13 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
+
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
     </application>
+
 </manifest>
