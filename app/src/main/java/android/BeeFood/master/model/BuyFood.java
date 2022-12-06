@@ -13,6 +13,17 @@ public class BuyFood {
         this.status = status;
     }
 
+    public BuyFood(String idBuyFood, String idFood, String emailUser, String emailFood, String amountofood, String priceOderFood, String khoangcach, String status) {
+        this.idBuyFood = idBuyFood;
+        this.idFood = idFood;
+        this.emailUser = emailUser;
+        this.emailFood = emailFood;
+        this.amountofood = amountofood;
+        this.priceOderFood = priceOderFood;
+        this.khoangcach = khoangcach;
+        this.status = status;
+    }
+
     public String getIdBuyFood() {
         return idBuyFood;
     }

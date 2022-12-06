@@ -61,8 +61,6 @@ public class Checkout_Oders extends AppCompatActivity implements View.OnClickLis
 
 
 
-
-
         adapter_recyclerView_checkOut_orderSummary = new Adapter_RecyclerView_CheckOut_OrderSummary(Checkout_Oders.this);
         adapter_recyclerView_checkOut_orderSummary.setData(mArrayList);
 

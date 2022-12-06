@@ -56,49 +56,28 @@ public class BuyFoodDao {
         return true;
     }
 
-    public boolean updateFood(BuyFood buyFood, Context context, String email) {
-        Map<String, Object> BuyFoods = new HashMap<>();
-        BuyFoods.put("idfood", buyFood.getIdFood());
-        BuyFoods.put("emailuser", buyFood.getEmailUser());
-        BuyFoods.put("emailfood", buyFood.getEmailFood());
-        BuyFoods.put("amountofood", buyFood.getAmountofood());
-        BuyFoods.put("priceOderFood", buyFood.getPriceOderFood());
-        BuyFoods.put("khoangcach", buyFood.getKhoangcach());
-        BuyFoods.put("status", buyFood.getStatus());
-        db.collection("buyfood")
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+    public boolean updateFood(String status, Context context, String idBuyFood) {
+
+        DocumentReference washingtonRef = db.collection("buyfood").document(idBuyFood);
+        washingtonRef
+                .update("status", status)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                if (email.equalsIgnoreCase(document.getData().get("email").toString())) {
-                                    DocumentReference washingtonRef = db.collection("food").document(document.getId());
-                                    washingtonRef
-                                            .update(BuyFoods)
-                                            .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                                @Override
-                                                public void onSuccess(Void aVoid) {
-                                                    Toast.makeText(context, "Cập Nhật Thành Công", Toast.LENGTH_SHORT).show();
-                                                }
-                                            })
-                                            .addOnFailureListener(new OnFailureListener() {
-                                                @Override
-                                                public void onFailure(@NonNull Exception e) {
-                                                    Toast.makeText(context, "Cập Nhật Thất Bại", Toast.LENGTH_SHORT).show();
-                                                    return;
-                                                }
-                                            });
-                                }
-                            }
-                        }
+                    public void onSuccess(Void aVoid) {
+                        Toast.makeText(context, "Hủy thành công", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(context, "Hủy thất bại", Toast.LENGTH_SHORT).show();
                     }
                 });
         return true;
     }
 
     public void getBuyFood() {
-        db.collection("food")
+        db.collection("buyfood")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override

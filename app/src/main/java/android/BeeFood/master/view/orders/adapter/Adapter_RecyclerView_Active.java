@@ -1,24 +1,39 @@
 package android.BeeFood.master.view.orders.adapter;
 
 import android.BeeFood.master.R;
+import android.BeeFood.master.controller.Dao.BuyFoodDao;
+import android.BeeFood.master.model.BuyFood;
+import android.BeeFood.master.model.Food;
 import android.BeeFood.master.view.orders.model.Oders_Object;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 
 public class Adapter_RecyclerView_Active extends RecyclerView.Adapter<Adapter_RecyclerView_Active.UserViewHolder>{
 
     private Context mContext;
-    private ArrayList<Oders_Object> mArrayList;
+    private ArrayList<BuyFood> mArrayList;
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     public Adapter_RecyclerView_Active(Context mContext) {
         this.mContext = mContext;
@@ -34,19 +49,70 @@ public class Adapter_RecyclerView_Active extends RecyclerView.Adapter<Adapter_Re
 
     @Override
     public void onBindViewHolder(@NonNull UserViewHolder holder, int position) {
-        Oders_Object object = mArrayList.get(position);
-        if (object == null || object.getStatus() != 0){
-            return;
-        }
+        BuyFood object = mArrayList.get(position);
+        if (object == null) return;
 
-        holder.img_orders_item_active_avt.setImageResource(object.getAvt());
-        holder.tv_orders_item_active_name.setText(object.getName());
-        holder.tv_orders_item_active_soLuong.setText(object.getSoluong()+" items");
-        holder.tv_orders_item_active_KhoangCach.setText(object.getKhoang_Cach()+" km");
-        holder.tv_orders_item_active_GiaTien.setText("$"+object.getGiaTien());
+        db.collection("food")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        Food food = new Food();
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                if (object.getIdFood().equalsIgnoreCase(document.getId())){
+                                    food = new Food(document.getData().get("namefood").toString(),
+                                            document.getData().get("price").toString(),
+                                            document.getData().get("address").toString(),
+                                            document.getData().get("phonenumber").toString(),
+                                            document.getData().get("email").toString(),
+                                            "Chưa có id",
+                                            document.getData().get("tenloai").toString(),
+                                            document.getData().get("ImageUrl").toString(),
+                                            document.getData().get("describle").toString());
+                                }
+                            }
+                        }
+                        Glide.with(mContext).load(food.getUrl()).into(holder.img_orders_item_active_avt);
+                        holder.tv_orders_item_active_name.setText(food.getName());
+                    }
+                });
+
+
+        holder.tv_orders_item_active_soLuong.setText(object.getAmountofood()+" items");
+        holder.tv_orders_item_active_KhoangCach.setText(object.getKhoangcach()+" km");
+        holder.tv_orders_item_active_GiaTien.setText(object.getPriceOderFood() + " vnd");
+
+        holder.btn_orders_item_active_btn_Track.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(mContext, "Đang phát triển", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+        holder.btn_orders_item_active_btn_cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //
+                AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
+                builder.setTitle("Huỷ");
+                builder.setMessage("Bạn có chắc muốn hủy đơn ?");
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        BuyFoodDao buyFoodDao = new BuyFoodDao();
+                        buyFoodDao.updateFood("daHuy",mContext,object.getIdBuyFood());
+                    }
+                });
+                builder.setNegativeButton("No",null);
+                builder.show();
+
+            }
+        });
     }
 
-    public void setData(ArrayList<Oders_Object> mArrayList){
+    public void setData(ArrayList<BuyFood> mArrayList){
         this.mArrayList = mArrayList;
         notifyDataSetChanged();
     }

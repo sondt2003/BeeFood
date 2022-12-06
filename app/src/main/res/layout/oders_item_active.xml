@@ -134,7 +134,7 @@
                 android:text="Canel Order"
                 android:background="@drawable/completed_bgr_button_white"
                 android:layout_width="0dp"
-                android:layout_height="30dp"
+                android:layout_height="48dp"
                 android:layout_weight="1"/>
             <Button
                 android:id="@+id/orders_item_active_btn_Track"
@@ -144,7 +144,7 @@
                 android:text="Track Driver"
                 android:background="@drawable/completed_bgr_button_gree"
                 android:layout_width="0dp"
-                android:layout_height="30dp"
+                android:layout_height="48dp"
                 android:layout_weight="1"/>
         </LinearLayout>
     </RelativeLayout>
