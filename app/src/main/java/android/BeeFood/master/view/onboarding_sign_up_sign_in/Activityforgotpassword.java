@@ -43,8 +43,6 @@ public class Activityforgotpassword extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
-
-
         btn_forgotPassword_sand.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -84,6 +82,9 @@ public class Activityforgotpassword extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
                             Toast.makeText(Activityforgotpassword.this, "Email sent.", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(getApplication(),MainActivity.class);
+                            startActivity(intent);
+                            finish();
                         }
                     }
                 });
