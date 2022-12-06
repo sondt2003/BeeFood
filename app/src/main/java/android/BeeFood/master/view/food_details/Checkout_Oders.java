@@ -41,8 +41,6 @@ public class Checkout_Oders extends AppCompatActivity implements View.OnClickLis
         anhXa();
 
 
-
-
         setSupportActionBar(toolbar_checkout_Oders_Toolbar);
         getSupportActionBar().setTitle("Checkout Orders");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

@@ -22,7 +22,7 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".Activityforgotpassword"
+            android:name=".view.onboarding_sign_up_sign_in.Activityforgotpassword"
             android:exported="false" />
         <activity
             android:name=".view.home_action_menu.HomeActivity"

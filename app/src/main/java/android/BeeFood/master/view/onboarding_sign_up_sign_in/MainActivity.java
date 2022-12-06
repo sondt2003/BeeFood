@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
     GoogleSignInAccount account;
     CallbackManager callbackManager;
     SharedPreferences sharedPreferences;
-    TextView forgotPassword = findViewById(R.id.forgotPassword);
+    TextView forgotPassword;
     BroadcastReceiver  broadcastReceiver;
 
     @Override
@@ -254,6 +254,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void AnhXa() {
+        forgotPassword = findViewById(R.id.forgotPassword);
         img_login_exit = findViewById(R.id.login_exit);
         btnLoginFb = findViewById(R.id.btnFacebook);
         btnLoginGoogle = findViewById(R.id.btnGoogle);
