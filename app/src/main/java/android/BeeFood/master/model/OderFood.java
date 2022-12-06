@@ -1,11 +1,11 @@
 package android.BeeFood.master.model;
 
-public class OrdersFood {
-    String IDOderFood,IDFood,EmailUser,PriceOderFood,KhoangCach,soLuong,AddressFood,AddressUser;
+public class OderFood {
+    String idOderFood,idFood,emailUser,PriceOderFood,KhoangCach,soLuong,AddressFood,AddressUser;
 
-    public OrdersFood(String IDFood, String emailUser, String priceOderFood, String khoangCach, String soLuong, String addressFood, String addressUser) {
-        this.IDFood = IDFood;
-        EmailUser = emailUser;
+    public OderFood(String idFood, String emailUser, String priceOderFood, String khoangCach, String soLuong, String addressFood, String addressUser) {
+        this.idFood = idFood;
+        this.emailUser = emailUser;
         PriceOderFood = priceOderFood;
         KhoangCach = khoangCach;
         this.soLuong = soLuong;
@@ -13,31 +13,28 @@ public class OrdersFood {
         AddressUser = addressUser;
     }
 
-    public OrdersFood() {
+    public String getIdOderFood() {
+        return idOderFood;
     }
 
-    public String getIDOderFood() {
-        return IDOderFood;
+    public void setIdOderFood(String idOderFood) {
+        this.idOderFood = idOderFood;
     }
 
-    public void setIDOderFood(String IDOderFood) {
-        this.IDOderFood = IDOderFood;
+    public String getIdFood() {
+        return idFood;
     }
 
-    public String getIDFood() {
-        return IDFood;
-    }
-
-    public void setIDFood(String IDFood) {
-        this.IDFood = IDFood;
+    public void setIdFood(String idFood) {
+        this.idFood = idFood;
     }
 
     public String getEmailUser() {
-        return EmailUser;
+        return emailUser;
     }
 
     public void setEmailUser(String emailUser) {
-        EmailUser = emailUser;
+        this.emailUser = emailUser;
     }
 
     public String getPriceOderFood() {
