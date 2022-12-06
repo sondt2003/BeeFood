@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.BeeFood.master.R;
 import android.BeeFood.master.controller.Dao.BuyFoodDao;
+import android.BeeFood.master.model.BuyFood;
 import android.BeeFood.master.model.Food;
 import android.BeeFood.master.view.food_details.adapter.Adapter_RecyclerView_CheckOut_OrderSummary;
 import android.content.Context;
@@ -44,7 +45,7 @@ public class Checkout_Oders extends AppCompatActivity implements View.OnClickLis
     private ArrayList<Food> mArrayList = new ArrayList<>();
     private int checkDiscount = 0;
 
-
+    BuyFood buyFood;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +57,8 @@ public class Checkout_Oders extends AppCompatActivity implements View.OnClickLis
         setSupportActionBar(toolbar_checkout_Oders_Toolbar);
         getSupportActionBar().setTitle("Checkout Orders");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
 
 
 
@@ -80,6 +83,9 @@ public class Checkout_Oders extends AppCompatActivity implements View.OnClickLis
                         int soluongSP = intent.getIntExtra("key_soluongSP",0);
                         String idFood = intent.getStringExtra("key_idFood");
 
+                        SharedPreferences sharedPref = getApplication().getSharedPreferences("USER", Context.MODE_PRIVATE);
+                        String email = sharedPref.getString("email", "");
+
                         Food food = new Food();
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
@@ -94,18 +100,24 @@ public class Checkout_Oders extends AppCompatActivity implements View.OnClickLis
                                             document.getData().get("ImageUrl").toString(),
                                             document.getData().get("describle").toString());
                                 }
-
                             }
                         }
 
-                        //
                         try {
                             int priceFood = Integer.parseInt(food.getPrice());
                             long subtotal = (long) soluongSP * priceFood;
                             tv_checkout_Oders_Subtotal_Money.setText(subtotal + " vnd");
+
+                            buyFood = new BuyFood(idFood,email,food.getEmail(),soluongSP+"",subtotal+"",null,"chưa thanh toán");
+
                         }catch (Exception e){
 
                         }
+
+
+
+                        //
+
 
                     }
                 });
@@ -148,7 +160,6 @@ public class Checkout_Oders extends AppCompatActivity implements View.OnClickLis
         relativeLayout_checkout_Discount = findViewById(R.id.checkout_Discount);
 
 
-
     }
 
     @Override
@@ -156,7 +167,8 @@ public class Checkout_Oders extends AppCompatActivity implements View.OnClickLis
         switch (v.getId()) {
             case R.id.checkout_Oders_PlaceOrder:
                 BuyFoodDao buyFoodDao = new BuyFoodDao();
-//                buyFoodDao.AddBuyFood();
+                buyFoodDao.AddBuyFood(buyFood,this);
+                Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.checkout_Oders_AddItem:
                 Intent intent = new Intent(Checkout_Oders.this,Food_Details_Menu.class);
