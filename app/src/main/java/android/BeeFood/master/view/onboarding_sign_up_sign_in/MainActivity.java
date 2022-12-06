@@ -76,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
     GoogleSignInAccount account;
     CallbackManager callbackManager;
     SharedPreferences sharedPreferences;
+    TextView forgotPassword = findViewById(R.id.forgotPassword);
     BroadcastReceiver  broadcastReceiver;
 
     @Override
@@ -118,6 +119,13 @@ public class MainActivity extends AppCompatActivity {
 
         edtEmail.setText(email);
         edtPassWord.setText(pass);
+        forgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               startActivity(new Intent(MainActivity.this,Activityforgotpassword.class));
+            }
+        });
+
     }
 
     private void checkInternet() {

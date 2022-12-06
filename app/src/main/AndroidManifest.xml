@@ -21,7 +21,9 @@
         android:theme="@style/Theme.BeeFood"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
-
+        <activity
+            android:name=".Activityforgotpassword"
+            android:exported="false" />
         <activity
             android:name=".view.home_action_menu.HomeActivity"
             android:exported="false">
@@ -33,25 +35,25 @@
         </activity>
         <activity
             android:name=".view.home_action_menu.home.craving.Activity_craving"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".view.home_action_menu.home.food.Activity_food"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".view.home_action_menu.home.more_category.Activity_MoreCategory"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".view.home_action_menu.home.mycart.Activity_MyCart"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".view.home_action_menu.home.recommended_for_you.Activity_Recommended"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".view.home_action_menu.home.special_offers.Activity_Special_offers"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".view.accountSetup.Screen_Pin_Code"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".view.accountSetup.Screen_Recognition"
             android:exported="false" />
@@ -115,8 +117,6 @@
         <activity
             android:name=".view.profile.profile_update.Profile_Update_Activity"
             android:exported="false" /> <!--  -->
-
-
         <!-- Food Detail -->
         <activity
             android:name=".view.food_details.Food_Detail_Discount"
@@ -128,15 +128,15 @@
         </activity>
         <activity
             android:name=".view.food_details.Add_To_Basket"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".view.food_details.Food_Details_Menu"
             android:exported="false"
-            android:parentActivityName=".view.food_details.Checkout_Oders"></activity>
+            android:parentActivityName=".view.food_details.Checkout_Oders" />
         <activity
             android:name=".view.food_details.Checkout_Oders"
             android:exported="false"
-            android:parentActivityName=".view.food_details.Add_To_Basket"></activity>
+            android:parentActivityName=".view.food_details.Add_To_Basket" />
 
         <receiver
             android:name=".controller.InternetCheckService"

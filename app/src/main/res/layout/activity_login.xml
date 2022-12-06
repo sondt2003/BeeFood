@@ -77,10 +77,10 @@
         android:id="@+id/forgotPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Forgot Password ?"
         android:layout_below="@+id/layout_inputPassword"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="8dp" />
+        android:layout_marginTop="8dp"
+        android:text="Forgot Password ?" />
 
     <Button
         android:id="@+id/btnLoginEmail"
