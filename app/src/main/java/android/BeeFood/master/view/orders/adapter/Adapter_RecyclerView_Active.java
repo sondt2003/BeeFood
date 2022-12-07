@@ -36,6 +36,7 @@ public class Adapter_RecyclerView_Active extends RecyclerView.Adapter<Adapter_Re
     private ArrayList<BuyFood> mArrayList;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
+
     public Adapter_RecyclerView_Active(Context mContext) {
         this.mContext = mContext;
     }

@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.BeeFood.master.R;
+import android.widget.LinearLayout;
 
 import java.util.ArrayList;
 
@@ -23,7 +24,7 @@ public class Oders_Completed_Fragment extends Fragment {
     private RecyclerView recyclerView_fragment_orders_completed_recyclerView;
     private ArrayList<Oders_Object> mArrayList = new ArrayList<>();
     private Adapter_RecyclerView_Completed mAdapter_recyclerView_completed;
-
+    private LinearLayout empty_fragment_oder_completed_empty;
 
     public Oders_Completed_Fragment() {
         // Required empty public constructor
@@ -61,6 +62,7 @@ public class Oders_Completed_Fragment extends Fragment {
     }
 
     public void anhXa(View view) {
+        empty_fragment_oder_completed_empty = view.findViewById(R.id.fragment_oder_completed_empty);
         recyclerView_fragment_orders_completed_recyclerView = view.findViewById(R.id.fragment_orders_completed_recyclerView);
     }
 }

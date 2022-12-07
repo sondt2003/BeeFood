@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.BeeFood.master.R;
+import android.widget.LinearLayout;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -31,6 +32,7 @@ public class Oders_Cancelled_Fragment extends Fragment {
     private RecyclerView recyclerView_fragment_orders_cancelled_recyclerView;
     private ArrayList<BuyFood> mArrayList = new ArrayList<>();
     private Adapter_RecyclerView_Cancelled mAdapter_recyclerView_cancelled;
+    private LinearLayout empty_fragment_oder_cancelled_empty;
 
 
     public Oders_Cancelled_Fragment() {
@@ -84,22 +86,22 @@ public class Oders_Cancelled_Fragment extends Fragment {
                             }
                         }
                         mAdapter_recyclerView_cancelled.setData(list);
-
                         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false);
                         recyclerView_fragment_orders_cancelled_recyclerView.setLayoutManager(layoutManager);
                         recyclerView_fragment_orders_cancelled_recyclerView.setAdapter(mAdapter_recyclerView_cancelled);
 
-//                        if (list.isEmpty()){
-//                            empty_fragment_oder_active_empty.setVisibility(View.VISIBLE);
-//                        }else{
-//                            empty_fragment_oder_active_empty.setVisibility(View.INVISIBLE);
-//                        }
+                        if (list.isEmpty()){
+                            empty_fragment_oder_cancelled_empty.setVisibility(View.VISIBLE);
+                        }else{
+                            empty_fragment_oder_cancelled_empty.setVisibility(View.INVISIBLE);
+                        }
                     }
                 });
 
     }
 
     public void anhXa(View view) {
+        empty_fragment_oder_cancelled_empty = view.findViewById(R.id.fragment_oder_cancelled_empty);
         recyclerView_fragment_orders_cancelled_recyclerView = view.findViewById(R.id.fragment_orders_cancelled_recyclerView);
     }
 }
