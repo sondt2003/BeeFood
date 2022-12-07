@@ -78,8 +78,9 @@ public class Adapter_RecyclerView_Cancelled extends RecyclerView.Adapter<Adapter
         holder.tv_orders_item_cancelled_soLuong.setText(object.getAmountofood()+" items");
         holder.tv_orders_item_cancelled_KhoangCach.setText(object.getKhoangcach()+" km");
         holder.tv_orders_item_cancelled_GiaTien.setText(object.getPriceOderFood() + " vnd");
-        holder.tv_orders_item_cancelled_status.setText(object.getStatus());
-
+        if (object.getStatus().trim().equalsIgnoreCase("daHuy")){
+            holder.tv_orders_item_cancelled_status.setText("Cancelled");
+        }
 
 
     }

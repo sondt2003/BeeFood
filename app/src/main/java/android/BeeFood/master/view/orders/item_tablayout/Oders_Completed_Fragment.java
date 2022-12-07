@@ -1,5 +1,6 @@
 package android.BeeFood.master.view.orders.item_tablayout;
 
+import android.BeeFood.master.model.BuyFood;
 import android.BeeFood.master.view.orders.adapter.Adapter_RecyclerView_Completed;
 import android.BeeFood.master.view.orders.model.Oders_Object;
 import android.os.Bundle;
@@ -16,13 +17,19 @@ import android.view.ViewGroup;
 import android.BeeFood.master.R;
 import android.widget.LinearLayout;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
 import java.util.ArrayList;
 
 
 public class Oders_Completed_Fragment extends Fragment {
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     private RecyclerView recyclerView_fragment_orders_completed_recyclerView;
-    private ArrayList<Oders_Object> mArrayList = new ArrayList<>();
     private Adapter_RecyclerView_Completed mAdapter_recyclerView_completed;
     private LinearLayout empty_fragment_oder_completed_empty;
 
@@ -54,11 +61,42 @@ public class Oders_Completed_Fragment extends Fragment {
         anhXa(view);
 
         mAdapter_recyclerView_completed = new Adapter_RecyclerView_Completed(getActivity());
-        mAdapter_recyclerView_completed.setData(mArrayList);
+        db.collection("buyfood")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        ArrayList<BuyFood> list = new ArrayList<>();
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                if(document.getData().get("status").toString().equalsIgnoreCase("thanhCong")){
+                                    list.add(new BuyFood(
+                                            document.getId(),
+                                            document.getData().get("idfood").toString(),
+                                            document.getData().get("emailuser").toString(),
+                                            document.getData().get("emailfood").toString(),
+                                            document.getData().get("amountofood").toString(),
+                                            document.getData().get("priceOderFood").toString(),
+                                            "1.8",  //chưa có khoảng cách
+                                            document.getData().get("status").toString()));
+                                }
 
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false);
-        recyclerView_fragment_orders_completed_recyclerView.setLayoutManager(layoutManager);
-        recyclerView_fragment_orders_completed_recyclerView.setAdapter(mAdapter_recyclerView_completed);
+                            }
+                        }
+                        mAdapter_recyclerView_completed.setData(list);
+
+                        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false);
+                        recyclerView_fragment_orders_completed_recyclerView.setLayoutManager(layoutManager);
+                        recyclerView_fragment_orders_completed_recyclerView.setAdapter(mAdapter_recyclerView_completed);
+
+                        if (list.isEmpty()){
+                            empty_fragment_oder_completed_empty.setVisibility(View.VISIBLE);
+                        }else{
+                            empty_fragment_oder_completed_empty.setVisibility(View.INVISIBLE);
+                        }
+                    }
+                });
+
     }
 
     public void anhXa(View view) {

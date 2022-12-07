@@ -2,7 +2,9 @@ package android.BeeFood.master.controller.Dao;
 
 import android.BeeFood.master.model.BuyFood;
 import android.BeeFood.master.model.Food;
+import android.BeeFood.master.view.home_action_menu.HomeActivity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.util.Log;
 import android.widget.Toast;
@@ -45,6 +47,9 @@ public class BuyFoodDao {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
                         Toast.makeText(context, "Mua Sản Phẩm Thành Công", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(context, HomeActivity.class);
+                        intent.putExtra("key_back",1);
+                        context.startActivity(intent);
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {

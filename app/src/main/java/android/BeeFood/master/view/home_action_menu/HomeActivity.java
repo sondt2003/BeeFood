@@ -14,6 +14,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -35,24 +36,6 @@ public class HomeActivity extends AppCompatActivity {
         checkInternet();
         AnhXa();
 
-//        Intent intent = getIntent();
-
-//        int activity_back = 0;
-//        activity_back = intent.getIntExtra("key_back",0);
-//        switch (activity_back){
-//            case 0:
-//                loadFragment(Fragment_home.newInstance());
-//                break;
-//            case 1:
-//                loadFragment(OrdersFragment.newInstance());
-//                break;
-//            case 2:
-//                loadFragment(History_Fragment.newInstance());
-//                break;
-//            case 3:
-//                loadFragment(Profile_Fragment.newInstance());
-//                break;
-//        }
 
         loadFragment(Fragment_home.newInstance());
 
@@ -116,4 +99,27 @@ public class HomeActivity extends AppCompatActivity {
 //        super.onPause();
 //        unregisterReceiver(broadcastReceiver);
 //    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        Intent intent = getIntent();
+        int activity_back = intent.getIntExtra("key_back",0);
+        switch (activity_back){
+            case 0:
+                loadFragment(Fragment_home.newInstance());
+                break;
+            case 1:
+                loadFragment(OrdersFragment.newInstance());
+                break;
+            case 2:
+                loadFragment(History_Fragment.newInstance());
+                break;
+            case 3:
+                loadFragment(Profile_Fragment.newInstance());
+                break;
+        }
+    }
 }

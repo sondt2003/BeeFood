@@ -62,6 +62,13 @@ public class Oders_Cancelled_Fragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         anhXa(view);
 
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
         mAdapter_recyclerView_cancelled = new Adapter_RecyclerView_Cancelled(getActivity());
         db.collection("buyfood")
                 .get()
