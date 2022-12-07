@@ -7,72 +7,82 @@
     android:background="@color/cBg"
     tools:context=".view.food_details.Food_Details_Menu">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/Food_Detail_Menu_Toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize" />
-
-    <LinearLayout
-        android:id="@+id/Food_Detail_Menu_detail"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/Food_Detail_Menu_Toolbar"
-        android:orientation="vertical">
-
+>
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="16dp">
+            android:layout_height="wrap_content">
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/Food_Detail_Menu_Toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize" />
 
-            <TextView
-                android:id="@+id/for_you"
+            <LinearLayout
+                android:id="@+id/Food_Detail_Menu_detail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="For You"
-                android:textColor="@color/black"
-                android:textSize="24sp"
-                android:textStyle="bold" />
+                android:layout_below="@id/Food_Detail_Menu_Toolbar"
+                android:orientation="vertical">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerView_Food_Detail_Menu_forYou"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/for_you" />
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp">
 
-            <TextView
-                android:id="@+id/menu"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/recyclerView_Food_Detail_Menu_forYou"
-                android:text="Menu"
-                android:textColor="@color/black"
-                android:textSize="24sp"
-                android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/for_you"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="For You"
+                        android:textColor="@color/black"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerView_Food_Detail_Menu_menu"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/menu" />
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerView_Food_Detail_Menu_forYou"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/for_you" />
 
-            <TextView
-                android:id="@+id/drink"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/recyclerView_Food_Detail_Menu_menu"
-                android:text="Drink"
-                android:textColor="@color/black"
-                android:textSize="24sp"
-                android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/menu"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/recyclerView_Food_Detail_Menu_forYou"
+                        android:text="Menu"
+                        android:textColor="@color/black"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerView_Food_Detail_Menu_drink"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/drink" />
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerView_Food_Detail_Menu_menu"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/menu" />
 
+                    <TextView
+                        android:id="@+id/drink"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/recyclerView_Food_Detail_Menu_menu"
+                        android:text="Drink"
+                        android:textColor="@color/black"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerView_Food_Detail_Menu_drink"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/drink"
+                        android:layout_marginBottom="96dp"/>
+
+                </RelativeLayout>
+            </LinearLayout>
         </RelativeLayout>
-    </LinearLayout>
+    </ScrollView>
 
     <LinearLayout
         android:id="@+id/layout_btn_basket"
@@ -82,7 +92,7 @@
         android:paddingLeft="8dp"
         android:paddingRight="8dp"
         android:paddingTop="8dp"
-        android:paddingBottom="16dp"
+        android:paddingBottom="24dp"
         android:background="@color/white">
 
         <android.widget.Button

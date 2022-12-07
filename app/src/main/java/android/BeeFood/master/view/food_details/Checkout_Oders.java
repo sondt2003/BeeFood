@@ -36,7 +36,7 @@ public class Checkout_Oders extends AppCompatActivity implements View.OnClickLis
 
     private Toolbar toolbar_checkout_Oders_Toolbar;
     private TextView tv_checkout_Oders_address, tv_checkout_Oders_Subtotal_Money, tv_checkout_Oders_Delivery_Money, tv_checkout_Oders_Total_Money,
-    tv_checkout_Oders_soTienGiam,tv_checkout_Oders_Min,tv_checkout_Oders_Max,tv_checkout_Oders_soLuong,tv_checkout_Oders_home;
+    tv_checkout_Oders_soTienGiam,tv_checkout_Oders_Min,tv_checkout_Oders_Max,tv_checkout_Oders_soLuong,tv_checkout_Oders_home,tv_checkout_Oders_gia_discount;
     private Button btn_checkout_Oders_PlaceOrder, btn_checkout_Oders_AddItem;
     private RecyclerView recyclerView_checkout_Oders_RecyclerView;
     private RelativeLayout discount_checkout_Oders_discout_show,relativeLayout_checkout_Discount;
@@ -150,6 +150,7 @@ public class Checkout_Oders extends AppCompatActivity implements View.OnClickLis
         tv_checkout_Oders_Max = findViewById(R.id.checkout_Oders_Max);
         tv_checkout_Oders_soLuong = findViewById(R.id.checkout_Oders_soLuong);
         tv_checkout_Oders_home = findViewById(R.id.checkout_Oders_Discount);
+        tv_checkout_Oders_gia_discount =findViewById(R.id.checkout_Oders_gia_discount);
 
         btn_checkout_Oders_PlaceOrder = findViewById(R.id.checkout_Oders_PlaceOrder);
         btn_checkout_Oders_AddItem = findViewById(R.id.checkout_Oders_AddItem);

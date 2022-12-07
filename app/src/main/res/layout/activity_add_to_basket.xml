@@ -343,7 +343,7 @@
         android:paddingLeft="8dp"
         android:paddingRight="8dp"
         android:paddingTop="8dp"
-        android:paddingBottom="16dp"
+        android:paddingBottom="24dp"
         android:weightSum="10">
        <ImageView
            android:id="@+id/add_To_Basket_addCart"
