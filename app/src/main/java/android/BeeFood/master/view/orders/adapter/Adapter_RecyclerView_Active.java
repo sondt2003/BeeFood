@@ -8,6 +8,7 @@ import android.BeeFood.master.view.orders.model.Oders_Object;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -53,7 +54,6 @@ public class Adapter_RecyclerView_Active extends RecyclerView.Adapter<Adapter_Re
     public void onBindViewHolder(@NonNull UserViewHolder holder, int position) {
         BuyFood object = mArrayList.get(position);
         if (object == null) return;
-
         db.collection("food")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -167,7 +167,6 @@ public class Adapter_RecyclerView_Active extends RecyclerView.Adapter<Adapter_Re
             tv_orders_item_active_status = itemView.findViewById(R.id.orders_item_active_status);
             btn_orders_item_active_btn_cancel = itemView.findViewById(R.id.orders_item_active_btn_cancel);
             btn_orders_item_active_btn_Track = itemView.findViewById(R.id.orders_item_active_btn_Track);
-
 
         }
     }

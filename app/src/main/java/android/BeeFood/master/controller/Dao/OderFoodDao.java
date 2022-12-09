@@ -32,12 +32,10 @@ public class OderFoodDao {
     public boolean AddBuyFood(OderFood oderFood, Context context) {
         Map<String, Object> oderFoods = new HashMap<>();
         oderFoods.put("idfood", oderFood.getIdFood());
-        oderFoods.put("emailuser", oderFood.getEmailUser());
+        oderFoods.put("emailfood", oderFood.getEmailFood());
         oderFoods.put("priceoderfood", oderFood.getPriceOderFood());
-        oderFoods.put("khoangcach", oderFood.getKhoangCach());
-        oderFoods.put("soluong", oderFood.getPriceOderFood());
-        oderFoods.put("addressfood", oderFood.getAddressFood());
-        oderFoods.put("addressuser", oderFood.getAddressUser());
+        oderFoods.put("khoangcach", oderFood.getKhoangcach());
+        oderFoods.put("soluong", oderFood.getAmountoffood());
         db.collection("oderfood")
                 .add(oderFoods)
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
@@ -58,12 +56,10 @@ public class OderFoodDao {
     public boolean updateFood(OderFood oderFood, Context context, String email) {
         Map<String, Object> oderFoods = new HashMap<>();
         oderFoods.put("idfood", oderFood.getIdFood());
-        oderFoods.put("emailuser", oderFood.getEmailUser());
+        oderFoods.put("emailfood", oderFood.getEmailFood());
         oderFoods.put("priceoderfood", oderFood.getPriceOderFood());
-        oderFoods.put("khoangcach", oderFood.getKhoangCach());
-        oderFoods.put("soluong", oderFood.getPriceOderFood());
-        oderFoods.put("addressfood", oderFood.getAddressFood());
-        oderFoods.put("addressuser", oderFood.getAddressUser());
+        oderFoods.put("khoangcach", oderFood.getKhoangcach());
+        oderFoods.put("soluong", oderFood.getAmountoffood());
         db.collection("oderfood")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -107,12 +103,10 @@ public class OderFoodDao {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 oderFoods.add(new OderFood(
                                         document.getData().get("idfood").toString(),
-                                        document.getData().get("emailuser").toString(),
+                                        document.getData().get("emailfood").toString(),
                                         document.getData().get("priceoderfood").toString(),
                                         document.getData().get("khoangcach").toString(),
-                                        document.getData().get("soluong").toString(),
-                                        document.getData().get("addressfood").toString(),
-                                        document.getData().get("addressuser").toString()));
+                                        document.getData().get("soluong").toString()));
                             }
                         }
                     }

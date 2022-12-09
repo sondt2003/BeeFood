@@ -206,7 +206,6 @@ public class Fragment_add_san_pham extends Fragment implements LocationListener 
 
                                         if (task.isSuccessful()) {
                                             for (QueryDocumentSnapshot document : task.getResult()) {
-
                                                 try {
                                                     list.add(new loaiFood(document.getId(), document.getData().get("ImageUrl").toString(), document.getData().get("NameLoai").toString()));
                                                 } catch (Exception e) {

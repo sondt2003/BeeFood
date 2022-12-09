@@ -59,7 +59,7 @@ public class Adapter_Discount extends RecyclerView.Adapter<Adapter_Discount.User
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(mContext, Add_To_Basket.class);
-                intent.putExtra("key_id_food",discount.getId());
+                intent.putExtra("key_idFood",discount.getId());
                 mContext.startActivity(intent);
             }
         });
@@ -78,7 +78,6 @@ public class Adapter_Discount extends RecyclerView.Adapter<Adapter_Discount.User
 
         public UserViewHolder(@NonNull View itemView) {
             super(itemView);
-
             img_item_home_ActionMenu_discount_avt = itemView.findViewById(R.id.item_home_ActionMenu_discount_avt);
             tv_item_home_ActionMenu_discount_name = itemView.findViewById(R.id.item_home_ActionMenu_discount_name);
             tv_item_home_ActionMenu_discount_khoangCach = itemView.findViewById(R.id.item_home_ActionMenu_discount_khoangCach);

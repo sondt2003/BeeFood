@@ -1,6 +1,8 @@
 package android.BeeFood.master.view.home_action_menu.home.mycart;
 
 import android.BeeFood.master.R;
+import android.BeeFood.master.model.Food;
+import android.BeeFood.master.model.OderFood;
 import android.BeeFood.master.view.object.MyCart;
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -14,18 +16,26 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
 import java.util.ArrayList;
 
 public class Adapter_MyCart extends RecyclerView.Adapter<Adapter_MyCart.UserViewHolder>{
 
     private Context mContext;
-    private ArrayList<MyCart> lis_Cart;
+    private ArrayList<OderFood> lis_Cart;
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     public Adapter_MyCart(Context mContext) {
         this.mContext = mContext;
     }
 
-    public void setData(ArrayList<MyCart> lis_Cart){
+    public void setData(ArrayList<OderFood> lis_Cart){
         this.lis_Cart = lis_Cart;
         notifyDataSetChanged();
     }
@@ -40,19 +50,41 @@ public class Adapter_MyCart extends RecyclerView.Adapter<Adapter_MyCart.UserView
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull UserViewHolder holder, int position) {
-        MyCart myCart = lis_Cart.get(position);
+        OderFood myCart = lis_Cart.get(position);
         if (myCart == null) return;
 
-        holder.img_item_home_ActionMenu_MyCart_avt.setImageResource(myCart.getAvt());
-        holder.tv_item_home_ActionMenu_MyCart_name.setText(myCart.getName());
-        holder.tv_item_home_ActionMenu_MyCart_countItem.setText(myCart.getCoutItem() + " item");
-        holder.tv_item_home_ActionMenu_MyCart_khoangCach.setText(myCart.getKhoangCach() + " km");
-        holder.tv_item_home_ActionMenu_MyCart_tongGia.setText("$"+myCart.getTongGia());
-
+        db.collection("food")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        Food food = new Food();
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                if (myCart.getIdFood().equalsIgnoreCase(document.getId())){
+                                    food = new Food(document.getData().get("namefood").toString(),
+                                            document.getData().get("price").toString(),
+                                            document.getData().get("address").toString(),
+                                            document.getData().get("phonenumber").toString(),
+                                            document.getData().get("email").toString(),
+                                            "Chưa có id",
+                                            document.getData().get("tenloai").toString(),
+                                            document.getData().get("ImageUrl").toString(),
+                                            document.getData().get("describle").toString());
+                                }
+                            }
+                        }
+                        Glide.with(mContext).load(food.getUrl()).into(holder.img_item_home_ActionMenu_MyCart_avt);
+                        holder.tv_item_home_ActionMenu_MyCart_name.setText(food.getName());
+                    }
+                });
+        holder.tv_item_home_ActionMenu_MyCart_khoangCach.setText(myCart.getKhoangcach() + " km");
+        holder.tv_item_home_ActionMenu_MyCart_tongGia.setText(myCart.getPriceOderFood()+"$");
+        holder.tv_item_home_ActionMenu_MyCart_countItem.setText("Số Lượng:"+myCart.getAmountoffood());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(mContext, myCart.getName(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext, myCart.getIdFood(), Toast.LENGTH_SHORT).show();
             }
         });
     }
