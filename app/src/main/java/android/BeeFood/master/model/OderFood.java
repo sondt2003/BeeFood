@@ -1,16 +1,23 @@
 package android.BeeFood.master.model;
 
 public class OderFood {
-    String idOderFood,idFood,emailUser,PriceOderFood,KhoangCach,soLuong,AddressFood,AddressUser;
+    String idOderFood,idFood,emailFood,priceOderFood,amountoffood,khoangcach;
 
-    public OderFood(String idFood, String emailUser, String priceOderFood, String khoangCach, String soLuong, String addressFood, String addressUser) {
+    public OderFood(String idOderFood, String idFood, String emailFood, String priceOderFood, String amountoffood, String khoangcach) {
+        this.idOderFood = idOderFood;
         this.idFood = idFood;
-        this.emailUser = emailUser;
-        PriceOderFood = priceOderFood;
-        KhoangCach = khoangCach;
-        this.soLuong = soLuong;
-        AddressFood = addressFood;
-        AddressUser = addressUser;
+        this.emailFood = emailFood;
+        this.priceOderFood = priceOderFood;
+        this.amountoffood = amountoffood;
+        this.khoangcach = khoangcach;
+    }
+
+    public OderFood(String idFood, String emailFood, String priceOderFood, String amountoffood, String khoangcach) {
+        this.idFood = idFood;
+        this.emailFood = emailFood;
+        this.priceOderFood = priceOderFood;
+        this.amountoffood = amountoffood;
+        this.khoangcach = khoangcach;
     }
 
     public String getIdOderFood() {
@@ -29,51 +36,35 @@ public class OderFood {
         this.idFood = idFood;
     }
 
-    public String getEmailUser() {
-        return emailUser;
+    public String getEmailFood() {
+        return emailFood;
     }
 
-    public void setEmailUser(String emailUser) {
-        this.emailUser = emailUser;
+    public void setEmailFood(String emailFood) {
+        this.emailFood = emailFood;
     }
 
     public String getPriceOderFood() {
-        return PriceOderFood;
+        return priceOderFood;
     }
 
     public void setPriceOderFood(String priceOderFood) {
-        PriceOderFood = priceOderFood;
+        this.priceOderFood = priceOderFood;
     }
 
-    public String getKhoangCach() {
-        return KhoangCach;
+    public String getAmountoffood() {
+        return amountoffood;
     }
 
-    public void setKhoangCach(String khoangCach) {
-        KhoangCach = khoangCach;
+    public void setAmountoffood(String amountoffood) {
+        this.amountoffood = amountoffood;
     }
 
-    public String getSoLuong() {
-        return soLuong;
+    public String getKhoangcach() {
+        return khoangcach;
     }
 
-    public void setSoLuong(String soLuong) {
-        this.soLuong = soLuong;
-    }
-
-    public String getAddressFood() {
-        return AddressFood;
-    }
-
-    public void setAddressFood(String addressFood) {
-        AddressFood = addressFood;
-    }
-
-    public String getAddressUser() {
-        return AddressUser;
-    }
-
-    public void setAddressUser(String addressUser) {
-        AddressUser = addressUser;
+    public void setKhoangcach(String khoangcach) {
+        this.khoangcach = khoangcach;
     }
 }

@@ -62,7 +62,6 @@ public class BuyFoodDao {
     }
 
     public boolean updateFood(String status, Context context, String idBuyFood) {
-
         DocumentReference washingtonRef = db.collection("buyfood").document(idBuyFood);
         washingtonRef
                 .update("status", status)

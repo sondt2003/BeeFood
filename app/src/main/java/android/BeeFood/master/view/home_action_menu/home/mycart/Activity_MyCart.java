@@ -1,24 +1,32 @@
 package android.BeeFood.master.view.home_action_menu.home.mycart;
 
 import android.BeeFood.master.R;
+import android.BeeFood.master.model.OderFood;
 import android.BeeFood.master.view.object.MyCart;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
 import java.util.ArrayList;
 
 public class Activity_MyCart extends AppCompatActivity {
-
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
     private ImageView img_home_ActionMenu_MyCart_Back;
     private RecyclerView recyclerView_home_ActionMenu_MyCart_listCart;
     private LinearLayout layout_home_ActionMenu_MyCart_Empty;
-
+ImageView myCartFood;
     private ArrayList<MyCart> lis_myCart = new ArrayList<>();
     private Adapter_MyCart adapter_myCart;
 
@@ -28,25 +36,32 @@ public class Activity_MyCart extends AppCompatActivity {
         setContentView(R.layout.activity_my_cart);
 
         AnhXa();
-
-//        lis_myCart.add(new MyCart(R.drawable.avt_test,"Name","2 item","800m","$4.00"));
-//        lis_myCart.add(new MyCart(R.drawable.avt_test,"Name","2 item","800m","$4.00"));
-//        lis_myCart.add(new MyCart(R.drawable.avt_test,"Name","2 item","800m","$4.00"));
-//        lis_myCart.add(new MyCart(R.drawable.avt_test,"Name","2 item","800m","$4.00"));
-//        lis_myCart.add(new MyCart(R.drawable.avt_test,"Name","2 item","800m","$4.00"));
-//        lis_myCart.add(new MyCart(R.drawable.avt_test,"Name","2 item","800m","$4.00"));
-//        lis_myCart.add(new MyCart(R.drawable.avt_test,"Name","2 item","800m","$4.00"));
-//        lis_myCart.add(new MyCart(R.drawable.avt_test,"Name","2 item","800m","$4.00"));
-
-        if (lis_myCart.isEmpty()){
-            layout_home_ActionMenu_MyCart_Empty.setVisibility(View.VISIBLE);
-        }else{
-            layout_home_ActionMenu_MyCart_Empty.setVisibility(View.INVISIBLE);
-        }
-
+        myCartFood=findViewById(R.id.myCartFood);
         adapter_myCart = new Adapter_MyCart(Activity_MyCart.this);
-        adapter_myCart.setData(lis_myCart);
-
+        db.collection("oderfood")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            ArrayList<OderFood> oderFoods = new ArrayList<>();
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                oderFoods.add(new OderFood(
+                                        document.getData().get("idfood").toString(),
+                                        document.getData().get("emailfood").toString(),
+                                        document.getData().get("priceoderfood").toString(),
+                                        document.getData().get("soluong").toString(),
+                                        document.getData().get("khoangcach").toString()));
+                            }
+                            if(oderFoods.isEmpty()){
+                                myCartFood.setVisibility(View.VISIBLE);
+                            } else {
+                                myCartFood.setVisibility(View.INVISIBLE);
+                            }
+                            adapter_myCart.setData(oderFoods);
+                        }
+                    }
+                });
         LinearLayoutManager manager = new LinearLayoutManager(Activity_MyCart.this,LinearLayoutManager.VERTICAL,false);
         recyclerView_home_ActionMenu_MyCart_listCart.setLayoutManager(manager);
         recyclerView_home_ActionMenu_MyCart_listCart.setAdapter(adapter_myCart);
@@ -61,6 +76,11 @@ public class Activity_MyCart extends AppCompatActivity {
                 onBackPressed();
             }
         });
+        evenCLick();
+    }
+
+    private void evenCLick() {
+
     }
 
     public  void AnhXa(){

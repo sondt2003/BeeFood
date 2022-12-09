@@ -54,7 +54,6 @@ public class Adapter_RecyclerView_Active extends RecyclerView.Adapter<Adapter_Re
     public void onBindViewHolder(@NonNull UserViewHolder holder, int position) {
         BuyFood object = mArrayList.get(position);
         if (object == null) return;
-
         db.collection("food")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
