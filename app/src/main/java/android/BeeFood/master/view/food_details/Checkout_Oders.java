@@ -106,7 +106,7 @@ public class Checkout_Oders extends AppCompatActivity implements View.OnClickLis
                             long subtotal = (long) soluongSP * priceFood;
                             tv_checkout_Oders_Subtotal_Money.setText(subtotal + " vnd");
 
-                            buyFood = new BuyFood(idFood,email,food.getEmail(),soluongSP+"",subtotal+"",null,"chuaThanhToan");
+                            buyFood = new BuyFood(idFood,email,food.getEmail(),soluongSP+"",subtotal+"",null,"dangDatHang");
 
                         }catch (Exception e){
 

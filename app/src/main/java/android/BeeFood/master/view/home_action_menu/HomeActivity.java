@@ -3,7 +3,6 @@ package android.BeeFood.master.view.home_action_menu;
 import android.BeeFood.master.R;
 import android.BeeFood.master.controller.InternetCheckService;
 import android.BeeFood.master.view.add_san_pham.Fragment_QuanLy;
-import android.BeeFood.master.view.add_san_pham.Fragment_add_san_pham;
 import android.BeeFood.master.view.history.History_Fragment;
 import android.BeeFood.master.view.home_action_menu.home.Fragment_home;
 import android.BeeFood.master.view.orders.OrdersFragment;
@@ -14,7 +13,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
-import android.util.Log;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;

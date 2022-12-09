@@ -4,6 +4,8 @@ import android.BeeFood.master.R;
 import android.BeeFood.master.view.accountSetup.MapsActivity;
 import android.BeeFood.master.view.accountSetup.Screen_Pin_Code;
 import android.BeeFood.master.view.accountSetup.Screen_Profile;
+import android.BeeFood.master.view.chot_don.Activity_ChuHang;
+import android.BeeFood.master.view.chot_don.Activity_shipper;
 import android.BeeFood.master.view.onboarding_sign_up_sign_in.MainActivity;
 import android.BeeFood.master.view.profile.language.Language_Activity;
 import android.BeeFood.master.view.profile.notification.Notification_Activity;
@@ -48,7 +50,7 @@ public class Profile_Fragment extends Fragment {
     StorageReference reference = storage.getReference();
 
     private LinearLayout btnProfile, btnAddress,
-            btnNotification, btnSecurity, btnLanguage, btnLogout;
+            btnNotification, btnSecurity, btnLanguage, btnLogout,btnChuhang,btnprofile_shipper;
 
     public Profile_Fragment() {
         // Required empty public constructor
@@ -163,6 +165,24 @@ public class Profile_Fragment extends Fragment {
                         }
                     }
                 });
+
+        btnChuhang = view.findViewById(R.id.profile_chuHang);
+        btnChuhang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), Activity_ChuHang.class);
+                startActivity(intent);
+            }
+        });
+
+        btnprofile_shipper = view.findViewById(R.id.profile_shipper);
+        btnprofile_shipper.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), Activity_shipper.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
