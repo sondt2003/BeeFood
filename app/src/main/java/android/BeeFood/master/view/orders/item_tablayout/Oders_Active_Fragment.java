@@ -3,6 +3,8 @@ package android.BeeFood.master.view.orders.item_tablayout;
 import android.BeeFood.master.model.BuyFood;
 import android.BeeFood.master.view.orders.adapter.Adapter_RecyclerView_Active;
 import android.BeeFood.master.view.orders.model.Oders_Object;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -71,10 +73,12 @@ public class Oders_Active_Fragment extends Fragment {
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        SharedPreferences sharedPref = getActivity().getSharedPreferences("USER", Context.MODE_PRIVATE);
+                        String email = sharedPref.getString("email", "");
                         ArrayList<BuyFood> list = new ArrayList<>();
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                if(document.getData().get("status").toString().equalsIgnoreCase("chuaThanhToan")){
+                                if(document.getData().get("status").toString().equalsIgnoreCase("chuaThanhToan") && email.equalsIgnoreCase(document.getData().get("emailuser").toString())){
                                     list.add(new BuyFood(
                                             document.getId(),
                                             document.getData().get("idfood").toString(),

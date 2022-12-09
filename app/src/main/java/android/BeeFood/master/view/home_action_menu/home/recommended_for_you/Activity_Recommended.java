@@ -54,7 +54,7 @@ public class Activity_Recommended extends AppCompatActivity {
 
     private Adapter_Recommended adapter_recommended;
     private Adapter_recommended_foodSort mAdapter_recommended_foodSort;
-    private ImageView img_home_ActionMenu_Recommended_back,img_home_ActionMenu_Recommended_add,img_dialog_addFoodType_avt;
+    private ImageView img_home_ActionMenu_Recommended_back;
     private RecyclerView recyclerView_home_ActionMenu_Recommended_sortList;
     private RecyclerView recyclerView_home_ActionMenu_Recommended_list;
 
@@ -150,98 +150,6 @@ public class Activity_Recommended extends AppCompatActivity {
             }
         });
 
-        img_home_ActionMenu_Recommended_add.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Dialog dialog = new Dialog(Activity_Recommended.this);
-                dialog.setContentView(R.layout.dialog_add_foodtype);
-
-                Window window = dialog.getWindow();
-//                        window.setLayout();
-
-                img_dialog_addFoodType_avt = dialog.findViewById(R.id.dialog_addFoodType_avt);
-                EditText edt_dialog_addFoodType_name = dialog.findViewById(R.id.dialog_addFoodType_name);
-                Button btn_dialog_addFoodType_cancel = dialog.findViewById(R.id.dialog_addFoodType_cancel);
-                Button btn_dialog_addFoodType_Add = dialog.findViewById(R.id.dialog_addFoodType_Add);
-
-                btn_dialog_addFoodType_cancel.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        dialog.dismiss();
-                    }
-                });
-
-
-                btn_dialog_addFoodType_Add.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        String name = edt_dialog_addFoodType_name.getText().toString().trim();
-                        if (name.isEmpty()){
-                            Toast.makeText(Activity_Recommended.this,"not null", Toast.LENGTH_SHORT).show();
-                        } else {
-                            if(uri != null){
-                                SharedPreferences sharedPref = getSharedPreferences("USER", MODE_PRIVATE);
-                                String email = sharedPref.getString("email", "");
-
-                                db.collection("loaifood")
-                                        .get()
-                                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                                            @Override
-                                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                                                ArrayList<loaiFood> list = new ArrayList<>();
-                                                if (task.isSuccessful()) {
-                                                    for (QueryDocumentSnapshot document : task.getResult()) {
-                                                        try {
-                                                            if (name.equalsIgnoreCase(document.getData().get("NameLoai").toString().trim())){
-                                                                Toast.makeText(Activity_Recommended.this, "Loại đã tồn tại", Toast.LENGTH_SHORT).show();
-                                                                return;
-                                                            }
-                                                            list.add(new loaiFood(document.getId(), document.getData().get("ImageUrl").toString(),document.getData().get("NameLoai").toString()));
-                                                        } catch (Exception e) {
-                                                        }
-                                                    }
-                                                }
-
-                                                StorageReference demoRef = reference.child(email+"."+ list.size()+".loai.png");
-                                                demoRef.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                                                    @Override
-                                                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                                                        Toast.makeText(getApplication(), "Uploaded", Toast.LENGTH_SHORT).show();
-                                                        demoRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                                                            @Override
-                                                            public void onSuccess(Uri DownloadUri) {
-                                                                url_avt = DownloadUri.toString();
-                                                                loaiFood loaiFood = new loaiFood(url_avt,name);
-                                                                LoaiDao loaiDao = new LoaiDao();
-                                                                boolean check = loaiDao.addDataLoaiFood(loaiFood, Activity_Recommended.this);
-                                                                Toast.makeText(Activity_Recommended.this, "Thêm loại thành công", Toast.LENGTH_SHORT).show();
-                                                                dialog.dismiss();
-                                                            }
-                                                        });
-                                                    }
-                                                });
-                                            }
-                                        });
-
-
-                            }
-                        }
-                    }
-                });
-
-                img_dialog_addFoodType_avt.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent intent = new Intent();
-                        intent.setType("image/*");
-                        intent.setAction(Intent.ACTION_GET_CONTENT);
-                        startActivityForResult(Intent.createChooser(intent, "Select Picture"), 174);
-                    }
-                });
-
-                dialog.show();
-            }
-        });
 
     }
 
@@ -249,16 +157,7 @@ public class Activity_Recommended extends AppCompatActivity {
         img_home_ActionMenu_Recommended_back = findViewById(R.id.home_ActionMenu_Recommended_back);
         recyclerView_home_ActionMenu_Recommended_sortList = findViewById(R.id.home_ActionMenu_Recommended_sortList);
         recyclerView_home_ActionMenu_Recommended_list = findViewById(R.id.home_ActionMenu_Recommended_list);
-        img_home_ActionMenu_Recommended_add = findViewById(R.id.home_ActionMenu_Recommended_add);
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 174) {
-            uri = data.getData();
-            Glide.with(getApplication()).load(uri).into(img_dialog_addFoodType_avt);
-        }
-    }
 
 }

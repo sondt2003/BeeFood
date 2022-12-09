@@ -59,7 +59,7 @@ public class Adapter_Discount extends RecyclerView.Adapter<Adapter_Discount.User
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(mContext, Add_To_Basket.class);
-                intent.putExtra("key_id_food",discount.getId());
+                intent.putExtra("key_idFood",discount.getId());
                 mContext.startActivity(intent);
             }
         });

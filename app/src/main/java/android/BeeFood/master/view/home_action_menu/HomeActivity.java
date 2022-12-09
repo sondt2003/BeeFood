@@ -109,16 +109,9 @@ public class HomeActivity extends AppCompatActivity {
         int activity_back = intent.getIntExtra("key_back",0);
         switch (activity_back){
             case 0:
-                loadFragment(Fragment_home.newInstance());
                 break;
             case 1:
                 loadFragment(OrdersFragment.newInstance());
-                break;
-            case 2:
-                loadFragment(History_Fragment.newInstance());
-                break;
-            case 3:
-                loadFragment(Profile_Fragment.newInstance());
                 break;
         }
     }

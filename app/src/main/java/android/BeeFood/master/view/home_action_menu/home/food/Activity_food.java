@@ -31,7 +31,6 @@ public class Activity_food extends AppCompatActivity {
     private LinearLayout LineaLayout_home_ActionMenu_foodType_Empty;
     private TextView tv_home_ActionMenu_foodType_title;
 
-    private ArrayList<Food> lis_food = new ArrayList<>();
     private Adapter_Recommended adapter_recommended;
     private RecyclerView recyclerView_home_ActionMenu_foodType_list;
 
@@ -86,8 +85,6 @@ public class Activity_food extends AppCompatActivity {
 
                     }
                 });
-
-
 
 
         img_home_ActionMenu_foodType_Back.setOnClickListener(new View.OnClickListener() {
