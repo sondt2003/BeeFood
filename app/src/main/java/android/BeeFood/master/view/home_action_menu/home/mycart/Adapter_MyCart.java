@@ -3,9 +3,10 @@ package android.BeeFood.master.view.home_action_menu.home.mycart;
 import android.BeeFood.master.R;
 import android.BeeFood.master.model.Food;
 import android.BeeFood.master.model.OderFood;
-import android.BeeFood.master.view.object.MyCart;
+import android.BeeFood.master.view.food_details.Add_To_Basket;
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,17 +26,17 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 
-public class Adapter_MyCart extends RecyclerView.Adapter<Adapter_MyCart.UserViewHolder>{
+public class Adapter_MyCart extends RecyclerView.Adapter<Adapter_MyCart.UserViewHolder> {
 
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
     private Context mContext;
     private ArrayList<OderFood> lis_Cart;
-    FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     public Adapter_MyCart(Context mContext) {
         this.mContext = mContext;
     }
 
-    public void setData(ArrayList<OderFood> lis_Cart){
+    public void setData(ArrayList<OderFood> lis_Cart) {
         this.lis_Cart = lis_Cart;
         notifyDataSetChanged();
     }
@@ -43,7 +44,7 @@ public class Adapter_MyCart extends RecyclerView.Adapter<Adapter_MyCart.UserView
     @NonNull
     @Override
     public UserViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.cart_item,parent,false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.cart_item, parent, false);
         return new UserViewHolder(v);
     }
 
@@ -61,7 +62,7 @@ public class Adapter_MyCart extends RecyclerView.Adapter<Adapter_MyCart.UserView
                         Food food = new Food();
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                if (myCart.getIdFood().equalsIgnoreCase(document.getId())){
+                                if (myCart.getIdFood().equalsIgnoreCase(document.getId())) {
                                     food = new Food(document.getData().get("namefood").toString(),
                                             document.getData().get("price").toString(),
                                             document.getData().get("address").toString(),
@@ -79,12 +80,16 @@ public class Adapter_MyCart extends RecyclerView.Adapter<Adapter_MyCart.UserView
                     }
                 });
         holder.tv_item_home_ActionMenu_MyCart_khoangCach.setText(myCart.getKhoangcach() + " km");
-        holder.tv_item_home_ActionMenu_MyCart_tongGia.setText(myCart.getPriceOderFood()+"$");
-        holder.tv_item_home_ActionMenu_MyCart_countItem.setText("Số Lượng:"+myCart.getAmountoffood());
+        holder.tv_item_home_ActionMenu_MyCart_tongGia.setText(myCart.getPriceOderFood() + "$");
+        holder.tv_item_home_ActionMenu_MyCart_countItem.setText(myCart.getAmountoffood() + " item");
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(mContext, myCart.getIdFood(), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(mContext, Add_To_Basket.class);
+                intent.putExtra("key_idFood", myCart.getIdFood());
+                intent.putExtra("key_orderFood", myCart.getIdOderFood());
+                mContext.startActivity(intent);
             }
         });
     }
@@ -95,10 +100,10 @@ public class Adapter_MyCart extends RecyclerView.Adapter<Adapter_MyCart.UserView
         return 0;
     }
 
-    public class UserViewHolder extends RecyclerView.ViewHolder{
+    public class UserViewHolder extends RecyclerView.ViewHolder {
 
         private ImageView img_item_home_ActionMenu_MyCart_avt;
-        private TextView tv_item_home_ActionMenu_MyCart_name,tv_item_home_ActionMenu_MyCart_countItem,tv_item_home_ActionMenu_MyCart_khoangCach,tv_item_home_ActionMenu_MyCart_tongGia;
+        private TextView tv_item_home_ActionMenu_MyCart_name, tv_item_home_ActionMenu_MyCart_countItem, tv_item_home_ActionMenu_MyCart_khoangCach, tv_item_home_ActionMenu_MyCart_tongGia;
 
         public UserViewHolder(@NonNull View itemView) {
             super(itemView);

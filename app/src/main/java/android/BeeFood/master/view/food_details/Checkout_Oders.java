@@ -44,9 +44,10 @@ public class Checkout_Oders extends AppCompatActivity implements View.OnClickLis
     private Adapter_RecyclerView_CheckOut_OrderSummary adapter_recyclerView_checkOut_orderSummary;
     private ArrayList<Food> mArrayList = new ArrayList<>();
     private int checkDiscount = 0;
-
+    String idorderFood=null;
+    String idFood=null;
     BuyFood buyFood;
-
+    String idOrderFood;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,8 +80,9 @@ public class Checkout_Oders extends AppCompatActivity implements View.OnClickLis
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         Intent intent = getIntent();
                         int soluongSP = intent.getIntExtra("key_soluongSP",0);
-                        String idFood = intent.getStringExtra("key_idFood");
-
+                         idFood = intent.getStringExtra("key_idFood");
+                         idOrderFood = intent.getStringExtra("key_orderFood");
+//                        Toast.makeText(Checkout_Oders.this, "idfood:"+idFood + ":" +"idorderfood:"+ idOrderFood, Toast.LENGTH_SHORT).show();
                         SharedPreferences sharedPref = getApplication().getSharedPreferences("USER", Context.MODE_PRIVATE);
                         String email = sharedPref.getString("email", "");
 
@@ -166,7 +168,7 @@ public class Checkout_Oders extends AppCompatActivity implements View.OnClickLis
         switch (v.getId()) {
             case R.id.checkout_Oders_PlaceOrder:
                 BuyFoodDao buyFoodDao = new BuyFoodDao();
-                buyFoodDao.AddBuyFood(buyFood,this);
+                buyFoodDao.AddBuyFood(buyFood,this,idOrderFood);
                 Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.checkout_Oders_AddItem:

@@ -32,7 +32,7 @@ public class BuyFoodDao {
         String email = sharedPref.getString("email", "");
         return email;
     }
-    public boolean AddBuyFood(BuyFood buyFood, Context context) {
+    public boolean AddBuyFood(BuyFood buyFood, Context context,String idOrderFood) {
         Map<String, Object> BuyFoods = new HashMap<>();
         BuyFoods.put("idfood", buyFood.getIdFood());
         BuyFoods.put("emailuser", buyFood.getEmailUser());
@@ -41,12 +41,12 @@ public class BuyFoodDao {
         BuyFoods.put("priceOderFood", buyFood.getPriceOderFood());
         BuyFoods.put("khoangcach", buyFood.getKhoangcach());
         BuyFoods.put("status", buyFood.getStatus());
+        Toast.makeText(context, "Mua Sản Phẩm Thành Công:"+idOrderFood, Toast.LENGTH_SHORT).show();
         db.collection("buyfood")
                 .add(BuyFoods)
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
-                        Toast.makeText(context, "Mua Sản Phẩm Thành Công", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(context, HomeActivity.class);
                         intent.putExtra("key_back",1);
                         context.startActivity(intent);
@@ -58,6 +58,23 @@ public class BuyFoodDao {
                         Toast.makeText(context, "Mua Sản Phẩm Thất Bại", Toast.LENGTH_SHORT).show();
                     }
                 });
+        if(idOrderFood!=null){
+            db.collection("oderfood").document(idOrderFood)
+                    .delete()
+                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            Toast.makeText(context, "delete from order", Toast.LENGTH_SHORT).show();
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(context, "Thất Bại", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
+        }
         return true;
     }
 

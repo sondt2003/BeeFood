@@ -46,7 +46,7 @@ ImageView myCartFood;
                         if (task.isSuccessful()) {
                             ArrayList<OderFood> oderFoods = new ArrayList<>();
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                oderFoods.add(new OderFood(
+                                oderFoods.add(new OderFood(document.getId(),
                                         document.getData().get("idfood").toString(),
                                         document.getData().get("emailfood").toString(),
                                         document.getData().get("priceoderfood").toString(),
