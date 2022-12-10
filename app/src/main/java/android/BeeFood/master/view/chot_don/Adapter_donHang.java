@@ -161,10 +161,12 @@ public class Adapter_donHang extends RecyclerView.Adapter<Adapter_donHang.UserVi
                         .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                             @Override
                             public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                SharedPreferences sharedPref = mContext.getSharedPreferences("USER", Context.MODE_PRIVATE);
+                                String email = sharedPref.getString("email", "");
                                 ArrayList<BuyFood> list = new ArrayList<>();
                                 if (task.isSuccessful()) {
                                     for (QueryDocumentSnapshot document : task.getResult()) {
-                                        if(document.getData().get("status").toString().equalsIgnoreCase("dangDatHang")){
+                                        if(email.equalsIgnoreCase(document.getData().get("emailfood").toString()) && document.getData().get("status").toString().equalsIgnoreCase("dangDatHang")){
                                             list.add(new BuyFood(
                                                     document.getId(),
                                                     document.getData().get("idfood").toString(),
