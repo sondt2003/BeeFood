@@ -3,6 +3,9 @@ package android.BeeFood.master.model;
 public class BuyFood {
     String idBuyFood,idFood,emailUser,emailFood,amountofood,priceOderFood,khoangcach,status;
 
+    public BuyFood() {
+    }
+
     public BuyFood(String idFood, String emailUser, String emailFood, String amountofood, String priceOderFood, String khoangcach, String status) {
         this.idFood = idFood;
         this.emailUser = emailUser;

@@ -154,7 +154,7 @@ public class Adapter_donHang extends RecyclerView.Adapter<Adapter_donHang.UserVi
             @Override
             public void onClick(View view) {
                 BuyFoodDao buyFoodDao = new BuyFoodDao();
-                buyFoodDao.updateFood("dangVanChuyen",mContext,object.getIdBuyFood());
+                buyFoodDao.updateFood("choVanChuyen",mContext,object.getIdBuyFood());
 
                 db.collection("buyfood")
                         .get()

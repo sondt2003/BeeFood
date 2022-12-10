@@ -104,7 +104,8 @@ public class HomeActivity extends AppCompatActivity {
         super.onResume();
 
         Intent intent = getIntent();
-        int activity_back = intent.getIntExtra("key_back",0);
+        int activity_back = 0;
+        activity_back = intent.getIntExtra("key_back",0);
         switch (activity_back){
             case 0:
                 break;

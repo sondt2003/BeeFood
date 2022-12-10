@@ -39,7 +39,7 @@ public class Activity_shipper extends AppCompatActivity {
         getSupportActionBar().setTitle("Các đơn hàng (shipper)");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        adapter_shipper = new Adapter_shipper(getApplication());
+        adapter_shipper = new Adapter_shipper(Activity_shipper.this);
         db.collection("buyfood")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -50,7 +50,7 @@ public class Activity_shipper extends AppCompatActivity {
                         ArrayList<BuyFood> list = new ArrayList<>();
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                if (document.getData().get("status").toString().equalsIgnoreCase("dangVanChuyen")){
+                                if (document.getData().get("status").toString().equalsIgnoreCase("choVanChuyen")){
                                     list.add(new BuyFood(
                                             document.getId(),
                                             document.getData().get("idfood").toString(),
