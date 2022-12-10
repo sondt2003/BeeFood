@@ -42,7 +42,7 @@ public class Screen_Profile extends AppCompatActivity {
     FirebaseStorage storage = FirebaseStorage.getInstance();
     StorageReference reference = storage.getReference();
 
-    EditText profile_edt_fullname, profile_edt_nickname, profile_edt_date_of_birth, profile_edt_email;
+    EditText profile_edt_fullname, profile_edt_nickname, profile_edt_date_of_birth, profile_edt_email,profile_update_Phone;
     TextInputLayout layout_profile_update_location;
     Spinner profile_spinner_gender;
     ImageView img_profile_update_MyLaction, img_accountsetup_profile_previous, img_accountsetup_profile;
@@ -72,7 +72,9 @@ public class Screen_Profile extends AppCompatActivity {
                     Toast.makeText(Screen_Profile.this, "Chưa Nhập Ngày Tháng Năm Sinh", Toast.LENGTH_SHORT).show();
                 } else if (profile_edt_email.getText().toString().equals("")) {
                     Toast.makeText(Screen_Profile.this, "Chưa Nhập Email", Toast.LENGTH_SHORT).show();
-                } else if (profile_spinner_gender.getSelectedItemPosition() == 0) {
+                } else if (profile_update_Phone.getText().toString().equals("")) {
+                    Toast.makeText(Screen_Profile.this, "Chưa Nhập Số Điện Thoại", Toast.LENGTH_SHORT).show();
+                }  else if (profile_spinner_gender.getSelectedItemPosition() == 0) {
                     Toast.makeText(Screen_Profile.this, "Chưa Nhập Giới Tính", Toast.LENGTH_SHORT).show();
                 } else {
                     if (uri != null) {
@@ -92,7 +94,7 @@ public class Screen_Profile extends AppCompatActivity {
                                                 profile_spinner_gender.getSelectedItem().toString(),
                                                 profile_edt_date_of_birth.getText().toString(),
                                                 url_profile, null, null);
-                                        User user=new User(email, profile_edt_nickname.getText().toString(), "admin",userChiTiet);
+                                        User user=new User(email, profile_edt_nickname.getText().toString(), "admin",userChiTiet,profile_update_Phone.getText().toString());
                                         UserDao userDao =new UserDao();
                                         boolean check = userDao.AddDataUser(user,Screen_Profile.this);
                                         Toast.makeText(Screen_Profile.this, check+"", Toast.LENGTH_SHORT).show();
@@ -126,6 +128,7 @@ public class Screen_Profile extends AppCompatActivity {
     }
 
     public void AnhXa() {
+        profile_update_Phone=findViewById(R.id.profile_update_Phone);
         profile_edt_fullname = findViewById(R.id.profile_update_FullName);
         profile_edt_nickname = findViewById(R.id.profile_Update_NickName);
         profile_edt_date_of_birth = findViewById(R.id.profile_update_DateOfBirth);

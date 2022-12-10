@@ -69,12 +69,6 @@ public class Activity_ChuHang extends AppCompatActivity {
                         LinearLayoutManager manager = new LinearLayoutManager(getApplication(),LinearLayoutManager.VERTICAL,false);
                         recyclerView_chotDon_chuHang_donHang.setLayoutManager(manager);
                         recyclerView_chotDon_chuHang_donHang.setAdapter(adapter_donHang);
-
-//                        if (list.isEmpty()){
-//                            empty_fragment_oder_active_empty.setVisibility(View.VISIBLE);
-//                        }else{
-//                            empty_fragment_oder_active_empty.setVisibility(View.INVISIBLE);
-//                        }
                     }
                 });
 

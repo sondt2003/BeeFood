@@ -36,6 +36,7 @@ public class BuyFoodDao {
         Map<String, Object> BuyFoods = new HashMap<>();
         BuyFoods.put("idfood", buyFood.getIdFood());
         BuyFoods.put("emailuser", buyFood.getEmailUser());
+        BuyFoods.put("priceshipper", buyFood.getPriceShipper());
         BuyFoods.put("emailfood", buyFood.getEmailFood());
         BuyFoods.put("amountofood", buyFood.getAmountofood());
         BuyFoods.put("priceOderFood", buyFood.getPriceOderFood());

@@ -2,9 +2,18 @@ package android.BeeFood.master.model;
 
 public class User {
     UserChiTiet userChiTiet;
-    private String email, name, level;
+    private String email, name, level,phoneNumber;
+
 
     public User() {
+    }
+
+    public User(String email, String name, String level, UserChiTiet userChiTiet, String phoneNumber) {
+        this.userChiTiet = userChiTiet;
+        this.email = email;
+        this.name = name;
+        this.level = level;
+        this.phoneNumber = phoneNumber;
     }
 
     public User(String email, String name, String level, UserChiTiet userChiTiet) {
@@ -12,6 +21,13 @@ public class User {
         this.name = name;
         this.level = level;
         this.userChiTiet = userChiTiet;
+    }
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public UserChiTiet getUserChiTiet() {

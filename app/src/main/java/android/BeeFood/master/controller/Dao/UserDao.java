@@ -1,6 +1,5 @@
 package android.BeeFood.master.controller.Dao;
 
-import android.BeeFood.master.model.Food;
 import android.BeeFood.master.model.User;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -17,7 +16,6 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -34,6 +32,7 @@ public class UserDao {
         Map<String, Object> user = new
                 HashMap<>();
         user.put("email", users.getEmail());
+        user.put("phone", users.getPhoneNumber());
         user.put("fullname", users.getUserChiTiet().getFullname());
         user.put("nickname", users.getName());
         user.put("dateofbirth", users.getUserChiTiet().getDate());
@@ -57,9 +56,11 @@ public class UserDao {
                 });
         return true;
     }
+
     public boolean updateUser(User users, Context context, String email, String pin) {
         Map<String, Object> user = new HashMap<>();
         user.put("email", users.getEmail());
+        user.put("phone", users.getPhoneNumber());
         user.put("fullname", users.getUserChiTiet().getFullname());
         user.put("nickname", users.getName());
         user.put("dateofbirth", users.getUserChiTiet().getDate());

@@ -17,6 +17,7 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -49,7 +50,7 @@ import java.util.Locale;
 public class Profile_Update_Activity extends AppCompatActivity implements LocationListener{
     private ImageView img_back,img_accountsetup_profile;
     private ImageView img_profile_update_MyLaction;
-    private EditText edt_profile_update_FullName,edt_profile_Update_NickName,edt_profile_update_DateOfBirth,edt_profile_update_Email,edt_profile_update_location;
+    private EditText profile_update_Phone,edt_profile_update_FullName,edt_profile_Update_NickName,edt_profile_update_DateOfBirth,edt_profile_update_Email,edt_profile_update_location;
     private Spinner spn_profile_spinner_gender;
     private Button btn_continue;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -139,6 +140,8 @@ public class Profile_Update_Activity extends AppCompatActivity implements Locati
                     Toast.makeText(Profile_Update_Activity.this, "Chưa Nhập Ngày Tháng Năm Sinh", Toast.LENGTH_SHORT).show();
                 } else if (edt_profile_update_Email.getText().toString().equals("")) {
                     Toast.makeText(Profile_Update_Activity.this, "Chưa Nhập Email", Toast.LENGTH_SHORT).show();
+                }else if (profile_update_Phone.getText().toString().equals("")) {
+                    Toast.makeText(Profile_Update_Activity.this, "Chưa Nhập Số Điện Thoại", Toast.LENGTH_SHORT).show();
                 } else if (spn_profile_spinner_gender.getSelectedItemPosition() == 0) {
                     Toast.makeText(Profile_Update_Activity.this, "Chưa Nhập Giới Tính", Toast.LENGTH_SHORT).show();
                 } else {
@@ -168,7 +171,7 @@ public class Profile_Update_Activity extends AppCompatActivity implements Locati
                                                                           edt_profile_update_DateOfBirth.getText().toString(),
                                                                           url_profile, edt_profile_update_location.getText().toString(),
                                                                           document.getData().get("pin").toString());
-                                                                  User user=new User(email, edt_profile_Update_NickName.getText().toString(), "admin",userChiTiet);
+                                                                  User user=new User(email, edt_profile_Update_NickName.getText().toString(), "admin",userChiTiet,profile_update_Phone.getText().toString());
                                                                   UserDao userDao =new UserDao();
                                                                   boolean check = userDao.updateUser(user,getApplication(),
                                                                           userDao.getEmail(getApplication()),
@@ -204,19 +207,22 @@ public class Profile_Update_Activity extends AppCompatActivity implements Locati
                                 try {
                                     if (email.equalsIgnoreCase(document.getData().get("email").toString())) {
                                         url_profile = document.getData().get("ImageUrl").toString();
+                                        Glide.with(getApplication()).load(url_profile).into(img_accountsetup_profile);
                                         edt_profile_update_FullName.setText(document.getData().get("fullname").toString());
                                         edt_profile_Update_NickName.setText(document.getData().get("nickname").toString());
                                         edt_profile_update_DateOfBirth.setText(document.getData().get("dateofbirth").toString());
                                         edt_profile_update_Email.setText(document.getData().get("email").toString());
                                         edt_profile_update_location.setText(document.getData().get("address").toString());
-                                        if(document.getData().get("gender").equals("Nam")){
+                                        profile_update_Phone.setText(document.getData().get("phone").toString());
+                                        boolean check=document.getData().get("gender").equals("Nam");
+                                        if(check){
                                             spn_profile_spinner_gender.setSelection(2);
                                         } else {
                                             spn_profile_spinner_gender.setSelection(1);
                                         }
-                                        Glide.with(getApplication()).load(url_profile).into(img_accountsetup_profile);
                                     }
                                 } catch (Exception e) {
+                                    Toast.makeText(Profile_Update_Activity.this, "Lỗi", Toast.LENGTH_SHORT).show();
                                 }
                             }
                         }
@@ -233,6 +239,7 @@ public class Profile_Update_Activity extends AppCompatActivity implements Locati
         });
     }
     public void AnhXa(){
+        profile_update_Phone=findViewById(R.id.profile_update_Phone);
         img_accountsetup_profile=findViewById(R.id.img_accountsetup_profile);
         btn_continue=findViewById(R.id.profile_continue);
         img_back = findViewById(R.id.img_accountsetup_profile_previous);

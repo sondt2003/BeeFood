@@ -1,7 +1,7 @@
 package android.BeeFood.master.model;
 
 public class BuyFood {
-    String idBuyFood,idFood,emailUser,emailFood,amountofood,priceOderFood,khoangcach,status;
+    String idBuyFood,idFood,emailUser,emailFood,amountofood,priceOderFood,khoangcach,status,priceShipper;
 
     public BuyFood() {
     }
@@ -25,6 +25,26 @@ public class BuyFood {
         this.priceOderFood = priceOderFood;
         this.khoangcach = khoangcach;
         this.status = status;
+    }
+
+    public BuyFood(String idBuyFood, String idFood, String emailUser, String emailFood, String amountofood, String priceOderFood, String khoangcach, String status, String priceShipper) {
+        this.idBuyFood = idBuyFood;
+        this.idFood = idFood;
+        this.emailUser = emailUser;
+        this.emailFood = emailFood;
+        this.amountofood = amountofood;
+        this.priceOderFood = priceOderFood;
+        this.khoangcach = khoangcach;
+        this.status = status;
+        this.priceShipper = priceShipper;
+    }
+
+    public String getPriceShipper() {
+        return priceShipper;
+    }
+
+    public void setPriceShipper(String priceShipper) {
+        this.priceShipper = priceShipper;
     }
 
     public String getIdBuyFood() {

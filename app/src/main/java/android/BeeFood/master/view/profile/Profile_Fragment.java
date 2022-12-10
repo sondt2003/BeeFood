@@ -29,6 +29,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -45,9 +48,9 @@ public class Profile_Fragment extends Fragment {
     String url_profile;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-
-    FirebaseStorage storage = FirebaseStorage.getInstance();
-    StorageReference reference = storage.getReference();
+    GoogleSignInOptions gso;
+    GoogleSignInClient gsc;
+    SharedPreferences sharedPreferences;
 
     private LinearLayout btnProfile, btnAddress,
             btnNotification, btnSecurity, btnLanguage, btnLogout,btnChuhang,btnprofile_shipper;
@@ -77,8 +80,10 @@ public class Profile_Fragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
+        gsc = GoogleSignIn.getClient(getActivity(), gso);
         tv_profile_name = view.findViewById(R.id.profile_name);
+        sharedPreferences = getActivity().getSharedPreferences("USER", getActivity().MODE_PRIVATE);
 
         btnProfile = view.findViewById(R.id.profile_profileEdit_OnClick);
         btnProfile.setOnClickListener(new View.OnClickListener() {
@@ -135,6 +140,10 @@ public class Profile_Fragment extends Fragment {
                 builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
+                        gsc.signOut().isSuccessful();
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putString("email", "");
+                        editor.commit();
                         Intent intent = new Intent(getActivity(), MainActivity.class);
                         startActivity(intent);
                         getActivity().finishAffinity();
