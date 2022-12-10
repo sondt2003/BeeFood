@@ -93,7 +93,7 @@ public class Screen_Profile extends AppCompatActivity {
                                                 profile_edt_fullname.getText().toString(),
                                                 profile_spinner_gender.getSelectedItem().toString(),
                                                 profile_edt_date_of_birth.getText().toString(),
-                                                url_profile, null, null);
+                                                url_profile, "", null);
                                         User user=new User(email, profile_edt_nickname.getText().toString(), "admin",userChiTiet,profile_update_Phone.getText().toString());
                                         UserDao userDao =new UserDao();
                                         boolean check = userDao.AddDataUser(user,Screen_Profile.this);

@@ -212,7 +212,6 @@ public class Profile_Update_Activity extends AppCompatActivity implements Locati
                                         edt_profile_Update_NickName.setText(document.getData().get("nickname").toString());
                                         edt_profile_update_DateOfBirth.setText(document.getData().get("dateofbirth").toString());
                                         edt_profile_update_Email.setText(document.getData().get("email").toString());
-                                        edt_profile_update_location.setText(document.getData().get("address").toString());
                                         profile_update_Phone.setText(document.getData().get("phone").toString());
                                         boolean check=document.getData().get("gender").equals("Nam");
                                         if(check){
@@ -220,6 +219,8 @@ public class Profile_Update_Activity extends AppCompatActivity implements Locati
                                         } else {
                                             spn_profile_spinner_gender.setSelection(1);
                                         }
+//                                        Toast.makeText(Profile_Update_Activity.this, document.getData().get("address").toString()+"", Toast.LENGTH_SHORT).show();
+//                                        edt_profile_update_location.setText(document.getData().get("address").toString());
                                     }
                                 } catch (Exception e) {
                                     Toast.makeText(Profile_Update_Activity.this, "Lỗi", Toast.LENGTH_SHORT).show();
