@@ -60,6 +60,8 @@ import org.json.JSONObject;
 import java.util.Arrays;
 import java.util.Set;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
+
 public class MainActivity extends AppCompatActivity {
     public static final String CHANNEL_ID = "push notification";
     FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -339,18 +341,37 @@ public class MainActivity extends AppCompatActivity {
 
     //thoát app
     public void onBack_app() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-        builder.setTitle("Exit");
-        builder.setMessage("Do you want to Exit ?");
-        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+//        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+//        builder.setTitle("Exit");
+//        builder.setMessage("Do you want to Exit ?");
+//        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialogInterface, int i) {
+//                finish();
+//                System.exit(0);
+//            }
+//        });
+//        builder.setNegativeButton("No", null);
+//        builder.show();
+
+        SweetAlertDialog sweetAlertDialog = new SweetAlertDialog(this,SweetAlertDialog.WARNING_TYPE);
+        sweetAlertDialog.setTitleText("Bạn có chắc?");
+        sweetAlertDialog.setContentText("Thoát ứng dụng!");
+        sweetAlertDialog.setConfirmButton("Exit", new SweetAlertDialog.OnSweetClickListener() {
             @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
+            public void onClick(SweetAlertDialog sweetAlertDialog) {
                 finish();
                 System.exit(0);
             }
         });
-        builder.setNegativeButton("No", null);
-        builder.show();
+        sweetAlertDialog.setCancelButton("Cancel", new SweetAlertDialog.OnSweetClickListener() {
+            @Override
+            public void onClick(SweetAlertDialog sweetAlertDialog) {
+                sweetAlertDialog.dismissWithAnimation();
+            }
+        });
+        sweetAlertDialog.show();
+
     }
 
     @Override
