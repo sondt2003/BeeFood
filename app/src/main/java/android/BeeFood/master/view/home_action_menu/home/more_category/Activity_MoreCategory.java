@@ -10,10 +10,14 @@ import android.BeeFood.master.view.object.Loai_food;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
@@ -125,7 +129,9 @@ public class Activity_MoreCategory extends AppCompatActivity {
                 dialog.setContentView(R.layout.dialog_add_foodtype);
 
                 Window window = dialog.getWindow();
-//                        window.setLayout();
+                window.setLayout(WindowManager.LayoutParams.MATCH_PARENT,WindowManager.LayoutParams.WRAP_CONTENT);
+                window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                window.setGravity(Gravity.CENTER);
 
                 img_dialog_addFoodType_avt = dialog.findViewById(R.id.dialog_addFoodType_avt);
                 EditText edt_dialog_addFoodType_name = dialog.findViewById(R.id.dialog_addFoodType_name);
