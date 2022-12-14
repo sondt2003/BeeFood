@@ -1,5 +1,6 @@
 package android.BeeFood.master.controller.Dao;
 
+import android.BeeFood.master.model.DanhGia;
 import android.BeeFood.master.model.User;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -19,7 +20,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.HashMap;
 import java.util.Map;
 
-public class UserDao {
+public class DanhGiaDao {
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     public String getEmail(Context context) {
@@ -28,19 +29,15 @@ public class UserDao {
         return email;
     }
 
-    public boolean AddDataUser(User users, Context context) {
+    public boolean AddDanhGia(DanhGia danhGia, Context context) {
         Map<String, Object> user = new
                 HashMap<>();
-        user.put("email", users.getEmail());
-        user.put("phone", users.getPhoneNumber());
-        user.put("fullname", users.getUserChiTiet().getFullname());
-        user.put("nickname", users.getName());
-        user.put("dateofbirth", users.getUserChiTiet().getDate());
-        user.put("gender", users.getUserChiTiet().getGender());
-        user.put("ImageUrl", users.getUserChiTiet().getUrl());
-        user.put("pin", users.getUserChiTiet().getPin());
-        user.put("address", users.getUserChiTiet().getAddress());
-        db.collection("users")
+        user.put("email", danhGia.getEmail());
+        user.put("idfood", danhGia.getIdFood());
+        user.put("numberstar", danhGia.getNumberStar());
+        user.put("comment", danhGia.getComment());
+        user.put("time", danhGia.getTime());
+        db.collection("DanhGia")
                 .add(user)
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
@@ -57,18 +54,15 @@ public class UserDao {
         return true;
     }
 
-    public boolean updateUser(User users, Context context, String email, String pin) {
-        Map<String, Object> user = new HashMap<>();
-        user.put("email", users.getEmail());
-        user.put("phone", users.getPhoneNumber());
-        user.put("fullname", users.getUserChiTiet().getFullname());
-        user.put("nickname", users.getName());
-        user.put("dateofbirth", users.getUserChiTiet().getDate());
-        user.put("gender", users.getUserChiTiet().getGender());
-        user.put("ImageUrl", users.getUserChiTiet().getUrl());
-        user.put("pin", users.getUserChiTiet().getPin());
-        user.put("address", users.getUserChiTiet().getAddress());
-        db.collection("users")
+    public boolean updateDanhGia(DanhGia danhGia, Context context,String email) {
+        Map<String, Object> user = new
+                HashMap<>();
+        user.put("email", danhGia.getEmail());
+        user.put("idfood", danhGia.getIdFood());
+        user.put("numberstar", danhGia.getNumberStar());
+        user.put("comment", danhGia.getComment());
+        user.put("time", danhGia.getTime());
+        db.collection("DanhGia")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -99,6 +93,4 @@ public class UserDao {
                 });
         return true;
     }
-
-
 }

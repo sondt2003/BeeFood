@@ -147,37 +147,6 @@ public class Fragment_add_san_pham extends Fragment implements LocationListener 
 
         getLocation();
     }
-
-    //    private void upLoadURL(View view) {
-//        db.collection("food")
-//                .get()
-//                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-//                        if (task.isSuccessful()) {
-//                            for (QueryDocumentSnapshot document : task.getResult()) {
-//                                DataFirestore dataFirestore=new DataFirestore();
-//                                try {
-//                                    if (dataFirestore.getEmail(getActivity()).equalsIgnoreCase(document.getData().get("email").toString())) {
-//                                        url_profile = document.getData().get("ImageUrl").toString();
-//                                        edt_addSanPham_nameFood.setText(document.getData().get("namefood").toString());
-//                                        edt_addSanPham_Price.setText(document.getData().get("price").toString());
-//                                        edt_addSanPham_Address.setText(document.getData().get("address").toString());
-//                                        edt_addSanPham_PhoneNumber.setText(document.getData().get("phonenumber").toString());
-//                                        if(document.getData().get("idloaifood").equals("0")){
-//                                            spn_addSanPham_IDLoai.setSelection(0);
-//                                        } else {
-//                                            spn_addSanPham_IDLoai.setSelection(1);
-//                                        }
-//                                        Glide.with(getActivity()).load(url_profile).into(img_addSanPham_avtFood);
-//                                    }
-//                                } catch (Exception e) {
-//                                }
-//                            }
-//                        }
-//                    }
-//                });
-//    }
     private void evenCLick() {
         btn_addSanPham_add.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -195,8 +164,6 @@ public class Fragment_add_san_pham extends Fragment implements LocationListener 
                 } else {
                     String nameLoai =  spn_addSanPham_IDLoai.getSelectedItem().toString();
                     if (uri != null) {
-
-
                         db.collection("loaifood")
                                 .get()
                                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -249,9 +216,6 @@ public class Fragment_add_san_pham extends Fragment implements LocationListener 
 
                                     }
                                 });
-
-
-
                     } else {
                         Toast.makeText(getActivity(), "Vui lòng Chọn Ảnh Sản Phẩm", Toast.LENGTH_SHORT).show();
                     }

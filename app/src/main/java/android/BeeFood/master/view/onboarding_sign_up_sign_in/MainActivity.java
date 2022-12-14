@@ -250,8 +250,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 //        account = GoogleSignIn.getLastSignedInAccount(this);
-        LoaiDao loaiDao = new LoaiDao();
-        loaiFood loaiFood = new loaiFood("https://firebasestorage.googleapis.com/v0/b/shoppyfood-c2281.appspot.com/o/profile.png?alt=media&token=8cdba2f9-1af0-4447-a581-ac236c6125f0", "Name");
 
     }
 
@@ -291,7 +289,12 @@ public class MainActivity extends AppCompatActivity {
                                             }
                                         }
                                         if (check) {
+                                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                                            editor.putString("email", account.getEmail());
+                                            editor.commit();
+                                            finish();
                                             Toast.makeText(MainActivity.this, "Chua co User", Toast.LENGTH_SHORT).show();
+                                            startActivity(new Intent(MainActivity.this, Screen_Profile.class));
                                         }
                                     }
                                 }

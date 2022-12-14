@@ -84,6 +84,8 @@ public class Adapter_RecyclerView_Active extends RecyclerView.Adapter<Adapter_Re
         holder.tv_orders_item_active_soLuong.setText(object.getAmountofood()+" items");
         holder.tv_orders_item_active_KhoangCach.setText(object.getKhoangcach()+" km");
         holder.tv_orders_item_active_GiaTien.setText(object.getPriceOderFood() + " vnd");
+        holder.tv_orders_item_active_status.setText(object.getStatus());
+
 
         holder.btn_orders_item_active_btn_Track.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -114,7 +116,7 @@ public class Adapter_RecyclerView_Active extends RecyclerView.Adapter<Adapter_Re
                                         ArrayList<BuyFood> list = new ArrayList<>();
                                         if (task.isSuccessful()) {
                                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                                if(document.getData().get("status").toString().equalsIgnoreCase("chuaThanhToan")){
+                                                if(document.getData().get("status").toString().equalsIgnoreCase("dangDatHang") || document.getData().get("status").toString().equalsIgnoreCase("choVanChuyen") || document.getData().get("status").toString().equalsIgnoreCase("dangVanChuyen")){
                                                     list.add(new BuyFood(
                                                             document.getId(),
                                                             document.getData().get("idfood").toString(),

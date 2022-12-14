@@ -3,7 +3,7 @@ package android.BeeFood.master.model;
 public class UserChiTiet {
     private String email,fullname,gender,date,url,address,pin;
 
-    public UserChiTiet( String email, String fullname, String gender, String date, String url, String address, String pin) {
+    public UserChiTiet(String email, String fullname, String gender, String date, String url, String address, String pin) {
         this.email = email;
         this.fullname = fullname;
         this.gender = gender;

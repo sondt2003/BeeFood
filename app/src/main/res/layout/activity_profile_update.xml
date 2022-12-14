@@ -120,11 +120,31 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layout_profile_update_Phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layout_profile_update_Email"
+        app:startIconDrawable="@drawable/ic_baseline_local_phone_24"
+        app:endIconMode="clear_text"
+        app:hintEnabled="false"
+        android:layout_marginTop="16dp">
+        <EditText
+            android:id="@+id/profile_update_Phone"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:hint="Phone number"
+            android:background="@drawable/bg_edt_login_noselect"
+            android:inputType="number|phone"
+            android:paddingRight="16dp"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
     <Spinner
         android:id="@+id/profile_spinner_gender"
         android:layout_width="match_parent"
         android:layout_height="52dp"
-        android:layout_below="@+id/layout_profile_update_Email"
+        android:layout_below="@+id/layout_profile_update_Phone"
         android:layout_marginTop="16dp"
         android:background="@drawable/bgredt" />
 
@@ -164,7 +184,7 @@
         android:layout_width="match_parent"
         android:layout_height="52dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="5dp"
         android:background="@drawable/bg_btn_gree"
         android:text="Continue"
         android:textColor="@color/white" />

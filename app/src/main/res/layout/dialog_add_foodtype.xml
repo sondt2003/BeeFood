@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/cBg">
+    android:background="@drawable/bg_radius_16"
+    android:layout_margin="16dp">
 
     <TextView
         android:layout_width="match_parent"
@@ -35,6 +36,8 @@
         app:startIconDrawable="@drawable/ic_baseline_drive_file_rename_outline_24"
         app:endIconMode="clear_text"
         android:layout_marginTop="24dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         app:hintEnabled="false"
         android:layout_below="@+id/layout_dialog_addFoodType_avt">
 
@@ -43,9 +46,9 @@
             android:layout_width="match_parent"
             android:layout_height="52dp"
             android:background="@drawable/bg_edt_login_noselect"
-            android:inputType="textEmailAddress"
             android:hint="Tên loại"
-            android:textSize="16sp"/>
+            android:inputType="textEmailAddress"
+            android:textSize="16sp" />
     </com.google.android.material.textfield.TextInputLayout>
     
     <LinearLayout
@@ -62,7 +65,9 @@
             android:layout_height="52dp"
             android:layout_weight="1"
             android:layout_margin="8dp"
-            android:text="cancel"/>
+            android:text="cancel"
+            android:textColor="@color/colorRed"
+            android:background="@drawable/bg_btn_huy"/>
         
         <Button
             android:id="@+id/dialog_addFoodType_Add"
@@ -70,7 +75,9 @@
             android:layout_height="52dp"
             android:layout_weight="1"
             android:layout_margin="8dp"
-            android:text="Add"/>
+            android:text="Add"
+            android:textColor="@color/white"
+            android:background="@drawable/bg_btn_gree"/>
 
     </LinearLayout>
 

@@ -78,7 +78,7 @@ public class Oders_Active_Fragment extends Fragment {
                         ArrayList<BuyFood> list = new ArrayList<>();
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                if(document.getData().get("status").toString().equalsIgnoreCase("chuaThanhToan") && email.equalsIgnoreCase(document.getData().get("emailuser").toString())){
+                                if(document.getData().get("status").toString().equalsIgnoreCase("dangDatHang") || document.getData().get("status").toString().equalsIgnoreCase("choVanChuyen") || document.getData().get("status").toString().equalsIgnoreCase("dangVanChuyen") && email.equalsIgnoreCase(document.getData().get("emailuser").toString())){
                                     list.add(new BuyFood(
                                             document.getId(),
                                             document.getData().get("idfood").toString(),

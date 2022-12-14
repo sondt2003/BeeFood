@@ -21,6 +21,22 @@
         android:theme="@style/Theme.BeeFood"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+<!--        chot-don-->
+        <activity
+            android:name=".view.chot_don.Activity_shipper"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".view.chot_don.Activity_ChuHang"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+<!--        -->
         <activity
             android:name=".view.onboarding_sign_up_sign_in.Activityforgotpassword"
             android:exported="false" />

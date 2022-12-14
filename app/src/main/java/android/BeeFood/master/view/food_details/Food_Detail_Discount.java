@@ -10,6 +10,7 @@ import android.BeeFood.master.R;
 import android.BeeFood.master.model.khuyenMai;
 import android.BeeFood.master.view.add_san_pham.Adapter_KhuyenMai;
 import android.BeeFood.master.view.food_details.adapter.Adapter_RecyclerView_Discount;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -30,6 +31,13 @@ public class Food_Detail_Discount extends AppCompatActivity {
     private ArrayList<khuyenMai> mArrayList = new ArrayList<>();
     private Adapter_RecyclerView_Discount adapter_recyclerView_discount;
 
+    double Total = 0;
+    int soluongSP = 0;
+    String idFood,idOrderFood;
+
+
+    Bundle bundle;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,10 +45,19 @@ public class Food_Detail_Discount extends AppCompatActivity {
         
         anhXa();
 
+        Intent intent = getIntent();
+        bundle = intent.getBundleExtra("key_bundle");
 
         setSupportActionBar(toolbar_food_detail_discount_toolbar);
         getSupportActionBar().setTitle("Discount");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
+
+        Total = bundle.getDouble("key_Total",0);
+        soluongSP = bundle.getInt("key_soluongSP",0);
+        idFood = bundle.getString("key_idFood");
+        idOrderFood = bundle.getString("key_orderFood");
 
         loadList();
 
@@ -81,7 +98,7 @@ public class Food_Detail_Discount extends AppCompatActivity {
                             }
                         }
                         adapter_recyclerView_discount = new Adapter_RecyclerView_Discount(Food_Detail_Discount.this);
-                        adapter_recyclerView_discount.setData(list);
+                        adapter_recyclerView_discount.setData(list,bundle);
 
                         LinearLayoutManager layoutManager = new LinearLayoutManager(Food_Detail_Discount.this, LinearLayoutManager.VERTICAL, false);
                         recyclerView_food_detail_discount_recyclerView.setLayoutManager(layoutManager);

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="15dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginBottom="8dp"
+    android:layout_marginLeft="16dp"
+    android:layout_marginRight="16dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/item_donhang_cardView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="16dp">
+
+            <ImageView
+                android:id="@+id/item_donhang_avt"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/avt_test"/>
+
+        </androidx.cardview.widget.CardView>
+
+
+        <RelativeLayout
+            android:id="@+id/layout_thongtin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_toRightOf="@+id/item_donhang_cardView">
+
+            <TextView
+                android:id="@+id/item_donhang_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:text="Name"
+                android:textColor="@color/black"
+                android:textSize="24dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/item_donhang_soluong"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/item_donhang_name"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="3dp"
+                android:text="3 items" />
+
+            <TextView
+                android:id="@+id/orders_item_active_tvKhoangCach"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/item_donhang_name"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="8dp"
+                android:layout_toRightOf="@+id/item_donhang_soluong"
+                android:text="|" />
+
+
+            <TextView
+                android:id="@+id/item_donhang_GiaTien"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/item_donhang_name"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="8dp"
+                android:layout_toRightOf="@+id/orders_item_active_tvKhoangCach"
+                android:text="1.4"
+                android:textColor="@color/cChinh"
+                android:textSize="17dp"
+                android:textStyle="bold"/>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/item_donhang_soluong">
+
+                <TextView
+                    android:id="@+id/item_donhang_nameUser"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="5dp"
+                    android:text="namedUser"
+                    android:textSize="16sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/item_donhang_sdt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="sdtt : 0123456789"
+                    android:layout_marginLeft="16dp"
+                    android:layout_below="@+id/item_donhang_nameUser"
+                    android:maxLines="1"/>
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+        <TextView
+            android:id="@+id/completed_line"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/item_donhang_cardView"
+            android:layout_marginRight="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="#BFBFBF"/>
+
+        <LinearLayout
+            android:layout_below="@id/completed_line"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/item_donhang_huy"
+                android:textColor="@color/cChinh"
+                android:textAllCaps="false"
+                android:text="Canel Order"
+                android:background="@drawable/completed_bgr_button_white"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"/>
+            <Button
+                android:id="@+id/item_donhang_nhan"
+                android:textColor="@color/white"
+                android:layout_marginLeft="8dp"
+                android:textAllCaps="false"
+                android:text="Track Driver"
+                android:background="@drawable/completed_bgr_button_gree"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"/>
+        </LinearLayout>
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
