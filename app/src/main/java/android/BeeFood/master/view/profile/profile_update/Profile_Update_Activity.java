@@ -75,7 +75,7 @@ public class Profile_Update_Activity extends AppCompatActivity implements Locati
                 onBackPressed();
             }
         });
-
+        edt_profile_update_Email.setEnabled(false);
 
         List<String> spinnerArray = new ArrayList<>();
         spinnerArray.add("Gender");
@@ -219,8 +219,7 @@ public class Profile_Update_Activity extends AppCompatActivity implements Locati
                                         } else {
                                             spn_profile_spinner_gender.setSelection(1);
                                         }
-//                                        Toast.makeText(Profile_Update_Activity.this, document.getData().get("address").toString()+"", Toast.LENGTH_SHORT).show();
-//                                        edt_profile_update_location.setText(document.getData().get("address").toString());
+                                          edt_profile_update_location.setText(document.getData().get("address").toString());
                                     }
                                 } catch (Exception e) {
                                     Toast.makeText(Profile_Update_Activity.this, "Lỗi", Toast.LENGTH_SHORT).show();

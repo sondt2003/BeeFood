@@ -85,6 +85,7 @@ public class Profile_Fragment extends Fragment {
         tv_profile_name = view.findViewById(R.id.profile_name);
         sharedPreferences = getActivity().getSharedPreferences("USER", getActivity().MODE_PRIVATE);
 
+
         btnProfile = view.findViewById(R.id.profile_profileEdit_OnClick);
         btnProfile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -143,6 +144,7 @@ public class Profile_Fragment extends Fragment {
                         gsc.signOut().isSuccessful();
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.putString("email", "");
+                        editor.putString("passWord", "");
                         editor.commit();
                         Intent intent = new Intent(getActivity(), MainActivity.class);
                         startActivity(intent);

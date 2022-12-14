@@ -197,6 +197,7 @@ public class Fragment_home extends Fragment implements View.OnClickListener {
                                         document.getData().get("describle").toString()));
                                 if (list.size() >= 5) break;
                             }
+                            adapter_special_offers.setData(list);
                             adapter_discount.setData(list);
                             adapter_recommended.setData(list);
                         }
@@ -214,7 +215,7 @@ public class Fragment_home extends Fragment implements View.OnClickListener {
 
 
         adapter_special_offers = new Adapter_Special_offers(getContext());
-        adapter_special_offers.setData(lis_bannerSale);
+//        adapter_special_offers.setData(lis_bannerSale);
 
         LinearLayoutManager manager2 = new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false);
         recyclerView_home_ActionMenu_Special_banner.setLayoutManager(manager2);

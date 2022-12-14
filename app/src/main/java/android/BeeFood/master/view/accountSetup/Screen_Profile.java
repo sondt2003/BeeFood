@@ -56,6 +56,10 @@ public class Screen_Profile extends AppCompatActivity {
         AdapterProfile();
         evenCLick();
         upLoadURL();
+        SharedPreferences sharedPref = getSharedPreferences("USER", MODE_PRIVATE);
+        String email = sharedPref.getString("email", "");
+        profile_edt_email.setText(email);
+        profile_edt_email.setEnabled(false);
     }
 
     private void evenCLick() {
