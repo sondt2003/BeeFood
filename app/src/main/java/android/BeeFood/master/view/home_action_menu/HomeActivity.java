@@ -11,18 +11,29 @@ import android.content.BroadcastReceiver;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 
 public class HomeActivity extends AppCompatActivity {
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     private BottomNavigationView btnNavigation_home_ActionMenu_Main_layout;
     BroadcastReceiver  broadcastReceiver = new InternetCheckService(getApplication(),"HomeActivity");
@@ -52,12 +63,36 @@ public class HomeActivity extends AppCompatActivity {
                     loadFragment(Profile_Fragment.newInstance());
                     break;
                 case R.id.home_menu_addSanPham:
-                    loadFragment(Fragment_QuanLy.newInstance());
-                    break;
+                db.collection("users")
+                        .get()
+                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                if (task.isSuccessful()) {
+                                    for (QueryDocumentSnapshot document : task.getResult()) {
+                                        SharedPreferences sharedPref = getSharedPreferences("USER",MODE_PRIVATE);
+                                        String email = sharedPref.getString("email", "");
+                                        try {
+                                            if (email.equalsIgnoreCase(document.getData().get("email").toString())) {
+                                                if (document.getData().get("admin").toString().trim().equals("user")) {
+                                                    Toast.makeText(HomeActivity.this, "Ban khong co  quyen", Toast.LENGTH_SHORT).show();
+                                                } else if (document.getData().get("admin").toString().trim().equals("shipper")) {
+                                                    Toast.makeText(HomeActivity.this, "Ban khong co  quyen", Toast.LENGTH_SHORT).show();
+                                                } else if (document.getData().get("admin").toString().trim().equals("admin")) {
+                                                    loadFragment(Fragment_QuanLy.newInstance());
+                                                    break;
+                                                }
+                                            }
+                                        } catch (Exception e) {
+                                        }
+                                    }
+                                }
+                            }
+                        });
+
             }
             return true;
         });
-
     }
 
     private void loadFragment(Fragment fragment){

@@ -69,7 +69,6 @@ public class Fragment_QuanLy extends Fragment {
             }
         });
         mediator.attach();
-
     }
 
     public void AnhXa(View v){

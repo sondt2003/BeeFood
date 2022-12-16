@@ -40,6 +40,7 @@ public class UserDao {
         user.put("ImageUrl", users.getUserChiTiet().getUrl());
         user.put("pin", users.getUserChiTiet().getPin());
         user.put("address", users.getUserChiTiet().getAddress());
+        user.put("admin", users.getLevel());
         db.collection("users")
                 .add(user)
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
@@ -68,6 +69,7 @@ public class UserDao {
         user.put("ImageUrl", users.getUserChiTiet().getUrl());
         user.put("pin", users.getUserChiTiet().getPin());
         user.put("address", users.getUserChiTiet().getAddress());
+        user.put("admin", users.getLevel());
         db.collection("users")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {

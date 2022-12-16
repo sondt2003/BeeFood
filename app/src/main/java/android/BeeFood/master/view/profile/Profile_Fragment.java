@@ -169,6 +169,16 @@ public class Profile_Fragment extends Fragment {
                                         url_profile = document.getData().get("ImageUrl").toString();
                                         Glide.with(getActivity()).load(url_profile).into(avartar);
                                         tv_profile_name.setText(document.getData().get("fullname").toString().trim());
+                                        if (document.getData().get("admin").toString().trim().equals("user")) {
+                                            btnprofile_shipper.setVisibility(View.GONE);
+                                            btnChuhang.setVisibility(View.GONE);
+                                        } else if (document.getData().get("admin").toString().trim().equals("shipper")) {
+                                            btnprofile_shipper.setVisibility(View.VISIBLE);
+                                            btnChuhang.setVisibility(View.GONE);
+                                        } else if (document.getData().get("admin").toString().trim().equals("admin")) {
+                                            btnprofile_shipper.setVisibility(View.VISIBLE);
+                                            btnChuhang.setVisibility(View.VISIBLE);
+                                        }
                                     }
                                 } catch (Exception e) {
                                 }

@@ -59,6 +59,7 @@
 
     <string name="sAddress">Address</string>
     <string name="sAdd_to_address">Add to address</string>
+    <string name="title_activity_danh_gia">DanhGiaActivity</string>
 
 
 </resources>

@@ -1,10 +1,10 @@
 package android.BeeFood.master.model;
 
 public class History {
-    String idUser,idFood,dayMonthYear,status,idDanhGia;
+    String idUser,email,idFood,dayMonthYear,status,idDanhGia;
 
-    public History(String idUser, String idFood, String dayMonthYear, String status, String idDanhGia) {
-        this.idUser = idUser;
+    public History(String email, String idFood, String dayMonthYear, String status, String idDanhGia) {
+        this.email = email;
         this.idFood = idFood;
         this.dayMonthYear = dayMonthYear;
         this.status = status;
@@ -13,6 +13,14 @@ public class History {
 
     public String getIdUser() {
         return idUser;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public void setIdUser(String idUser) {

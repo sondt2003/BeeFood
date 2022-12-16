@@ -16,6 +16,7 @@
         <entry key="..\:/Du_An_1/BeeFood/app/src/main/res/layout/activity_profile_update.xml" value="0.234375" />
         <entry key="..\:/Du_An_1/BeeFood/app/src/main/res/layout/activity_screen_profile.xml" value="0.25" />
         <entry key="..\:/Du_An_1/BeeFood/app/src/main/res/layout/cart_item.xml" value="0.25" />
+        <entry key="..\:/Du_An_1/BeeFood/app/src/main/res/layout/content_danh_gia.xml" value="0.25" />
         <entry key="..\:/Du_An_1/BeeFood/app/src/main/res/layout/dialog_isconnect_wifi.xml" value="0.2" />
         <entry key="..\:/Du_An_1/BeeFood/app/src/main/res/layout/fragment_add_san_pham.xml" value="0.21296296296296297" />
         <entry key="..\:/Du_An_1/BeeFood/app/src/main/res/layout/fragment_history.xml" value="0.25" />
@@ -24,6 +25,55 @@
         <entry key="..\:/Du_An_1/BeeFood/app/src/main/res/layout/fragment_profile_.xml" value="0.25" />
         <entry key="..\:/Du_An_1/BeeFood/app/src/main/res/layout/home_item_discount.xml" value="0.25" />
         <entry key="..\:/Du_An_1/BeeFood/app/src/main/res/menu/menu.xml" value="0.25" />
+        <entry key="..\:/MOB1032/BeeFood/BeeFood/app/src/main/res/layout/activity_activityforgotpassword.xml" value="0.19583333333333333" />
+        <entry key="..\:/MOB1032/BeeFood/BeeFood/app/src/main/res/layout/activity_add_to_basket.xml" value="0.19583333333333333" />
+        <entry key="..\:/MOB1032/BeeFood/BeeFood/app/src/main/res/layout/activity_address.xml" value="0.19583333333333333" />
+        <entry key="..\:/MOB1032/BeeFood/BeeFood/app/src/main/res/layout/activity_checkout_oders.xml" value="0.19583333333333333" />
+        <entry key="..\:/MOB1032/BeeFood/BeeFood/app/src/main/res/layout/activity_chu_hang.xml" value="0.19583333333333333" />
+        <entry key="..\:/MOB1032/BeeFood/BeeFood/app/src/main/res/layout/activity_login.xml" value="0.19583333333333333" />
+        <entry key="..\:/MOB1032/BeeFood/BeeFood/app/src/main/res/layout/activity_main.xml" value="0.19583333333333333" />
+        <entry key="..\:/MOB1032/BeeFood/BeeFood/app/src/main/res/layout/activity_more_category.xml" value="0.19583333333333333" />
+        <entry key="..\:/MOB1032/BeeFood/BeeFood/app/src/main/res/layout/activity_notification.xml" value="0.19583333333333333" />
+        <entry key="..\:/MOB1032/BeeFood/BeeFood/app/src/main/res/layout/activity_recommended.xml" value="0.19583333333333333" />
+        <entry key="..\:/MOB1032/BeeFood/BeeFood/app/src/main/res/layout/activity_register.xml" value="0.19583333333333333" />
+        <entry key="..\:/MOB1032/BeeFood/BeeFood/app/src/main/res/layout/activity_review.xml" value="0.19583333333333333" />
+        <entry key="..\:/MOB1032/BeeFood/BeeFood/app/src/main/res/layout/dialog_add_foodtype.xml" value="0.19583333333333333" />
+        <entry key="..\:/MOB1032/BeeFood/BeeFood/app/src/main/res/layout/dialog_isconnect_wifi.xml" value="0.19583333333333333" />
+        <entry key="..\:/MOB1032/BeeFood/BeeFood/app/src/main/res/layout/dialog_khuyenmai_add.xml" value="0.19583333333333333" />
+        <entry key="..\:/MOB1032/BeeFood/BeeFood/app/src/main/res/layout/dialog_qlsp_update.xml" value="0.19583333333333333" />
+        <entry key="..\:/MOB1032/BeeFood/BeeFood/app/src/main/res/layout/dialog_shipper_thongtin.xml" value="0.19583333333333333" />
+        <entry key="..\:/MOB1032/BeeFood/BeeFood/app/src/main/res/layout/food_avt_item_sort.xml" value="0.19583333333333333" />
+        <entry key="..\:/MOB1032/BeeFood/BeeFood/app/src/main/res/layout/food_detail_discount_item.xml" value="0.19583333333333333" />
+        <entry key="..\:/MOB1032/BeeFood/BeeFood/app/src/main/res/layout/food_detail_item_foryou.xml" value="0.19583333333333333" />
+        <entry key="..\:/MOB1032/BeeFood/BeeFood/app/src/main/res/layout/food_detail_item_menu_and_drink.xml" value="0.19583333333333333" />
+        <entry key="..\:/MOB1032/BeeFood/BeeFood/app/src/main/res/layout/food_item_sort.xml" value="0.19583333333333333" />
+        <entry key="..\:/MOB1032/BeeFood/BeeFood/app/src/main/res/layout/fragment__khuyen_mai.xml" value="0.19583333333333333" />
+        <entry key="..\:/MOB1032/BeeFood/BeeFood/app/src/main/res/layout/fragment__quan_ly.xml" value="0.19583333333333333" />
+        <entry key="..\:/MOB1032/BeeFood/BeeFood/app/src/main/res/layout/fragment_add_san_pham.xml" value="0.19583333333333333" />
+        <entry key="..\:/MOB1032/BeeFood/BeeFood/app/src/main/res/layout/fragment_e_wallet_.xml" value="0.19583333333333333" />
+        <entry key="..\:/MOB1032/BeeFood/BeeFood/app/src/main/res/layout/fragment_first.xml" value="0.19583333333333333" />
+        <entry key="..\:/MOB1032/BeeFood/BeeFood/app/src/main/res/layout/fragment_history.xml" value="0.19583333333333333" />
+        <entry key="..\:/MOB1032/BeeFood/BeeFood/app/src/main/res/layout/fragment_home.xml" value="0.19583333333333333" />
+        <entry key="..\:/MOB1032/BeeFood/BeeFood/app/src/main/res/layout/fragment_oders_active.xml" value="0.19583333333333333" />
+        <entry key="..\:/MOB1032/BeeFood/BeeFood/app/src/main/res/layout/fragment_oders_cancelled.xml" value="0.19583333333333333" />
+        <entry key="..\:/MOB1032/BeeFood/BeeFood/app/src/main/res/layout/fragment_oders_completed.xml" value="0.19583333333333333" />
+        <entry key="..\:/MOB1032/BeeFood/BeeFood/app/src/main/res/layout/fragment_orders.xml" value="0.19583333333333333" />
+        <entry key="..\:/MOB1032/BeeFood/BeeFood/app/src/main/res/layout/fragment_profile_.xml" value="0.19583333333333333" />
+        <entry key="..\:/MOB1032/BeeFood/BeeFood/app/src/main/res/layout/fragment_quan_ly_san_pham.xml" value="0.19583333333333333" />
+        <entry key="..\:/MOB1032/BeeFood/BeeFood/app/src/main/res/layout/history_item.xml" value="0.33" />
+        <entry key="..\:/MOB1032/BeeFood/BeeFood/app/src/main/res/layout/home_item_discount.xml" value="0.19583333333333333" />
+        <entry key="..\:/MOB1032/BeeFood/BeeFood/app/src/main/res/layout/home_item_foodtype.xml" value="0.19583333333333333" />
+        <entry key="..\:/MOB1032/BeeFood/BeeFood/app/src/main/res/layout/home_item_recommended.xml" value="0.19583333333333333" />
+        <entry key="..\:/MOB1032/BeeFood/BeeFood/app/src/main/res/layout/home_item_special.xml" value="0.19583333333333333" />
+        <entry key="..\:/MOB1032/BeeFood/BeeFood/app/src/main/res/layout/item_donhang.xml" value="0.19583333333333333" />
+        <entry key="..\:/MOB1032/BeeFood/BeeFood/app/src/main/res/layout/item_khuyen_mai.xml" value="0.19583333333333333" />
+        <entry key="..\:/MOB1032/BeeFood/BeeFood/app/src/main/res/layout/oders_item_active.xml" value="0.19583333333333333" />
+        <entry key="..\:/MOB1032/BeeFood/BeeFood/app/src/main/res/layout/oders_item_cancelled.xml" value="0.19583333333333333" />
+        <entry key="..\:/MOB1032/BeeFood/BeeFood/app/src/main/res/layout/oders_item_completed.xml" value="0.19583333333333333" />
+        <entry key="..\:/MOB1032/BeeFood/BeeFood/app/src/main/res/layout/profile_item_address.xml" value="0.19583333333333333" />
+        <entry key="..\:/MOB1032/BeeFood/BeeFood/app/src/main/res/layout/qlsp_item_layout.xml" value="0.19583333333333333" />
+        <entry key="..\:/MOB1032/BeeFood/BeeFood/app/src/main/res/layout/slider_layout.xml" value="0.19583333333333333" />
+        <entry key="..\:/MOB1032/BeeFood/BeeFood/app/src/main/res/menu/menu.xml" value="0.19583333333333333" />
         <entry key="..\:/Users/Acer Aspire 7/Music/BeeFood/app/src/main/res/drawable-v24/bgredt.xml" value="0.1515" />
         <entry key="..\:/Users/Acer Aspire 7/Music/BeeFood/app/src/main/res/drawable-v24/bgrtop.xml" value="0.1515" />
         <entry key="..\:/Users/Acer Aspire 7/Music/BeeFood/app/src/main/res/drawable-v24/btn.xml" value="0.1515" />

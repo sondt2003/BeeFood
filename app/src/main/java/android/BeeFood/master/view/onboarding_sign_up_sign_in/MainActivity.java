@@ -62,6 +62,8 @@ import java.util.Set;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
+//import cn.pedant.SweetAlert.SweetAlertDialog;
+
 public class MainActivity extends AppCompatActivity {
     public static final String CHANNEL_ID = "push notification";
     FirebaseFirestore db = FirebaseFirestore.getInstance();
