@@ -21,18 +21,48 @@
         android:theme="@style/Theme.BeeFood"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+
+        <activity android:name=".view.home_action_menu.HomeActivity"
+            android:exported="false">
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+        </activity>
+        
+        <activity android:name=".view.home_action_menu.home.craving.Activity_craving"
+            android:exported="false">
+        </activity>
+        <activity android:name=".view.home_action_menu.home.food.Activity_food"
+            android:exported="false">
+        </activity>
+        <activity android:name=".view.home_action_menu.home.more_category.Activity_MoreCategory"
+            android:exported="false">
+        </activity>
+        <activity android:name=".view.home_action_menu.home.mycart.Activity_MyCart"
+            android:exported="false">
+        </activity>
+
+        <activity android:name=".view.home_action_menu.home.recommended_for_you.Activity_Recommended"
+            android:exported="false">
+        </activity>
+
+        <activity android:name=".view.home_action_menu.home.special_offers.Activity_Special_offers"
+            android:exported="false">
+        </activity>
+
         <activity
-            android:name=".View.AccountSetup.Screen_Pin_Code"
+            android:name=".view.accountSetup.Screen_Pin_Code"
             android:exported="false">
         </activity>
         <activity
-            android:name=".View.AccountSetup.Screen_Recognition"
+            android:name=".view.accountSetup.Screen_Recognition"
             android:exported="false" />
         <activity
-            android:name=".View.AccountSetup.Screen_Fingerprint"
+            android:name=".view.accountSetup.Screen_Fingerprint"
             android:exported="false" />
         <activity
-            android:name=".View.AccountSetup.Screen_Profile"
+            android:name=".view.accountSetup.Screen_Profile"
             android:exported="false">
 <!--            <intent-filter>-->
 <!--                <action android:name="android.intent.action.MAIN" />-->
@@ -45,29 +75,44 @@
             android:value="AIzaSyA3w6iFMRdPANrFHsTju-u3TMLufESEgZA" />
 
         <activity
-            android:name=".View.AccountSetup.MapsActivity"
+            android:name=".view.accountSetup.MapsActivity"
             android:exported="false"
             android:label="" />
-        <activity android:name=".View.Onboarding_Sign_up_Sign_in.Introduce_Screen" android:exported="false"/>
-        <activity android:name=".View.Onboarding_Sign_up_Sign_in.Onboarding_Screen" android:exported="false"/>
-        <activity android:name=".View.Onboarding_Sign_up_Sign_in.RegisterActivity" android:exported="false"/>
-        <activity android:name=".View.Onboarding_Sign_up_Sign_in.Splash_Screen" android:exported="false">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
+        <activity android:name=".view.onboarding_sign_up_sign_in.Onboarding_Screen" android:exported="false"/>
+        <activity android:name=".view.onboarding_sign_up_sign_in.RegisterActivity" android:exported="false"/>
+        <activity android:name=".view.onboarding_sign_up_sign_in.Splash_Screen" android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
-            android:name=".View.Onboarding_Sign_up_Sign_in.MainActivity"
+            android:name=".view.onboarding_sign_up_sign_in.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <!--ac_Profile-->
+        <activity android:name=".view.profile.address.Address_Activity"
+            android:exported="false"/>
+
+        <activity android:name=".view.profile.security.Security_Activity"
+            android:exported="false"/>
+
+        <activity android:name=".view.profile.language.Language_Activity"
+            android:exported="false"/>
+
+        <activity android:name=".view.profile.notification.Notification_Activity"
+            android:exported="false"/>
+
+        <activity android:name=".view.profile.profile_update.Profile_Update_Activity"
+            android:exported="false"/>
+        <!--        -->
 
         <service
-            android:name=".Controller.MyFirebaseMessagingService"
+            android:name=".controller.MyFirebaseMessagingService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
@@ -105,5 +150,4 @@
             </intent-filter>
         </activity>
     </application>
-
 </manifest>

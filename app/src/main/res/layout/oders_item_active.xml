@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="15dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginBottom="8dp"
+    android:layout_marginLeft="16dp"
+    android:layout_marginRight="16dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/orders_item_active_cardView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="16dp">
+
+            <ImageView
+                android:id="@+id/orders_item_active_avt"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                android:src="@drawable/avt_test"/>
+
+        </androidx.cardview.widget.CardView>
+
+
+        <RelativeLayout
+            android:id="@+id/layout_thongtin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_toRightOf="@+id/orders_item_active_cardView">
+
+            <TextView
+                android:id="@+id/orders_item_active_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:text="Name"
+                android:textColor="@color/black"
+                android:textSize="24dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/orders_item_active_soLuong"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/orders_item_active_name"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="8dp"
+                android:text="3 items" />
+
+            <TextView
+                android:id="@+id/orders_item_active_tvKhoangCach"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/orders_item_active_name"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:layout_toRightOf="@+id/orders_item_active_soLuong"
+                android:text="|" />
+
+
+            <TextView
+                android:id="@+id/orders_item_active_KhoangCach"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/orders_item_active_name"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:layout_toRightOf="@+id/orders_item_active_tvKhoangCach"
+                android:text="1.4 km" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/orders_item_active_soLuong">
+
+                <TextView
+                    android:id="@+id/orders_item_active_GiaTien"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="8dp"
+                    android:text="$32.00"
+                    android:textColor="@color/cChinh"
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/orders_item_active_status"
+                    android:layout_width="50dp"
+                    android:layout_height="20dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="16dp"
+                    android:layout_toRightOf="@id/orders_item_active_GiaTien"
+                    android:background="@drawable/oders_completed_bgr_status"
+                    android:gravity="center"
+                    android:text="Paid"
+                    android:textColor="@color/white"
+                    android:textSize="8dp" />
+            </RelativeLayout>
+
+        </RelativeLayout>
+        <TextView
+            android:id="@+id/completed_line"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/orders_item_active_cardView"
+            android:layout_marginRight="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="#BFBFBF"/>
+
+        <LinearLayout
+            android:layout_below="@id/completed_line"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/orders_item_active_btn_cancel"
+                android:textColor="@color/cChinh"
+                android:textAllCaps="false"
+                android:text="Canel Order"
+                android:background="@drawable/completed_bgr_button_white"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_weight="1"/>
+            <Button
+                android:id="@+id/orders_item_active_btn_Track"
+                android:textColor="@color/white"
+                android:layout_marginLeft="8dp"
+                android:textAllCaps="false"
+                android:text="Track Driver"
+                android:background="@drawable/completed_bgr_button_gree"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_weight="1"/>
+        </LinearLayout>
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

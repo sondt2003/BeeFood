@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.food_details.Add_To_Basket">
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/add_To_Basket_CoordinatorLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/add_To_Basket_appBarLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:layout_width="wrap_content"
+                android:layout_height="400dp"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed">
+                <ImageView
+                    android:id="@+id/add_To_Basket_banner"
+                    android:layout_width="match_parent"
+                    android:layout_height="400dp"
+                    android:src="@drawable/avt_test"
+                    android:scaleType="centerCrop"
+                    app:layout_collapseMode="parallax"/>
+
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/add_To_Basket_toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:theme="@style/ThemeOverlay.AppCompat.Light"
+                    app:layout_collapseMode="pin"
+                    />
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+        </com.google.android.material.appbar.AppBarLayout>
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/add_To_Basket_NestesScrollView"
+            android:layout_below="@id/add_To_Basket_appBarLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:id="@+id/add_To_Basket_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="9"
+                    android:padding="24dp"
+                    android:text="Mixed Vegetable Salad "
+                    android:textSize="30sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/line"
+                    android:layout_below="@id/add_To_Basket_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:background="#878787"
+                    />
+                <TextView
+                    android:id="@+id/add_To_Basket_description"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginRight="24dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/line"
+                    android:textColor="@color/black"
+                    android:text="This vagetalbe salad is a healthy and delicious summer salad made with fresh raw veggies, avocado, nuts, seed, herbs and feta in a light..."
+                    />
+                <LinearLayout
+                    android:id="@+id/tangso"
+                    android:layout_marginTop="24dp"
+                    android:layout_below="@id/add_To_Basket_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center">
+
+                    <ImageButton
+                        android:id="@+id/add_To_Basket_number_giam"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:background="@drawable/bgr_tang_giam_addbasket"
+                        android:src="@drawable/ic_baseline_remove_24"/>
+                    <TextView
+                        android:id="@+id/add_To_Basket_number"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1"
+                        android:layout_marginRight="32dp"
+                        android:layout_marginLeft="32dp"
+                        android:textSize="30sp"
+                        android:textColor="@color/black"/>
+                    <ImageButton
+                        android:id="@+id/add_To_Basket_number_tang"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:background="@drawable/bgr_tang_giam_addbasket"
+                        android:src="@drawable/ic_baseline_add_24"/>
+                </LinearLayout>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_below="@id/tangso"
+                    android:layout_margin="24dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginBottom="24dp"
+                    android:background="#F8F8F8"
+                    android:hint="Note to Restaurant (optional)"
+                    android:inputType="textMultiLine"
+                    android:padding="8dp" />
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    <LinearLayout
+        android:padding="8dp"
+        android:background="@color/cBg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+        <android.widget.Button
+            android:id="@+id/add_To_Basket_number_add"
+            android:background="@drawable/bgr_button_food_detail"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Add to basket - $12.00"/>
+    </LinearLayout>
+
+
+</RelativeLayout>

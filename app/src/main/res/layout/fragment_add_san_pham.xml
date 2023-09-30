@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".view.add_san_pham.Fragment_add_san_pham"
+    android:background="@color/cBg">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="16dp">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/layout_addSanPham_avtFood"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:layout_centerHorizontal="true"
+            app:cardCornerRadius="10dp"
+            android:background="@color/black"
+            android:layout_marginTop="32dp">
+            <ImageView
+                android:id="@+id/addSanPham_avtFood"
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:src="@drawable/logo_app" />
+        </androidx.cardview.widget.CardView>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout_addSanPham_nameFood"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            app:hintEnabled="false"
+            android:layout_below="@+id/layout_addSanPham_avtFood"
+            app:startIconDrawable="@drawable/ic_baseline_drive_file_rename_outline_24"
+            app:endIconMode="clear_text">
+
+            <EditText
+                android:id="@+id/addSanPham_nameFood"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:hint="Name food"
+                android:background="@drawable/bg_edt_login_noselect"
+                android:inputType="textPersonName"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout_addSanPham_Price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:hintEnabled="false"
+            app:startIconDrawable="@drawable/ic_baseline_price_change_24"
+            app:endIconMode="clear_text"
+            android:layout_below="@+id/layout_addSanPham_nameFood">
+
+            <EditText
+                android:id="@+id/addSanPham_Price"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:hint="Price"
+                android:background="@drawable/bg_edt_login_noselect"
+                android:inputType="textPersonName"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout_addSanPham_Address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:hintEnabled="false"
+            app:startIconDrawable="@drawable/ic_baseline_location_on_24"
+            app:endIconMode="clear_text"
+            android:layout_below="@+id/layout_addSanPham_Price">
+
+            <EditText
+                android:id="@+id/addSanPham_Address"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:hint="Address"
+                android:background="@drawable/bg_edt_login_noselect"
+                android:inputType="textPersonName"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout_addSanPham_PhoneNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:hintEnabled="false"
+            app:startIconDrawable="@drawable/ic_baseline_phone_24"
+            app:endIconMode="clear_text"
+            android:layout_below="@+id/layout_addSanPham_Address">
+
+            <EditText
+                android:id="@+id/addSanPham_PhoneNumber"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:hint="Phone number"
+                android:background="@drawable/bg_edt_login_noselect"
+                android:inputType="textPersonName"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Spinner
+            android:id="@+id/addSanPham_IDLoai"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bgredt"
+            android:layout_below="@+id/layout_addSanPham_PhoneNumber"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout_addSanPham_moTa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:hintEnabled="false"
+            app:startIconDrawable="@drawable/ic_baseline_drive_file_rename_outline_24"
+            app:endIconMode="clear_text"
+            android:layout_below="@+id/addSanPham_IDLoai">
+
+            <EditText
+                android:id="@+id/addSanPham_moTa"
+                android:layout_width="match_parent"
+                android:layout_height="104dp"
+                android:hint="Mô tả"
+                android:background="@drawable/bg_edt_login_noselect"
+                android:inputType="textMultiLine"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/addSanPham_add"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/layout_addSanPham_moTa"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="80dp"
+            android:background="@drawable/bg_btn_gree"
+            android:text="Add"
+            android:textColor="@color/white" />
+    </RelativeLayout>
+
+
+</ScrollView>

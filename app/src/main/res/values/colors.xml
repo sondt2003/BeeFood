@@ -21,4 +21,8 @@
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorRed">#C11515</color>
 
+    <color name="cBg">#F0F0F0</color>
+    <color name="cChinh">#1bac4b</color>
+    <color name="cGrey">#414141</color>
+
 </resources>
